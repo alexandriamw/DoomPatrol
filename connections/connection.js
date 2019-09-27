@@ -4,7 +4,7 @@ function connection(Peer){
         console.log('My peer ID is: ' + id);
       });
       //connecter ID requires access to DB to grab the connection of the user it is battling
-      let conneterID = "test";
+      let connecterID = "test";
 
       let conn = peer.connect(connecterID);
       
