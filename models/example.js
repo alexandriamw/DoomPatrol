@@ -1,7 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
-  var Example = sequelize.define("Example", {
-    text: DataTypes.STRING,
-    description: DataTypes.TEXT
+  var Equipment = sequelize.define("Equipment", {
+    slot: DataTypes.STRING,
+    meleeStat: DataTypes.TEXT,
+    defenceStat: DataTypes.INTEGER,
+    magicStat: DataTypes.INTEGER,
   });
-  return Example;
+  return Equipment;
 };
