@@ -11,6 +11,32 @@ document.getElementById("createButton").addEventListener("click", function() {
   document.getElementById("createAccountForm").style.display = "block";
 });
 
+document
+  .getElementById("loginFormButton")
+  .addEventListener("click", function(event) {
+    event.preventDefault();
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("buffering").style.display = "block";
+
+    const formData = {
+      uname: event.target.uname.value,
+      psw: event.target.psw.value
+    };
+
+    //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
+    fetch("/api/BACKEND_END_POINT", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    }).then(function(response) {
+      response.json().then(function(data) {
+        //to-do: change screen upon login
+      });
+    });
+  });
+
 // The API object contains methods for each kind of request we'll make
 // const API = {
 //   saveExample: function (example) {
@@ -67,14 +93,4 @@ document.getElementById("createButton").addEventListener("click", function() {
 //     refreshExamples();
 //   });
 
-// };
-
-// // handleDeleteBtnClick is called when an example's delete button is clicked
-// // Remove the example from the db and refresh the list
-// const handleDeleteBtnClick = function (event) {
-//   const idToDelete = event.target.parentElement.getAttribute("data-id");
-//   debugger
-//   API.deleteExample(idToDelete).then(function () {
-//     refreshExamples();
-//   });
 // };
