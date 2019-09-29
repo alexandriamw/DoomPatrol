@@ -11,6 +11,30 @@ module.exports = {
       accountName: {
         type: Sequelize.STRING
       },
+      hashedPW: {
+        type: Sequelize.STRING
+      },
+      wins: {
+        type: Sequelize.INTEGER
+      },
+      loses: {
+        type: Sequelize.INTEGER
+      },
+      weaponID: {
+        type: Sequelize.INTEGER
+      },
+      headID: {
+        type: Sequelize.INTEGER
+      },
+      chestID: {
+        type: Sequelize.INTEGER
+      },
+      pantsID: {
+        type: Sequelize.INTEGER
+      },
+      feetID: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

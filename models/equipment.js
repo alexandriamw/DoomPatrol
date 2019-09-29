@@ -14,18 +14,6 @@ module.exports = (sequelize, DataTypes) => {
   Equipment.associate = function(models) {
     // associations can be defined here
   };
-  Equipment.queryInterface.bulkInsert(
-    "Equipment",
-    [
-      {
-        itemname: "Test",
-        itemSlot: "test",
-        itemAttack: 1,
-        itemDefence: 1,
-        itemMagic: 1
-      }
-    ],
-    {}
-  );
+
   return Equipment;
 };
