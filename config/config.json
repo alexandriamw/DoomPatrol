@@ -2,10 +2,11 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "master_db",
+    "database": "masterdb",
     "host": "localhost",
     "port": "3306",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "seederStorage": "sequelize"
   },
   "test": {
     "username": "root",
