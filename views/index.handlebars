@@ -1,17 +1,98 @@
-<form>
+<div id="intro">
   <h1 class="title">My Dad can Beat up Your Dad</h1>
   <div>
     <div id="login">
       <h3>Already have an account?</h3>
-      <button>Login</button>
+      <button id="loginButton">Login</button>
     </div>
 
     <div id="createAccount">
       <h3>Don't have an account yet?</h3>
-      <button>Create an account</button>
+      <button id="createButton">Create an account</button>
+    </div>
+  </div>
+</div>
+
+<form id="loginForm">
+  <div class="container">
+    <h1>Login</h1>
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+    <br>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+    <br>
+    <button id="loginFormButton" type="submit">Login</button>
+  </div>
+</form>
+
+<form id="createAccountForm" action="">
+  <div class="container">
+    <h1>Sign up to Battle</h1>
+
+    <label for="uname"><b>Pick a Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+    <br>
+    <label for="psw"><b>Pick a Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+    <br>
+    <div>
+      <button id="signUpButton" type="submit">Sign Up</button>
+      <br>
+      <button id="cancelButton" type="button">Cancel</button>
     </div>
   </div>
 </form>
+
+<div id="buffering">
+  <h1>Finding a dad to battle...</h1>
+  <div id="bufferingIcon">
+    buffering icon tbd
+  </div>
+</div>
+
+<div id="createCharacter">
+  <div>
+    Character Img
+  </div>
+
+  <div>
+    Choose your Armour
+  </div>
+
+  <div>
+    Choose your Weapon
+  </div>
+  <button id="createCharBtn" type="submit">Create your Character</button>
+</div>
+
+<div id="battle">
+  <nav>
+    <h3>Health %</h3>
+    <div>Timer</div>
+    <div>Pause Menu</div>
+  </nav>
+
+  <h2>Character Name</h2>
+  <h3>Level</h3>
+
+  <div>Your Character Image</div>
+
+  <div>Your Opponent's Image</div>
+
+  <button>Pause</button>
+
+  <div>Dad vs Dad</div>
+
+</div>
+
+<div id="store">
+
+</div>
+
+<div id="leaderboard">
+
+</div>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

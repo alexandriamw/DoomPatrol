@@ -1,11 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Capriola", sans-serif;
+}
+
+h1 {
+  margin: 0;
+  padding: 50px;
+}
+
+#intro,
+#loginForm,
+#createAccountForm,
+#buffering {
+  background: #335f93;
+  color: #fffffa;
+}
+
 .title {
   text-align: center;
 }
 
-#login {
+#login,
+#buffering,
+#loginForm,
+#createAccount,
+#createAccountForm {
   text-align: center;
 }
 
-#createAccount {
-  text-align: center;
+#loginButton,
+#createButton,
+#loginFormButton,
+#signUpButton,
+#cancelButton {
+  background-color: #e8823a;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fffffa;
+  border: none;
+  cursor: pointer;
 }
