@@ -13,36 +13,39 @@
   </div>
 </div>
 
-<form id="loginForm">
-  <div class="container">
+<div id="loginForm">
+  <form>
     <h1>Login</h1>
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required>
-    <br>
+    <br><br>
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
-    <br>
+    <br><br>
     <button id="loginFormButton" type="submit">Login</button>
-  </div>
-</form>
+  </form>
+</div>
 
-<form id="createAccountForm" action="">
-  <div class="container">
-    <h1>Sign up to Battle</h1>
-
-    <label for="uname"><b>Pick a Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
-    <br>
-    <label for="psw"><b>Pick a Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-    <br>
+<div id="createAccountForm">
+  <form action="">
     <div>
-      <button id="signUpButton" type="submit">Sign Up</button>
-      <br>
-      <button id="cancelButton" type="button">Cancel</button>
+      <h1>Sign up to Battle</h1>
+
+      <label for="uname"><b>Pick a Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+      <br><br>
+      <label for="psw"><b>Pick a Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+      <br><br>
+      <div>
+        <button id="signUpButton" type="submit">Sign Up</button>
+        <br>
+        <button id="cancelButton" type="button">Cancel</button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>
+
 
 <div id="buffering">
   <h1>Finding a dad to battle...</h1>
@@ -83,7 +86,6 @@
   <button>Pause</button>
 
   <div>Dad vs Dad</div>
-
 </div>
 
 <div id="store">
