@@ -69,6 +69,12 @@ document.getElementById("cancelButton").addEventListener("click", function() {
   document.getElementById("createAccountForm").style.display = "none";
   document.getElementById("intro").style.display = "block";
 });
+document
+  .getElementById("cancelBattleButton")
+  .addEventListener("click", function() {
+    document.getElementById("buffering").style.display = "none";
+    document.getElementById("intro").style.display = "block";
+  });
 
 document
   .getElementById("cancelLogButton")
