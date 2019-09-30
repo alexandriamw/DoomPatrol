@@ -1,4 +1,5 @@
 //computer waits for user to press login, then hides intro and shows login form
+
 document.getElementById("loginButton").addEventListener("click", function() {
   document.getElementById("intro").style.display = "none";
   document.getElementById("loginForm").style.display = "block";
