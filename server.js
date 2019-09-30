@@ -6,7 +6,6 @@ let db = require("./models");
 var sassMiddleware = require("node-sass-middleware");
 var path = require("path");
 
-var db = require("./models");
 
 var app = express();
 var PORT = process.env.PORT || 3000;

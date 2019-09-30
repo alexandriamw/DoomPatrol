@@ -1,38 +1,23 @@
-"use strict";
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Users", {
+    return queryInterface.createTable('weapon-tables', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      accountName: {
+      Name: {
         type: Sequelize.STRING
       },
-      hashedPWID: {
-        type: Sequelize.STRING
-      },
-      wins: {
+      Melee: {
         type: Sequelize.INTEGER
       },
-      loses: {
+      defence: {
         type: Sequelize.INTEGER
       },
-      weaponID: {
-        type: Sequelize.INTEGER
-      },
-      headID: {
-        type: Sequelize.INTEGER
-      },
-      chestID: {
-        type: Sequelize.INTEGER
-      },
-      pantsID: {
-        type: Sequelize.INTEGER
-      },
-      feetID: {
+      magic: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -46,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Users");
+    return queryInterface.dropTable('weapon-tables');
   }
 };

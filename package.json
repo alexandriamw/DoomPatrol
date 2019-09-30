@@ -23,13 +23,9 @@
     "node-sass-middleware": "^0.11.0",
     "nodemon": "^1.19.2",
     "react-scripts": "^3.1.2",
-<<<<<<< HEAD
-    "sequelize": "^5.19.1"
-=======
     "sequelize": "^5.19.1",
     "sequelize-cli": "^5.5.1",
     "umzug": "^2.2.0"
->>>>>>> d7d84974a6280adc5716013bc7f93a1d37050a75
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
