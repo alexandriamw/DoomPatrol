@@ -1,6 +1,10 @@
 require("dotenv").config();
-var express = require("express");
-var exphbs = require("express-handlebars");
+let express = require("express");
+let exphbs = require("express-handlebars");
+let db = require("./models");
+
+var sassMiddleware = require("node-sass-middleware");
+var path = require("path");
 
 var db = require("./models");
 
@@ -11,6 +15,10 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'public/scss'),
+  dest: path.join(__dirname, 'public/styles'),
+}));
 
 // Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -20,7 +28,7 @@ app.set("view engine", "handlebars");
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-var syncOptions = { force: false };
+let syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -28,7 +36,6 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(
@@ -38,5 +45,6 @@ db.sequelize.sync(syncOptions).then(function() {
     );
   });
 });
+// Starting the server, syncing our models ------------------------------------/
 
 module.exports = app;

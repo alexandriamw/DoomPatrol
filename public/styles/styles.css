@@ -1,18 +1,20 @@
 * {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 body {
-  font-family: "Chilanka", cursive;
-  background-color: #335f93;
+  font-family: "Special Elite", cursive;
+  background-color: #3c2d3d;
+  background-color: #3c2d3d;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23332634' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
   font-size: 20px;
+  text-shadow: 2px 2px #474747;
 }
 
 .title,
 .login,
 .signUp {
-  font-family: "Schoolbell", cursive;
-  font-size: 44px;
+  font-family: "Special Elite", cursive;
+  font-size: 60px;
 }
 
 #loginForm,
@@ -31,37 +33,60 @@ h1 {
 #loginForm,
 #createAccountForm,
 #buffering {
-  color: #fffffa;
+  color: #f0ead6;
 }
 
 .title {
-  text-align: center;
-}
-
-#login,
-#buffering,
-#loginForm,
-#createAccount,
-#createAccountForm {
-  text-align: center;
-}
+  text-align: center; }
 
 #loginButton,
 #createButton,
 #loginFormButton,
 #signUpButton,
 #cancelButton,
+#cancelBattleButton,
 #cancelLogButton {
-  background-color: #e8823a;
-  box-shadow: 3px 3px #b2642c;
-  border-radius: 5px;
+  font-family: "Special Elite", cursive;
+  background-color: #5db09d;
+  box-shadow: 2px 2px #437066;
+  border-radius: 4px;
   padding: 10px 20px;
   color: #fffffa;
   border: none;
   cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#psw,
+#uname {
+  font-family: "Special Elite", cursive;
+  border-radius: 4px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: 3px 3px #aebbd1;
+  margin-bottom: 10px; }
+
+#loginForm,
+#createAccountForm,
+#buffering,
+#createCharacter,
+#battle {
+  display: none; }
+
+#intro,
+#loginForm,
+#createAccountForm,
+#buffering {
+  color: #fffffa;
   margin-bottom: 10px;
 }
 
+#bufferingIcon {
+  margin-bottom: 50px;
+  padding: 20px;
+}
 .createCharGrid {
   display: grid;
   grid-template-columns: 1fr, 2fr;
