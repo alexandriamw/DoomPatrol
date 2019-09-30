@@ -1,3 +1,69 @@
-.list-group-item {
-  line-height: 2.5;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Chilanka", cursive;
+  background-color: #335f93;
+  font-size: 20px;
+}
+
+.title,
+.login,
+.signUp {
+  font-family: "Schoolbell", cursive;
+  font-size: 44px;
+}
+
+#loginForm,
+#createAccountForm,
+#buffering,
+#createCharacter,
+#battle {
+  display: none;
+}
+
+h1 {
+  padding: 80px;
+}
+
+#intro,
+#loginForm,
+#createAccountForm,
+#buffering {
+  color: #fffffa;
+}
+
+.title {
+  text-align: center;
+}
+
+#login,
+#buffering,
+#loginForm,
+#createAccount,
+#createAccountForm {
+  text-align: center;
+}
+
+#loginButton,
+#createButton,
+#loginFormButton,
+#signUpButton,
+#cancelButton,
+#cancelLogButton {
+  background-color: #e8823a;
+  box-shadow: 3px 3px #b2642c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fffffa;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.createCharGrid {
+  display: grid;
+  grid-template-columns: 1fr, 2fr;
+  grid-auto-rows: 3fr 1fr;
 }
