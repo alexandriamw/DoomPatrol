@@ -15,7 +15,7 @@
 
 <div id="loginForm">
   <form>
-    <h1>Login</h1>
+    <h1 class="login">Login</h1>
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
     <br><br>
@@ -23,19 +23,20 @@
     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
     <br><br>
     <button id="loginFormButton" type="submit">Login</button>
+    <br>
+    <button id="cancelLogButton" type="button">Cancel</button>
   </form>
 </div>
 
 <div id="createAccountForm">
   <form action="">
     <div>
-      <h1>Sign up to Battle</h1>
-
-      <label for="uname"><b>Pick a Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <h1 class="signUp">Sign up to Battle</h1>
+      <label for="signup_uname"><b>Pick a Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" id="signup_uname" required>
       <br><br>
-      <label for="psw"><b>Pick a Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <label for="signup_psw"><b>Pick a Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id="signup_psw" required>
       <br><br>
       <div>
         <button id="signUpButton" type="submit">Sign Up</button>
@@ -55,17 +56,24 @@
 </div>
 
 <div id="createCharacter">
-  <div>
-    Character Img
+  <h1>Choose your Dad</h1>
+  <div class="createCharGrid">
+    
+    
+    
+
+
+
+
+     
+
+
+
   </div>
 
-  <div>
-    Choose your Armour
-  </div>
+  
 
-  <div>
-    Choose your Weapon
-  </div>
+  
   <button id="createCharBtn" type="submit">Create your Character</button>
 </div>
 
