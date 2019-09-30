@@ -2,12 +2,36 @@
   box-sizing: border-box; }
 
 body {
-  font-family: "Capriola", sans-serif;
-  background-color: #335f93; }
+  font-family: "Chilanka", cursive;
+  background-color: #335f93;
+  font-size: 20px;
+}
+
+.title,
+.login,
+.signUp {
+  font-family: "Schoolbell", cursive;
+  font-size: 44px;
+}
+
+#loginForm,
+#createAccountForm,
+#buffering,
+#createCharacter,
+#battle {
+  display: none;
+}
 
 h1 {
-  margin: 0;
-  padding: 80px; }
+  padding: 80px;
+}
+
+#intro,
+#loginForm,
+#createAccountForm,
+#buffering {
+  color: #fffffa;
+}
 
 .title {
   text-align: center; }
@@ -16,8 +40,10 @@ h1 {
 #createButton,
 #loginFormButton,
 #signUpButton,
-#cancelButton {
+#cancelButton,
+#cancelLogButton {
   background-color: #e8823a;
+  box-shadow: 3px 3px #b2642c;
   border-radius: 5px;
   padding: 10px 20px;
   color: #fffffa;
@@ -36,4 +62,12 @@ h1 {
 #loginForm,
 #createAccountForm,
 #buffering {
-  color: #fffffa; }
+  color: #fffffa;
+  margin-bottom: 10px;
+}
+
+.createCharGrid {
+  display: grid;
+  grid-template-columns: 1fr, 2fr;
+  grid-auto-rows: 3fr 1fr;
+}
