@@ -1,3 +1,54 @@
-.list-group-item {
-  line-height: 2.5;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Capriola", sans-serif;
+  background-color: #335f93;
+}
+
+#loginForm,
+#createAccountForm,
+#buffering,
+#createCharacter,
+#battle {
+  display: none;
+}
+
+h1 {
+  margin: 0;
+  padding: 80px;
+}
+
+#intro,
+#loginForm,
+#createAccountForm,
+#buffering {
+  color: #fffffa;
+}
+
+.title {
+  text-align: center;
+}
+
+#login,
+#buffering,
+#loginForm,
+#createAccount,
+#createAccountForm {
+  text-align: center;
+}
+
+#loginButton,
+#createButton,
+#loginFormButton,
+#signUpButton,
+#cancelButton {
+  background-color: #e8823a;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fffffa;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
