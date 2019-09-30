@@ -1,6 +1,5 @@
 * {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 body {
   font-family: "Special Elite", cursive;
@@ -38,16 +37,7 @@ h1 {
 }
 
 .title {
-  text-align: center;
-}
-
-#login,
-#buffering,
-#loginForm,
-#createAccount,
-#createAccountForm {
-  text-align: center;
-}
+  text-align: center; }
 
 #loginButton,
 #createButton,
@@ -76,6 +66,21 @@ h1 {
   box-sizing: border-box;
   border: none;
   box-shadow: 3px 3px #aebbd1;
+  margin-bottom: 10px; }
+
+#loginForm,
+#createAccountForm,
+#buffering,
+#createCharacter,
+#battle {
+  display: none; }
+
+#intro,
+#loginForm,
+#createAccountForm,
+#buffering {
+  color: #fffffa;
+  margin-bottom: 10px;
 }
 
 #bufferingIcon {
