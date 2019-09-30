@@ -11,7 +11,7 @@ module.exports = function(app) {
   //getting information for one user
   app.get("/api/users/:accountName", function(req, res) {
     db.users
-      .findOne({ where: { id: req.params.id } })
+      .findOne({ where: { id: req.params.accountName } })
       .then(function(dbUserInfo) {
         res.json(dbUserInfo);
       });
