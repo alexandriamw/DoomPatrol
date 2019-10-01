@@ -9,7 +9,7 @@ document.getElementById("loginButton").addEventListener("click", function() {
 document.getElementById("createButton").addEventListener("click", function() {
   document.getElementById("intro").style.display = "none";
   document.getElementById("loginFormPage").style.display = "none";
-  document.getElementById("createAccountForm").style.display = "block";
+  document.getElementById("createAcctFormPage").style.display = "block";
 });
 
 //login form for existing users is clicked, form data saved
@@ -37,7 +37,7 @@ document
         setTimeout(function() {
           document.getElementById("buffering").style.display = "none";
           document.getElementById("createCharacter").style.display = "block";
-        }, 5000);
+        }, 3000);
         //to-do: change screen upon login
       });
     });
@@ -45,10 +45,10 @@ document
 
 //create account for new users, form data is saved
 document
-  .getElementById("signUpButton")
-  .addEventListener("click", function(event) {
+  .getElementById("createAcctForm")
+  .addEventListener("submit", function(event) {
     event.preventDefault();
-    document.getElementById("createAccountForm").style.display = "none";
+    document.getElementById("createAcctFormPage").style.display = "none";
     document.getElementById("buffering").style.display = "block";
 
     const formData = {
@@ -65,13 +65,17 @@ document
       }
     }).then(function(response) {
       response.json().then(function(data) {
+        setTimeout(function() {
+          document.getElementById("buffering").style.display = "none";
+          document.getElementById("createCharacter").style.display = "block";
+        }, 3000);
         //to-do: change screen upon signup
       });
     });
   });
 
 document.getElementById("cancelButton").addEventListener("click", function() {
-  document.getElementById("createAccountForm").style.display = "none";
+  document.getElementById("createAcctFormPage").style.display = "none";
   document.getElementById("intro").style.display = "block";
 });
 
