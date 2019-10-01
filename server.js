@@ -3,22 +3,22 @@ let express = require("express");
 let exphbs = require("express-handlebars");
 let db = require("./models");
 
-var sassMiddleware = require("node-sass-middleware");
-var path = require("path");
+let sassMiddleware = require("node-sass-middleware");
+let path = require("path");
 
-var db = require("./models");
-
-var app = express();
-var PORT = process.env.PORT || 3000;
+let app = express();
+let PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(sassMiddleware({
-  src: path.join(__dirname, 'public/scss'),
-  dest: path.join(__dirname, 'public/styles'),
-}));
+app.use(
+  sassMiddleware({
+    src: path.join(__dirname, "public/scss"),
+    dest: path.join(__dirname, "public/styles")
+  })
+);
 
 // Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
