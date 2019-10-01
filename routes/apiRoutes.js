@@ -5,7 +5,7 @@ let bcrypttest = require("../controllers/bcryptTest");
 // bcrypting things
 // ================================================================================================================
 // ================================================================================================================
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 // get myPlaintextPassword from user
 const myPlaintextPassword = "s0//P4$$w0rD";
