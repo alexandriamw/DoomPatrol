@@ -104,31 +104,37 @@
     <button id="settings" type="button">Settings</button>
   </div>
 
+  <div id="myInventoryPop">
+    <h5 class="topline">Inventory</h5>
+    <button id="closeInventory" type="button">Close</button>
+  </div>
+
   <div id="buyWeaponPop">
-    <h5>Buy a football for coins</h5>
+    <h5 class="topline">Buy a football for coins</h5>
     <h5>Buy a beer can for coins</h5>
     <h5>Buy a pack of Magic: The Gathering cards for coins</h5>
     <button id="cancelWeaponBtn" type="button">Cancel</button>
   </div>
 
   <div id="buyArmorPop">
-    <h5>Buy a Gopher Jersey for coins</h5>
+    <h5 class="topline">Buy a Gopher Jersey for coins</h5>
     <h5>Buy a tank top for coins</h5>
     <h5>Buy a cool dad sweater for coins</h5>
     <button id="cancelArmorBtn" type="button">Cancel</button>
   </div>
 
   <div id="settingsPop">
-    <h5>Change my Username</h5>
-    <input type="text" placeholder="Enter new Username" name="uname" id="uname">
+    <h5 class="topline">Change my Username</h5>
+    <input type="text" placeholder="Enter new Username" name="uname" id="newuname">
     <h5>Change my Password</h5>
-    <input type="password" placeholder="Enter new Password" name="psw" id="psw">
-
-    <button id="cancelsettingsBtn" type="button">Cancel</button>
+    <input type="password" placeholder="Enter new Password" name="psw" id="newpsw"><br><br>
+    <button id="confirmChangeBtn" type="button">Confirm Changes</button>
+    <button id="cancelSettingsBtn" type="button">Cancel</button>
   </div>
 
-  <button id="battleAgainButton" type="button">Battle!</button>
+  <button id="battleButton" type="button">Battle!</button>
 </div>
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

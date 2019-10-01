@@ -123,6 +123,14 @@ document.getElementById("buyArmor").addEventListener("click", function() {
   document.getElementById("buyArmorPop").style.display = "block";
 });
 
+document.getElementById("settings").addEventListener("click", function() {
+  document.getElementById("settingsPop").style.display = "block";
+});
+
+document.getElementById("inventory").addEventListener("click", function() {
+  document.getElementById("myInventoryPop").style.display = "block";
+});
+
 document
   .getElementById("cancelWeaponBtn")
   .addEventListener("click", function() {
@@ -131,4 +139,14 @@ document
 
 document.getElementById("cancelArmorBtn").addEventListener("click", function() {
   document.getElementById("buyArmorPop").style.display = "none";
+});
+
+document
+  .getElementById("cancelSettingsBtn")
+  .addEventListener("click", function() {
+    document.getElementById("settingsPop").style.display = "none";
+  });
+
+document.getElementById("closeInventory").addEventListener("click", function() {
+  document.getElementById("myInventoryPop").style.display = "none";
 });
