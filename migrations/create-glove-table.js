@@ -1,26 +1,23 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Equipment", {
+    return queryInterface.createTable("gloveTables", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      itemName: {
+      name: {
         type: Sequelize.STRING
       },
-      itemSlot: {
-        type: Sequelize.STRING
-      },
-      itemAttack: {
+      melee: {
         type: Sequelize.INTEGER
       },
-      itemDefence: {
+      defence: {
         type: Sequelize.INTEGER
       },
-      itemMagic: {
+      magic: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -34,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Equipment");
+    return queryInterface.dropTable("gloveTables");
   }
 };
