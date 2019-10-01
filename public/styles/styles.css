@@ -3,20 +3,28 @@
 }
 
 body {
-  font-family: "Chilanka", cursive;
-  background-color: #335f93;
+  font-family: "Kanit", sans-serif;
+  background-color: #48556b;
   font-size: 20px;
+  text-align: center;
+  height: 100vh;
+  background-image: linear-gradient(
+    141deg,
+    #636e81 0%,
+    #48556b 51%,
+    #3a4558 90%
+  );
 }
 
 .title,
 .login,
 .signUp {
-  font-family: "Schoolbell", cursive;
-  font-size: 44px;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 75px;
 }
 
-#loginForm,
-#createAccountForm,
+#loginFormPage,
+#createAcctFormPage,
 #buffering,
 #createCharacter,
 #battle {
@@ -24,25 +32,18 @@ body {
 }
 
 h1 {
-  padding: 80px;
+  padding: 80px 0 0;
 }
 
 #intro,
-#loginForm,
-#createAccountForm,
-#buffering {
-  color: #fffffa;
+#loginFormPage,
+#createAcctFormPage,
+#buffering,
+#createCharacter {
+  color: antiquewhite;
 }
 
 .title {
-  text-align: center;
-}
-
-#login,
-#buffering,
-#loginForm,
-#createAccount,
-#createAccountForm {
   text-align: center;
 }
 
@@ -51,19 +52,121 @@ h1 {
 #loginFormButton,
 #signUpButton,
 #cancelButton,
-#cancelLogButton {
-  background-color: #e8823a;
-  box-shadow: 3px 3px #b2642c;
-  border-radius: 5px;
+#cancelBattleButton,
+#cancelLogButton,
+#createCharBtn,
+#cancelCreateButton {
+  font-family: "Do Hyeon", sans-serif;
+  background-color: #80afaa;
+  box-shadow: 2px 2px #437066;
+  border-radius: 4px;
   padding: 10px 20px;
-  color: #fffffa;
+  color: antiquewhite;
   border: none;
   cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#loginButton:hover,
+#createButton:hover,
+#loginFormButton:hover,
+#signUpButton:hover,
+#cancelButton:hover,
+#cancelBattleButton:hover,
+#cancelLogButton:hover,
+#createCharBtn:hover,
+#cancelCreateButton:hover {
+  background-color: #558d87;
+}
+
+#loginFormButton span,
+#loginButton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+#loginFormButton span:after,
+#loginButton span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+#loginFormButton:hover span,
+#loginButton:hover span {
+  padding-right: 25px;
+}
+#loginFormButton:hover span:after,
+#loginButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+button:active {
+  background-color: #80afaa;
+  box-shadow: 2px 2px #437066;
+  transform: translateY(4px);
+}
+
+#psw,
+#uname,
+#signup_uname,
+#signup_psw {
+  font-family: "Do Hyeon", sans-serif;
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
   margin-bottom: 10px;
 }
 
-.createCharGrid {
-  display: grid;
-  grid-template-columns: 1fr, 2fr;
-  grid-auto-rows: 3fr 1fr;
+#intro,
+#loginFormPage,
+#createAcctFormPage,
+#buffering {
+  margin-bottom: 10px;
+}
+
+#bufferingIcon {
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+.one,
+.two,
+.three {
+  border-radius: 8px;
+  margin: 50px;
+  background-color: #5f6f8c;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.weaponImg {
+  width: 200px;
+  float: right;
+  margin-right: 50px;
+}
+
+.dadImg {
+  float: left;
+  margin-left: 40px;
+}
+
+.armorImg {
+  width: 200px;
+}
+
+.dadinput {
+  margin-top: 30px;
 }
