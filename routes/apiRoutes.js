@@ -40,6 +40,9 @@ module.exports = function(app) {
   });
 
   //-----------------------------------------------Equipment Section-----------------------------------
+
+  //------Helmet Section --------//
+
   //getting the entire table of helmets
   app.get("/api/helmet", function(req, res) {
     db.helmetTable.findAll({}).then(function(dbEquipment) {
@@ -56,6 +59,8 @@ module.exports = function(app) {
       });
   });
 
+  //------Chest Area---//
+
   //For entire table of chests
   app.get("/api/chests", function(req, res) {
     db.chestTable.findAll({}).then(function(dbEquipment) {
@@ -71,6 +76,7 @@ module.exports = function(app) {
         res.json(dbItem);
       });
   });
+  //-------Glove Section----//
 
   //For entire table of gloves
   app.get("/api/gloves", function(req, res) {
@@ -78,6 +84,46 @@ module.exports = function(app) {
       res.json(dbEquipment);
     });
   });
+
+  app.get("/api/gloves/:id", function(req,res) {
+    db.glovesTable
+      .findOne({ where: {id: req.params.id} })
+      .then(function(dbItem) {
+        res.json(dbItem);
+      })
+  })
+
+  //----------------------Weapon Section--------------------------//
+  app.get("/api/weapons", function(req, res) {
+    db.weaponsTable.findAll({}).then(function(dbEquipment) {
+      res.json(dbEquipment);
+    });
+  });
+
+  app.get("/api/weapons/:id", function(req,res) {
+    db.weaponsTable
+      .findOne({ where: {id: req.params.id} })
+      .then(function(dbItem) {
+        res.json(dbItem);
+      })
+  })
+
+  //--------------------------Boot Section------------------------//
+  app.get("/api/boots", function(req, res) {
+    db.bootsTable.findAll({}).then(function(dbEquipment) {
+      res.json(dbEquipment);
+    });
+  });
+
+  app.get("/api/weapons/:id", function(req,res) {
+    db.bootsTable
+      .findOne({ where: {id: req.params.id} })
+      .then(function(dbItem) {
+        res.json(dbItem);
+      })
+  })
+
+
 
   //---------------------------------Creation Section (In Progress)---------------------------------------------
   // Create a new user
