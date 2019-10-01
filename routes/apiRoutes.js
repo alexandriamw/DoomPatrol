@@ -2,10 +2,40 @@ var db = require("../models");
 var bcrypthash = require("../controllers/bcrypthash");
 let bcrypttest = require("../controllers/bcryptTest");
 
+// bcrypting things
+// ================================================================================================================
+// ================================================================================================================
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+// get myPlaintextPassword from user
+const myPlaintextPassword = "s0//P4$$w0rD";
+const someOtherPlaintextPassword = "not_bacon";
+
+bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+  // Store hash in your password DB.
+});
+
+//Place holder for gettin hash
+let hash = "Test";
+// Load hash from your password DB.
+bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
+  // res == true
+});
+
+bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
+  // res == false
+});
+
+// ================================================================================================================
+// ================================================================================================================
+
 module.exports = function(app) {
+  // Get/ Read Functions
+  // =================================================
+  // =================================================
   // Get all User Information
   app.get("/api/users", function(req, res) {
-    db.users.findAll({}).then(function(dbUsers) {
+    db.Users.findAll({}).then(function(dbUsers) {
       res.json(dbUsers);
     });
   });
@@ -85,13 +115,13 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/gloves/:id", function(req,res) {
+  app.get("/api/gloves/:id", function(req, res) {
     db.glovesTable
-      .findOne({ where: {id: req.params.id} })
+      .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
-      })
-  })
+      });
+  });
 
   //----------------------Weapon Section--------------------------//
   app.get("/api/weapons", function(req, res) {
@@ -100,13 +130,13 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/weapons/:id", function(req,res) {
+  app.get("/api/weapons/:id", function(req, res) {
     db.weaponsTable
-      .findOne({ where: {id: req.params.id} })
+      .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
-      })
-  })
+      });
+  });
 
   //--------------------------Boot Section------------------------//
   app.get("/api/boots", function(req, res) {
@@ -115,22 +145,49 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/weapons/:id", function(req,res) {
+  app.get("/api/weapons/:id", function(req, res) {
     db.bootsTable
-      .findOne({ where: {id: req.params.id} })
+      .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
-      })
-  })
-
-
+      });
+  });
 
   //---------------------------------Creation Section (In Progress)---------------------------------------------
   // Create a new user
-  app.post("/api/users", function(req, res) {
-    db.users.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/register", function(req, res) {
+    console.log("$$$$$", req.body);
+
+    bcrypt.hash(req.body.hashedPW, saltRounds, function(err, hash) {
+      // Store hash in your password DB.
+      console.log("\n\n\nLet see if this console.log even comes through\n\n");
+      console.log(hash + "\n\n");
+      createFunc(hash);
     });
+    console.log(`\n\nHash outside of the bcrypt function${hash}\n\n`);
+
+    function createFunc(hash) {
+      console.log(`\n\nSOme HASHING ${hash}\n\n`);
+      db.Users.create({
+        accountName: req.body.accountName,
+        hashedPW: hash
+        // wins: req.body.wins,
+        // loses: req.body.loses,
+        // weaponID: req.body.weaponID,
+        // headID: req.body.headID,
+        // chestID: req.body.chestID,
+        // pantsID: req.body.pantsID,
+        // feetID: req.body.feetID,
+        // createdAt: new Date(),
+        // updatedAt: new Date()
+      }).then(function(dbExample) {
+        res.json(dbExample);
+        console.log(
+          `\nI need to know then this string of actions end ${dbExample}\n\n`
+        );
+        // console.log(`\n${jsoned}\n`);
+      });
+    }
   });
 
   app.get("/api/passwordcreation", function(req, res) {
