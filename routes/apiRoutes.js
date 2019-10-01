@@ -13,11 +13,11 @@ module.exports = function(app) {
 
   //getting information for one user
   app.get("/api/users/:accountName", function(req, res) {
-    db.User.findOne({ where: { id: req.params.id } }).then(function(
-      dbUserInfo
-    ) {
-      res.json(dbUserInfo);
-    });
+    db.users
+      .findOne({ where: { id: req.params.accountName } })
+      .then(function(dbUserInfo) {
+        res.json(dbUserInfo);
+      });
   });
 
   //getting the entire table of equipment
