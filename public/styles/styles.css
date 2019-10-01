@@ -17,7 +17,7 @@ body {
 }
 
 #loginFormPage,
-#createAccountForm,
+#createAcctFormPage,
 #buffering,
 #createCharacter,
 #battle {
@@ -30,7 +30,7 @@ h1 {
 
 #intro,
 #loginFormPage,
-#createAccountForm,
+#createAcctFormPage,
 #buffering,
 #createCharacter {
   color: #f4fff8;
@@ -75,7 +75,7 @@ h1 {
 
 #intro,
 #loginFormPage,
-#createAccountForm,
+#createAcctFormPage,
 #buffering {
   margin-bottom: 10px;
 }
