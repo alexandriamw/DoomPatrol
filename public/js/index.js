@@ -46,23 +46,47 @@ document
     document.getElementById("createAccountForm").style.display = "none";
     document.getElementById("buffering").style.display = "block";
 
-    const formData = {
-      uname: event.target.uname.value,
-      psw: event.target.psw.value
-    };
+    // const formData = {
+    //   uName: event.target.uname.value,
+    //   psw: event.target.psw.value
+    // };
+
+    // This is a variable that is used as the req.params.(whatever) for the backend
+    let uName = document.getElementById("signup_uname").value;
+    let hashedpsw = document.getElementById("signup_psw").value;
+    console.log("\n\n\n" + "/api/users/" + uName + "\n\n\n");
+    console.log("\n\n\n" + "/api/users/" + hashedpsw + "\n\n\n");
 
     //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
-    fetch("/api/BACKEND_END_POINT", {
+    fetch("/api/register/", {
       method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json; charset=utf-8"
-      }
-    }).then(function(response) {
-      response.json().then(function(data) {
+      body: { accountName: uName, hashedPW: hashedpsw }
+      // headers: {
+      //   "Content-Type": "application/json; charset=utf-8"
+      // }
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
         //to-do: change screen upon signup
       });
-    });
+
+    fetch("/api/hashedPW/" + hashedpsw, {
+      method: "POST",
+      body: { hashedPW: hashedpsw }
+      // headers: {
+      //   "Content-Type": "application/json; charset=utf-8"
+      // }
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data);
+        //to-do: change screen upon signup
+      });
   });
 
 document.getElementById("cancelButton").addEventListener("click", function() {
