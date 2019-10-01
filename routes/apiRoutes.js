@@ -10,6 +10,8 @@ module.exports = function(app) {
     });
   });
 
+  //-----------------------------------Battle System -----------------------------------------
+
   //------------------------------------User Section ------------------------------------------
   //for testing password
   app.get("/api/password/:id/:hashedPW", function(req, res) {

@@ -1,51 +1,4 @@
-function user(
-  name,
-  level,
-  hp,
-  weapon,
-  head,
-  chest,
-  boots,
-  gloves,
-  gold,
-  emeralds
-) {
-  this.name = name;
-  this.level = level;
-  this.hp = hp;
-  this.weapon = weapon;
-  this.head = head;
-  this.chest = chest;
-  this.boots = boots;
-  this.gloves = gloves;
-  this.gold = gold;
-  this.emeralds = emeralds;
-  this.totals = () => {
-    let melee =
-      this.weapon[0] +
-      this.head[0] +
-      this.chest[0] +
-      this.boots[0] +
-      this.gloves[0] +
-      this.level;
-    let defence =
-      this.weapon[1] +
-      this.head[1] +
-      this.chest[1] +
-      this.boots[1] +
-      this.gloves[1] +
-      this.level;
-    let magic =
-      this.weapon[2] +
-      this.head[2] +
-      this.chest[2] +
-      this.boots[2] +
-      this.gloves[2] +
-      this.level;
-
-    return [melee, defence, magic];
-  };
-}
+let user = require("./test");
 
 function battle(fighter1, fighter2) {
   this.fighter1 = fighter1;
@@ -240,40 +193,11 @@ function battle(fighter1, fighter2) {
   }
 }
 
-let doomShirt = [2, 8, 6];
-let doomBoots = [8, 2, 7];
-let doomHammer = [10, 2, 2];
-let doomHat = [1, 9, 7];
-let doomGloves = [5, 5, 5];
+let test1 = new user();
+let test2 = new user();
 
-let cletus = new user(
-  "cletus",
-  1,
-  100,
-  doomHammer,
-  doomHat,
-  doomShirt,
-  doomBoots,
-  doomGloves,
-  250,
-  1
-);
-let jimBob = new user(
-  "jimBob",
-  1,
-  100,
-  doomHammer,
-  doomHat,
-  doomShirt,
-  doomBoots,
-  doomGloves,
-  250,
-  1
-);
-
-let testBattle = new battle(cletus, jimBob);
+let testBattle = new battle(test1, test2);
 
 console.log(testBattle);
 
-module.exports = user;
 module.exports = battle;
