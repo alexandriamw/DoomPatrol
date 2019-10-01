@@ -59,64 +59,129 @@ function battle(fighter1, fighter2) {
     console.log(`${fighter1.name} Has ${fighter1.hp} Remaining`);
     console.log(`${fighter2.name} Has ${fighter2.hp} Remaining`);
 
-    let boob = 0;
+    let fighter1Hp = fighter1.hp;
+    let fighter2Hp = fighter2.hp;
+
+    let counter = 0;
     function mainLoop() {
-      boob++;
+      counter++;
       let compAction = actions[Math.floor(Math.random() * actions.length)];
       let userAction = actions[Math.floor(Math.random() * actions.length)];
       console.log(`The User Did ${userAction}`);
       console.log(`The Computer Did ${compAction}`);
-      console.log(boob);
+      console.log(`${fighter1.name} Has ${fighter1Hp} Left`);
+      console.log(`${fighter2.name} Has ${fighter2Hp} Left`);
+
+      console.log(counter);
       console.log(
         "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
       );
+
       if (userAction === "melee" && compAction === "melee") {
-        let damage = Math.abs(userMelee - compMelee);
-        fighter1.hp = fighter1.hp - damage;
-        fighter2.hp = fighter2.hp - damage;
-        checkHp(fighter1.hp, fighter2.hp);
+        let damage = Math.floor(Math.abs(userMelee - compMelee * 1.25));
+        let crit = (2 * fighter1.level + (10 / 2) * userMelee + 2) * 1.25;
+
+        if (Math.floor(Math.random() * 25) === 7) {
+          fighter1Hp = fighter1Hp - crit;
+          fighter2Hp = fighter2Hp - crit;
+          console.log("CRIIIIIIIIIIIIIIIIT");
+        } else {
+          fighter1Hp = fighter1Hp - damage;
+          fighter2Hp = fighter2Hp - damage;
+        }
+        checkHp(fighter1Hp, fighter2Hp);
       } else if (userAction === "defend" && compAction === "melee") {
-        let damage = Math.abs(userDefend - compMelee);
+        let damage = Math.floor(Math.abs(userDefend - compMelee * 1.15));
+        let crit = (2 * fighter1.level + (10 / 2) * userMelee + 2) * 1.25;
 
-        fighter2.hp = fighter1.hp - damage;
-        checkHp(fighter1.hp, fighter2.hp);
+        if (Math.floor(Math.random() * 25) === 7) {
+          fighter2Hp = fighter2Hp - crit;
+          console.log("CRIIIIIIIIIIIIIIIIT");
+        } else {
+          fighter2Hp = fighter2Hp - damage;
+        }
+        checkHp(fighter1Hp, fighter2Hp);
       } else if (userAction === "magic" && compAction === "melee") {
-        let damage = Math.abs(userMagic - compMelee);
+        let damage = Math.floor(Math.abs(userMagic - compMelee * 1.3));
+        let crit = (2 * fighter2.level + (10 / 2) * compMagic + 2) * 1.25;
 
-        fighter1.hp = fighter1.hp - damage;
-        checkHp(fighter1.hp, fighter2.hp);
+        if (Math.floor(Math.random() * 25) === 7) {
+          fighter1Hp = fighter1Hp - crit;
+          console.log("CRIIIIIIIIIIIIIIIIT");
+        } else {
+          fighter1Hp = fighter1Hp - damage;
+        }
+        checkHp(fighter1Hp, fighter2Hp);
       } else if (userAction === "melee" && compAction === "defend") {
-        let damage = Math.abs(userMelee - compDefend);
+        let damage = Math.floor(Math.abs(userMelee - compDefend * 1.15));
+        let crit = (2 * fighter2.level + (10 / 2) * compDefend + 2) * 1.25;
 
-        fighter1.hp = fighter1.hp - damage;
-        checkHp(fighter1.hp, fighter2.hp);
+        if (Math.floor(Math.random() * 25) === 7) {
+          fighter1Hp = fighter1Hp - crit;
+          console.log("CRIIIIIIIIIIIIIIIIT");
+        } else {
+          fighter1Hp = fighter1Hp - damage;
+        }
+        checkHp(fighter1Hp, fighter2Hp);
       } else if (userAction === "defend" && compAction === "defend") {
-        let damage = Math.abs(userDefend - compDefend);
+        let damage = Math.floor(Math.abs(userDefend - compDefend * 1.09));
+        let crit = (2 * fighter1.level + (10 / 2) * userDefend + 2) * 1.25;
 
-        fighter1.hp = fighter1.hp - damage;
-        fighter2.hp = fighter2.hp - damage;
-        checkHp(fighter1.hp, fighter2.hp);
+        if (Math.floor(Math.random() * 25) === 7) {
+          fighter1Hp = fighter1Hp - crit;
+          fighter2Hp = fighter2Hp - crit;
+          console.log("CRIIIIIIIIIIIIIIIIT");
+        } else {
+          fighter1Hp = fighter1Hp - damage;
+          fighter2Hp = fighter2Hp - damage;
+        }
+        checkHp(fighter1Hp, fighter2Hp);
       } else if (userAction === "magic" && compAction === "defend") {
-        let damage = Math.abs(userMagic - compDefend);
+        let damage = Math.floor(Math.abs(userMagic - compDefend * 1.3));
+        let crit = (2 * fighter2.level + (10 / 2) * userMagic + 2) * 1.25;
 
-        fighter2.hp = fighter2.hp - damage;
-        checkHp(fighter1.hp, fighter2.hp);
+        if (Math.floor(Math.random() * 25) === 7) {
+          fighter2Hp = fighter2Hp - crit;
+          console.log("CRIIIIIIIIIIIIIIIIT");
+        } else {
+          fighter2Hp = fighter2Hp - damage;
+        }
+        checkHp(fighter1Hp, fighter2Hp);
       } else if (userAction === "melee" && compAction === "magic") {
-        let damage = Math.abs(userMelee - compMagic);
+        let damage = Math.floor(Math.abs(userMelee - compMagic * 1.3));
+        let crit = (2 * fighter2.level + (10 / 2) * userMelee + 2) * 1.25;
 
-        fighter2.hp = fighter2.hp - damage;
-        checkHp(fighter1.hp, fighter2.hp);
+        if (Math.floor(Math.random() * 25) === 7) {
+          fighter2Hp = fighter2Hp - crit;
+          console.log("CRIIIIIIIIIIIIIIIIT");
+        } else {
+          fighter2Hp = fighter2Hp - damage;
+        }
+        checkHp(fighter1Hp, fighter2Hp);
       } else if (userAction === "defend" && compAction === "magic") {
-        let damage = Math.abs(userDefend - compMagic);
+        let damage = Math.floor(Math.abs(userDefend - compMagic * 1.3));
+        let crit = (2 * fighter2.level + (10 / 2) * compMagic + 2) * 1.25;
 
-        fighter1.hp = fighter1.hp - damage;
-        checkHp(fighter1.hp, fighter2.hp);
+        if (Math.floor(Math.random() * 25) === 7) {
+          fighter1Hp = fighter1Hp - crit;
+          console.log("CRIIIIIIIIIIIIIIIIT");
+        } else {
+          fighter1Hp = fighter1Hp - damage;
+        }
+        checkHp(fighter1Hp, fighter2Hp);
       } else if (userAction === "magic" && compAction === "magic") {
-        let damage = Math.abs(userMagic - compMagic);
+        let damage = Math.floor(Math.abs(userMagic - compMagic * 1.25));
+        let crit = (2 * fighter2.level + (10 / 2) * userMagic + 2) * 1.25;
 
-        fighter1.hp = fighter1.hp - damage;
-        fighter2.hp = fighter2.hp - damage;
-        checkHp(fighter1.hp, fighter2.hp);
+        if (Math.floor(Math.random() * 25) === 7) {
+          fighter1Hp = fighter1Hp - crit;
+          fighter2Hp = fighter2Hp - crit;
+          console.log("CRIIIIIIIIIIIIIIIIT");
+        } else {
+          fighter1Hp = fighter1Hp - damage;
+          fighter2Hp = fighter2Hp - damage;
+        }
+        checkHp(fighter1Hp, fighter2Hp);
       }
     }
     mainLoop();
@@ -126,11 +191,18 @@ function battle(fighter1, fighter2) {
       if (value1 && value2 > 0) {
         return mainLoop();
       }
-      endLoop();
+      endLoop(fighter1Hp, fighter2Hp);
     }
   }
-  function endLoop() {
+  function endLoop(fighter1Hp, fighter2Hp) {
     console.log("GAME OVER");
+    if (fighter1Hp > fighter2Hp) {
+      fighter1.level++;
+      fighter1.hp = fighter1.hp * 1.05;
+    } else {
+      fighter2.level++;
+      fighter2.hp = fighter2.hp * 1.05;
+    }
     return (eitherDead = true);
   }
 }
