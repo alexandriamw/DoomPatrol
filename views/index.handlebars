@@ -38,6 +38,8 @@
       <label for="signup_psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="psw" id="signup_psw" required>
       <br><br>
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter your email" name="emailaddress" id="email" required>
       <div>
         <button id="signUpButton" type="submit">Sign Up</button>
         <br>
@@ -89,33 +91,44 @@
   </form>
 </div>
 
-<div id="battle">
-  <nav>
-    <h3>Health %</h3>
-    <div>Timer</div>
-    <div>Pause Menu</div>
-  </nav>
+<div id="accountPage">
+  <h1>My Account</h1>
+  <div id="coinDisplay">
+    <img id="coinImg" src="/images/coin.png" alt="coin">
+  </div>
 
-  <h2>Character Name</h2>
-  <h3>Level</h3>
+  <div id="mySidenav">
+    <button id="inventory" type="button">My Inventory</button>
+    <button id="buyWeapons" type="button">Buy Weapons</button>
+    <button id="buyArmor" type="button">Buy Armor</button>
+    <button id="settings" type="button">Settings</button>
+  </div>
 
-  <div>Your Character Image</div>
+  <div id="buyWeaponPop">
+    <h5>Buy a football for coins</h5>
+    <h5>Buy a beer can for coins</h5>
+    <h5>Buy a pack of Magic: The Gathering cards for coins</h5>
+    <button id="cancelWeaponBtn" type="button">Cancel</button>
+  </div>
 
-  <div>Your Opponent's Image</div>
+  <div id="buyArmorPop">
+    <h5>Buy a Gopher Jersey for coins</h5>
+    <h5>Buy a tank top for coins</h5>
+    <h5>Buy a cool dad sweater for coins</h5>
+    <button id="cancelArmorBtn" type="button">Cancel</button>
+  </div>
 
-  <button>Pause</button>
+  <div id="settingsPop">
+    <h5>Change my Username</h5>
+    <input type="text" placeholder="Enter new Username" name="uname" id="uname">
+    <h5>Change my Password</h5>
+    <input type="password" placeholder="Enter new Password" name="psw" id="psw">
 
-  <div>Dad vs Dad</div>
+    <button id="cancelsettingsBtn" type="button">Cancel</button>
+  </div>
+
+  <button id="battleAgainButton" type="button">Battle!</button>
 </div>
-
-<div id="store">
-
-</div>
-
-<div id="leaderboard">
-
-</div>
-
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
