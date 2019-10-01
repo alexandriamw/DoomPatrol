@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     slot: DataTypes.STRING,
     meleeStat: DataTypes.TEXT,
     defenceStat: DataTypes.INTEGER,
-    magicStat: DataTypes.INTEGER,
+    magicStat: DataTypes.INTEGER
   });
   return Equipment;
 };

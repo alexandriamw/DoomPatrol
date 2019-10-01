@@ -35,12 +35,6 @@ module.exports = {
       feetID: {
         type: Sequelize.INTEGER
       },
-      gold: {
-        type: Sequelize.INTEGER
-      },
-      emeralds: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

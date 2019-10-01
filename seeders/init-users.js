@@ -15,8 +15,6 @@ module.exports = {
           chestID: null,
           pantsID: null,
           feetID: null,
-          gold: 250,
-          emeralds: 5,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -30,8 +28,6 @@ module.exports = {
           chestID: null,
           pantsID: null,
           feetID: null,
-          gold: 250,
-          emeralds: 5,
           createdAt: new Date(),
           updatedAt: new Date()
         },
@@ -45,8 +41,6 @@ module.exports = {
           chestID: null,
           pantsID: null,
           feetID: null,
-          gold: 250,
-          emeralds: 5,
           createdAt: new Date(),
           updatedAt: new Date()
         }

@@ -3,7 +3,7 @@
   <div>
     <div id="login">
       <h3>Welcome back</h3>
-      <button id="loginButton">Login</button>
+      <button id="loginButton"><span>Login</span></button>
     </div>
 
     <div id="createAccount">
@@ -22,7 +22,7 @@
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
     <br><br>
-    <button id="loginFormButton" type="submit">Login</button>
+    <button id="loginFormButton" type="submit"><span>Login</span></button>
     <br>
     <button id="cancelLogButton" type="button">Cancel</button>
   </form>
@@ -89,32 +89,30 @@
   </form>
 </div>
 
-<div id="battle">
-  <nav>
-    <h3>Health %</h3>
-    <div>Timer</div>
-    <div>Pause Menu</div>
-  </nav>
+<div class="container">
+      <ul class="nav nav-tabs justify-content-end mt-2 mr-3">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sign Up</a>
+        </li>
+      </ul>
+    
+      <div class="col-md-12">
+          <div class="col-md-4 player-1 bg bg-light float-left border border-primary" style="height: 80vh;"></div>
+          <div class="col-md-6 player-1 bg bg-light float-left border border-primary" style="height: 80vh;"></div>
+          <div class="col-md-6 player-2 bg bg-light float-right border border-primary" style="height: 80vh;"></div>
+      </div>
 
-  <h2>Character Name</h2>
-  <h3>Level</h3>
-
-  <div>Your Character Image</div>
-
-  <div>Your Opponent's Image</div>
-
-  <button>Pause</button>
-
-  <div>Dad vs Dad</div>
-</div>
-
-<div id="store">
-
-</div>
-
-<div id="leaderboard">
-
-</div>
+      <div class="col-md-12">
+        <div class="text-center">
+          <a href="#" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Button 1</a>
+          <a href="#" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Button 2</a>
+          <a href="#" class="btn btn-primary btn active mt-2" role="button" aria-pressed="true">Button 3</a>
+        </div>
+      </div>
+  </div>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -7,6 +7,13 @@ body {
   background-color: #48556b;
   font-size: 20px;
   text-align: center;
+  height: 100vh;
+  background-image: linear-gradient(
+    141deg,
+    #636e81 0%,
+    #48556b 51%,
+    #3a4558 90%
+  );
 }
 
 .title,
@@ -33,7 +40,7 @@ h1 {
 #createAcctFormPage,
 #buffering,
 #createCharacter {
-  color: #f4fff8;
+  color: antiquewhite;
 }
 
 .title {
@@ -54,10 +61,54 @@ h1 {
   box-shadow: 2px 2px #437066;
   border-radius: 4px;
   padding: 10px 20px;
-  color: #f4fff8;
+  color: antiquewhite;
   border: none;
   cursor: pointer;
   margin-bottom: 20px;
+}
+
+#loginButton:hover,
+#createButton:hover,
+#loginFormButton:hover,
+#signUpButton:hover,
+#cancelButton:hover,
+#cancelBattleButton:hover,
+#cancelLogButton:hover,
+#createCharBtn:hover,
+#cancelCreateButton:hover {
+  background-color: #558d87;
+}
+
+#loginFormButton span,
+#loginButton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+#loginFormButton span:after,
+#loginButton span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+#loginFormButton:hover span,
+#loginButton:hover span {
+  padding-right: 25px;
+}
+#loginFormButton:hover span:after,
+#loginButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+button:active {
+  background-color: #80afaa;
+  box-shadow: 2px 2px #437066;
+  transform: translateY(4px);
 }
 
 #psw,
