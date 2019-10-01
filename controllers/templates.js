@@ -238,5 +238,4 @@ let testBattle = new battle(cletus, jimBob);
 
 console.log(testBattle);
 
-module.exports = user;
 module.exports = battle;
