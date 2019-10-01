@@ -54,19 +54,19 @@ document
     // This is a variable that is used as the req.params.(whatever) for the backend
     let uName = document.getElementById("signup_uname").value;
     let unhashedPW = document.getElementById("signup_psw").value;
-    // console.log("\n\n\n" + "/api/users/" + uName + "\n\n\n");
-    // console.log("\n\n\n" + "/api/users/" + unhashedPW + "\n\n\n");
+    console.log(uName + "\n\n\n");
+    console.log(unhashedPW + "\n\n\n");
 
     //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
-    fetch("/api/register/", {
+    fetch("/api/register", {
       method: "POST",
-      body: {
+      body: JSON.stringify({
         accountName: uName,
         hashedPW: unhashedPW
+      }),
+      headers: {
+        "Content-Type": "application/json"
       }
-      // headers: {
-      //   "Content-Type": "application/json; charset=utf-8"
-      // }
     })
       .then(function(response) {
         return response.json();

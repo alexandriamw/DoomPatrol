@@ -49,6 +49,8 @@ module.exports = function(app) {
   // =================================================
   // Create a new user
   app.post("/api/register", function(req, res) {
+    console.log("$$$$$", req.body);
+
     bcrypt.hash(req.body.hashedPW, saltRounds, function(err, hash) {
       // Store hash in your password DB.
       console.log("\n\n\nLet see if this console.log even comes through\n\n");
@@ -58,6 +60,7 @@ module.exports = function(app) {
     console.log(`\n\nHash outside of the bcrypt function${hash}\n\n`);
 
     function createFunc(hash) {
+      console.log(`\n\nSOme HASHING ${hash}\n\n`);
       db.Users.create({
         accountName: req.body.accountName,
         hashedPW: hash
