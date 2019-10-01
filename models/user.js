@@ -11,9 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       headID: DataTypes.INTEGER,
       chestID: DataTypes.INTEGER,
       pantsID: DataTypes.INTEGER,
-      feetID: DataTypes.INTEGER,
-      gold: DataTypes.INTEGER,
-      emeralds: DataTypes.INTEGER
+      feetID: DataTypes.INTEGER
     },
     {}
   );
