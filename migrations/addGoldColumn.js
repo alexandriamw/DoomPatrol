@@ -7,6 +7,7 @@ module.exports = {
 
   down: function(queryInterface, Sequelize) {
     // logic for reverting the changes
+    console.log("\n\n\n Whats happening here? does it reach here?");
     return queryInterface.removeColumn("users", "gold");
   }
 };
