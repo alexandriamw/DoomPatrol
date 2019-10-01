@@ -25,7 +25,7 @@ module.exports = function (app) {
 // bcrypting things
 // ================================================================================================================
 // ================================================================================================================
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 // get myPlaintextPassword from user
 const myPlaintextPassword = "s0//P4$$w0rD";
@@ -58,6 +58,8 @@ bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
       res.json(dbUsers);
     });
   });
+
+  //-----------------------------------Battle System -----------------------------------------
 
   //------------------------------------User Section ------------------------------------------
   //for testing password

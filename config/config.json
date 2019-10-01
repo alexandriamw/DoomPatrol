@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "masterdb",
+    "database": "master_db",
     "host": "localhost",
     "port": "3306",
     "dialect": "mysql",
@@ -18,7 +18,6 @@
     "logging": false
   },
   "production": {
-    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
