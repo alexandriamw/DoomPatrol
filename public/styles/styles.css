@@ -8,6 +8,13 @@ body {
   background-color: #48556b;
   font-size: 20px;
   text-align: center;
+  height: 100vh;
+  background-image: linear-gradient(
+    141deg,
+    #636e81 0%,
+    #48556b 51%,
+    #3a4558 90%
+  );
 }
 
 .title,
@@ -20,12 +27,13 @@ body {
 #loginFormPage,
 #createAcctFormPage,
 #buffering,
-#createCharacter,
+#intro,
 #battle,
 #accountPage,
 #buyWeaponPop,
 #buyArmorPop,
-#settingsPop {
+#settingsPop,
+#myInventoryPop {
   display: none;
 }
 
@@ -55,9 +63,12 @@ h1 {
 #cancelLogButton,
 #createCharBtn,
 #cancelCreateButton,
-#battleAgainButton,
+#battleButton,
 #cancelWeaponBtn,
-#cancelArmorBtn {
+#cancelArmorBtn,
+#confirmChangeBtn,
+#cancelSettingsBtn,
+#closeInventory {
   font-family: "Do Hyeon", sans-serif;
   font-size: 16px;
   background-color: #80afaa;
@@ -70,11 +81,57 @@ h1 {
   margin-bottom: 20px;
 }
 
+#loginButton:hover,
+#createButton:hover,
+#loginFormButton:hover,
+#signUpButton:hover,
+#cancelButton:hover,
+#cancelBattleButton:hover,
+#cancelLogButton:hover,
+#createCharBtn:hover,
+#cancelCreateButton:hover {
+  background-color: #558d87;
+}
+
+#loginFormButton span,
+#loginButton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+#loginFormButton span:after,
+#loginButton span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+#loginFormButton:hover span,
+#loginButton:hover span {
+  padding-right: 25px;
+}
+#loginFormButton:hover span:after,
+#loginButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+button:active {
+  background-color: #80afaa;
+  box-shadow: 2px 2px #437066;
+  transform: translateY(4px);
+}
+
 #psw,
 #uname,
 #signup_uname,
 #signup_psw,
-#email {
+#email,
+#newuname,
+#newpsw {
   font-family: "Do Hyeon", sans-serif;
   border-radius: 4px;
   padding: 10px 16px;
@@ -133,7 +190,9 @@ p {
 
 #coinImg {
   width: 100px;
-  float: right;
+  position: absolute;
+  right: 50px;
+  top: 100px;
 }
 
 #mySidenav a:hover {
@@ -216,8 +275,28 @@ p {
   position: absolute;
   left: 100px;
   width: 450px;
-  height: 250px;
+  height: 320px;
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
+}
+
+#myInventoryPop {
+  position: absolute;
+  left: 100px;
+  width: 500px;
+  height: 320px;
+  background-color: #333c4c;
+  border-radius: 6px;
+  color: antiquewhite;
+}
+
+.topline {
+  margin-top: 20px;
+}
+
+#battleButton {
+  position: absolute;
+  right: 50px;
+  top: 500px;
 }
