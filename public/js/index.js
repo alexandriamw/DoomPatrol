@@ -53,14 +53,17 @@ document
 
     // This is a variable that is used as the req.params.(whatever) for the backend
     let uName = document.getElementById("signup_uname").value;
-    let hashedpsw = document.getElementById("signup_psw").value;
-    console.log("\n\n\n" + "/api/users/" + uName + "\n\n\n");
-    console.log("\n\n\n" + "/api/users/" + hashedpsw + "\n\n\n");
+    let unhashedPW = document.getElementById("signup_psw").value;
+    // console.log("\n\n\n" + "/api/users/" + uName + "\n\n\n");
+    // console.log("\n\n\n" + "/api/users/" + unhashedPW + "\n\n\n");
 
     //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
     fetch("/api/register/", {
       method: "POST",
-      body: { accountName: uName, hashedPW: hashedpsw }
+      body: {
+        accountName: uName,
+        hashedPW: unhashedPW
+      }
       // headers: {
       //   "Content-Type": "application/json; charset=utf-8"
       // }
@@ -69,22 +72,7 @@ document
         return response.json();
       })
       .then(function(data) {
-        console.log(data);
-        //to-do: change screen upon signup
-      });
-
-    fetch("/api/hashedPW/" + hashedpsw, {
-      method: "POST",
-      body: { hashedPW: hashedpsw }
-      // headers: {
-      //   "Content-Type": "application/json; charset=utf-8"
-      // }
-    })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        console.log(data);
+        console.log("\n\nThis is the end of the funciton of the button" + data);
         //to-do: change screen upon signup
       });
   });

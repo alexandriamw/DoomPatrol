@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define(
     "Users",
     {
-      accountName: DataTypes.STRING
-      // hashedPW: DataTypes.STRING,
+      accountName: DataTypes.STRING,
+      hashedPW: DataTypes.STRING
       // wins: DataTypes.INTEGER,
       // loses: DataTypes.INTEGER,
       // weaponID: DataTypes.INTEGER,
