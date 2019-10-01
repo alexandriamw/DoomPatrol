@@ -3,5 +3,9 @@ node_modules
 **/*.json
 *.json
 **/*.css
+<<<<<<< HEAD
 **/*.scss
  master
+=======
+**/*.scss
+>>>>>>> working on account page, added email to create account page

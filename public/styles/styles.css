@@ -3,7 +3,8 @@
 }
 
 body {
-  font-family: "Kanit", sans-serif;
+  font-family: "Do Hyeon", sans-serif;
+  letter-spacing: 0.5px;
   background-color: #48556b;
   font-size: 20px;
   text-align: center;
@@ -27,12 +28,17 @@ body {
 #createAcctFormPage,
 #buffering,
 #createCharacter,
-#battle {
+#battle,
+#accountPage,
+#buyWeaponPop,
+#buyArmorPop,
+#settingsPop {
   display: none;
 }
 
 h1 {
   padding: 80px 0 0;
+  color: antiquewhite;
 }
 
 #intro,
@@ -55,8 +61,12 @@ h1 {
 #cancelBattleButton,
 #cancelLogButton,
 #createCharBtn,
-#cancelCreateButton {
+#cancelCreateButton,
+#battleAgainButton,
+#cancelWeaponBtn,
+#cancelArmorBtn {
   font-family: "Do Hyeon", sans-serif;
+  font-size: 16px;
   background-color: #80afaa;
   box-shadow: 2px 2px #437066;
   border-radius: 4px;
@@ -114,7 +124,8 @@ button:active {
 #psw,
 #uname,
 #signup_uname,
-#signup_psw {
+#signup_psw,
+#email {
   font-family: "Do Hyeon", sans-serif;
   border-radius: 4px;
   padding: 10px 16px;
@@ -169,4 +180,95 @@ p {
 
 .dadinput {
   margin-top: 30px;
+}
+
+#coinImg {
+  width: 100px;
+  float: right;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#mySidenav,
+#inventory,
+#buyWeapons,
+#buyArmor,
+#settings {
+  position: absolute;
+  left: 10px;
+  transition: 0.3s;
+  padding: 20px;
+  width: 200px;
+  text-decoration: none;
+  font-size: 20px;
+  color: antiquewhite;
+  border-radius: 5px;
+}
+
+#inventory {
+  top: 20px;
+  background-color: #80afaa;
+  border: none;
+  box-shadow: 2px 2px #437066;
+  cursor: pointer;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+#buyWeapons {
+  top: 100px;
+  background-color: #80afaa;
+  border: none;
+  box-shadow: 2px 2px #437066;
+  cursor: pointer;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+#buyArmor {
+  top: 180px;
+  background-color: #80afaa;
+  border: none;
+  box-shadow: 2px 2px #437066;
+  cursor: pointer;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+#settings {
+  top: 260px;
+  background-color: #80afaa;
+  border: none;
+  box-shadow: 2px 2px #437066;
+  cursor: pointer;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+#buyWeaponPop {
+  position: absolute;
+  left: 100px;
+  width: 450px;
+  height: 250px;
+  background-color: #333c4c;
+  border-radius: 6px;
+  color: antiquewhite;
+}
+
+#buyArmorPop {
+  position: absolute;
+  left: 100px;
+  width: 450px;
+  height: 250px;
+  background-color: #333c4c;
+  border-radius: 6px;
+  color: antiquewhite;
+}
+
+#settingsPop {
+  position: absolute;
+  left: 100px;
+  width: 450px;
+  height: 250px;
+  background-color: #333c4c;
+  border-radius: 6px;
+  color: antiquewhite;
 }
