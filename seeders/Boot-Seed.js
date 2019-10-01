@@ -3,13 +3,13 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert(
-      "chestsTables",
+      "bootTables",
       [
         {
-          Name: "Tank Top",
-          Melee: 2,
-          defence: 5,
-          magic: 1,
+          name: "Socks and Sandals",
+          melee: 2,
+          defence: 2,
+          magic: 2,
           createdAt: new Date(),
           updatedAt: new Date()
         }
@@ -19,6 +19,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete("chestsTables", null, {});
+    return queryInterface.bulkDelete("bootTables", null, {});
   }
 };

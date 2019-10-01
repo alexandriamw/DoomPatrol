@@ -11,7 +11,7 @@ module.exports = {
       accountName: {
         type: Sequelize.STRING
       },
-      hashedPWID: {
+      hashedPW: {
         type: Sequelize.STRING
       },
       wins: {
