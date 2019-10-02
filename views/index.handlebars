@@ -38,21 +38,22 @@
   <form action="" id="createAcctForm">
     <div>
       <h1 class="signUp">Create an Account</h1>
-      <label for="signup_uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" id="signup_uname" required>
-      <div id="cUNameFail">
-        <p>username is already taken, please choose another one</p>
+      <div id="inputBoxes">
+        <label for="signup_uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id="signup_uname" required>
+        <div id="cUNameFail">
+          <p>username is already taken, please choose another one</p>
+        </div>
+        <br><br>
+        <label for="signup_psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="signup_psw" required>
+        <br><br>
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter your email" name="emailaddress" id="email" required>
+        <div id="cEmailFail">
+          <p>email is already taken, please choose another one</p>
+        </div>
       </div>
-      <br><br>
-      <label for="signup_psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" id="signup_psw" required>
-      <br><br>
-      <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter your email" name="emailaddress" id="email" required>
-      <div id="cEmailFail">
-        <p>email is already taken, please choose another one</p>
-      </div>
-
       <div>
         <button id="signUpButton" type="submit">Sign Up</button>
         <br>
@@ -145,10 +146,10 @@
     <h3 id="healthPoints2">Health Points: </h3>
   </header>
   <div class="container mt-5" style="position: relative">
-    <div class="col-md-5 player-1 float-left frame"><span class="helper"><img
-        src="../images/BeerDad.png" class="dadImg2"></span></div>
-    <div class="col-md-5 player-2 float-right frame"><span class="helper"><img
-        src="../images/BeerDad2.png" class="dadImg2"></span></div>
+    <div class="col-md-5 player-1 float-left frame"><span class="helper"><img src="../images/BeerDad.png"
+          class="dadImg2"></span></div>
+    <div class="col-md-5 player-2 float-right frame"><span class="helper"><img src="../images/BeerDad2.png"
+          class="dadImg2"></span></div>
   </div>
 
   <div class="col-md-12" id="battleButtons">

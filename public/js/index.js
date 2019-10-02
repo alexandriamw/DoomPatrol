@@ -37,12 +37,15 @@ document
     })
       .then(function(response) {
         // return that data to the front end
+        console.log(response);
         return response.json();
       })
       .then(function(data) {
         // Then with that data, we want to check to see if the username within out DB is the same as the user's input
+        console.log(data);
         if (data === null) {
           //otherwise display these styles back on after 1.5 seconds
+          console.log("\n\n WHAT IS GOING ON IN THIS ELSE IF STATEMENT\n\n");
           setTimeout(function() {
             document.getElementById("loginFormPage").style.display = "block";
             document.getElementById("buffering").style.display = "none";
@@ -52,6 +55,7 @@ document
           }, 1500);
         } else {
           // If the user input matches the db, then check to see if the passwords are the same
+          console.log("\n\n WHAT IS GONG ON HERE\n\n");
           checkPassword(data);
         }
       });
