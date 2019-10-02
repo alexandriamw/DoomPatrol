@@ -33,8 +33,13 @@ body {
 #buyArmorPop,
 #settingsPop,
 #myInventoryPop,
-#battlePage {
+#battlePage,
+#intro {
   display: none;
+}
+
+#createCharacter {
+  display: block;
 }
 
 h1 {
@@ -164,6 +169,10 @@ button:active {
   background-color: #5f6f8c;
 }
 
+.one {
+  height: 300px;
+}
+
 h2 {
   margin-top: 20px;
   color: antiquewhite;
@@ -183,6 +192,7 @@ p {
 .dadImg {
   float: left;
   margin-left: 40px;
+  width: 200px;
 }
 
 .armorImg {
