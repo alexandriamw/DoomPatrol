@@ -1,8 +1,5 @@
 var db = require("../models");
-var bcrypthash = require("../controllers/bcrypthash");
-let bcrypttest = require("../controllers/bcryptTest");
 let Sequelize = require("sequelize");
-let battlesys = require("../controllers/templates");
 
 module.exports = function(app) {
   //--------------------Battle Section-------------//
@@ -14,10 +11,6 @@ module.exports = function(app) {
       .then(function(user2) {
         res.json(user2);
       });
-  });
-
-  app.get("/api/battleConstruct", function(req, res) {
-    res(battlesys(req.body.user1, req.body.user2));
   });
 
   // bcrypting things

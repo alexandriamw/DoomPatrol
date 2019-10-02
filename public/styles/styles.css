@@ -33,8 +33,38 @@ body {
 #buyArmorPop,
 #settingsPop,
 #myInventoryPop,
-#battlePage {
+#battlePage,
+#intro {
   display: none;
+}
+
+#accountPage {
+  display: block;
+}
+
+#inputBoxes {
+  position: relative;
+  right: 40%;
+  text-align: right;
+}
+
+#lUNameFail {
+  display: none;
+}
+
+#lPswFail {
+  display: none;
+}
+#cUNameFail {
+  display: none;
+}
+
+#cEmailFail {
+  display: none;
+}
+
+.failText {
+  text-align: right;
 }
 
 h1 {
@@ -60,6 +90,7 @@ h1 {
 #signUpButton,
 #cancelButton,
 #cancelBattleButton,
+#cancelBattleBtn,
 #cancelLogButton,
 #createCharBtn,
 #cancelCreateButton,
@@ -132,6 +163,7 @@ button:active {
 
 #psw,
 #uname,
+#olduname,
 #signup_uname,
 #signup_psw,
 #email,
@@ -151,6 +183,10 @@ button:active {
 #createAcctFormPage,
 #buffering {
   margin-bottom: 10px;
+}
+
+#createAcctForm {
+  text-align: center;
 }
 
 #bufferingIcon {
@@ -181,7 +217,6 @@ p {
 
 .weaponImg {
   width: 200px;
-  float: right;
   height: 200px;
   margin-right: 50px;
 }
@@ -263,7 +298,7 @@ p {
 }
 
 #settings {
-  top: 260px;
+  top: 120px;
   background-color: #80afaa;
   border: none;
   box-shadow: 2px 2px #437066;
@@ -271,31 +306,11 @@ p {
   font-family: "Do Hyeon", sans-serif;
 }
 
-#buyWeaponPop {
-  position: absolute;
-  left: 100px;
-  width: 450px;
-  height: 250px;
-  background-color: #333c4c;
-  border-radius: 6px;
-  color: antiquewhite;
-}
-
-#buyArmorPop {
-  position: absolute;
-  left: 100px;
-  width: 450px;
-  height: 250px;
-  background-color: #333c4c;
-  border-radius: 6px;
-  color: antiquewhite;
-}
-
 #settingsPop {
   position: absolute;
   left: 100px;
   width: 450px;
-  height: 320px;
+  height: 480px;
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
@@ -361,16 +376,19 @@ footer {
 }
 
 @media only screen and (max-width: 780px) {
-  .weaponImg {
-    width: 200px;
+  .one {
     height: 200px;
+  }
+  .weaponImg {
+    width: 100px;
+    height: 100px;
   }
   .armorImg {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
   .dadImg {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
 }
