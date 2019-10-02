@@ -83,7 +83,9 @@ h1 {
   cursor: pointer;
   margin-bottom: 20px;
 }
-
+#createCharBtn {
+  margin-top: 20px;
+}
 #loginButton:hover,
 #createButton:hover,
 #loginFormButton:hover,
@@ -160,8 +162,11 @@ button:active {
 .two,
 .three {
   border-radius: 8px;
-  margin: 50px;
   background-color: #5f6f8c;
+}
+
+.one {
+  height: 300px;
 }
 
 h2 {
@@ -177,16 +182,22 @@ p {
 .weaponImg {
   width: 200px;
   float: right;
+  height: 200px;
   margin-right: 50px;
 }
 
 .dadImg {
-  float: left;
   margin-left: 40px;
+  width: 200px;
+  height: 200px;
 }
-
+.dadImg2 {
+  width: 200px;
+  height: 200px;
+}
 .armorImg {
   width: 200px;
+  height: 200px;
 }
 
 .dadinput {
@@ -317,36 +328,49 @@ footer {
 }
 
 #mainHeader {
-  position: fixed;
   top: 0;
   z-index: 99;
   width: 100%;
   margin: 0 0 30px;
   overflow: auto;
   background-color: #333c4c;
+  color: antiquewhite;
   padding-bottom: 20px;
 }
 
-nav {
-  margin-top: 10px;
-  height: 30px;
+#healthPoints {
+  float: left;
+  margin-left: 30px;
+}
+#healthPoints2 {
+  float: right;
+  margin-right: 30px;
+}
+#currentArmor {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  width: 100px;
 }
 
-.frame {
-  height: 80vh; /* Equals maximum image height */
-  white-space: nowrap;
-  text-align: center;
-  margin: 1em 0;
+#currentWeapon {
+  position: absolute;
+  top: 400px;
+  left: 100px;
+  width: 100px;
 }
 
-.helper {
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-}
-
-.dadImg {
-  vertical-align: middle;
-  max-height: 80vh;
-  max-width: 70%;
+@media only screen and (max-width: 780px) {
+  .weaponImg {
+    width: 200px;
+    height: 200px;
+  }
+  .armorImg {
+    width: 200px;
+    height: 200px;
+  }
+  .dadImg {
+    width: 200px;
+    height: 200px;
+  }
 }

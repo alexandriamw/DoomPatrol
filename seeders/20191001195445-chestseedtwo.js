@@ -117,12 +117,6 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date()
         },
-        {
-          Name: "FootBall Jersey",
-          melee:6,
-          defence:1,
-          magic: 2,
-        }
       ],
       {}
     );
