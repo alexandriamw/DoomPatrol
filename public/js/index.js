@@ -124,30 +124,12 @@ document
     document.getElementById("intro").style.display = "block";
   });
 
-document.getElementById("buyWeapons").addEventListener("click", function() {
-  document.getElementById("buyWeaponPop").style.display = "block";
-});
-
-document.getElementById("buyArmor").addEventListener("click", function() {
-  document.getElementById("buyArmorPop").style.display = "block";
-});
-
 document.getElementById("settings").addEventListener("click", function() {
   document.getElementById("settingsPop").style.display = "block";
 });
 
 document.getElementById("inventory").addEventListener("click", function() {
   document.getElementById("myInventoryPop").style.display = "block";
-});
-
-document
-  .getElementById("cancelWeaponBtn")
-  .addEventListener("click", function() {
-    document.getElementById("buyWeaponPop").style.display = "none";
-  });
-
-document.getElementById("cancelArmorBtn").addEventListener("click", function() {
-  document.getElementById("buyArmorPop").style.display = "none";
 });
 
 document

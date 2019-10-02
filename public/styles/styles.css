@@ -132,6 +132,7 @@ button:active {
 
 #psw,
 #uname,
+#olduname,
 #signup_uname,
 #signup_psw,
 #email,
@@ -263,7 +264,7 @@ p {
 }
 
 #settings {
-  top: 260px;
+  top: 120px;
   background-color: #80afaa;
   border: none;
   box-shadow: 2px 2px #437066;
@@ -295,7 +296,7 @@ p {
   position: absolute;
   left: 100px;
   width: 450px;
-  height: 320px;
+  height: 420px;
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
