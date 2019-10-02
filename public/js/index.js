@@ -72,15 +72,21 @@ document
       headers: {
         "Content-Type": "application/json"
       }
-    }).then(function(response) {
-      response.json().then(function(data) {
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
         setTimeout(function() {
+          console.log(
+            "\n\nThis is the end of the function of the button" + data
+          );
+
+          //to-do: change screen upon signup
           document.getElementById("buffering").style.display = "none";
           document.getElementById("createCharacter").style.display = "block";
         }, 3000);
-        //to-do: change screen upon signup
       });
-    });
   });
 
 document.getElementById("cancelButton").addEventListener("click", function() {
@@ -108,3 +114,39 @@ document
     document.getElementById("createCharacter").style.display = "none";
     document.getElementById("intro").style.display = "block";
   });
+
+document.getElementById("buyWeapons").addEventListener("click", function() {
+  document.getElementById("buyWeaponPop").style.display = "block";
+});
+
+document.getElementById("buyArmor").addEventListener("click", function() {
+  document.getElementById("buyArmorPop").style.display = "block";
+});
+
+document.getElementById("settings").addEventListener("click", function() {
+  document.getElementById("settingsPop").style.display = "block";
+});
+
+document.getElementById("inventory").addEventListener("click", function() {
+  document.getElementById("myInventoryPop").style.display = "block";
+});
+
+document
+  .getElementById("cancelWeaponBtn")
+  .addEventListener("click", function() {
+    document.getElementById("buyWeaponPop").style.display = "none";
+  });
+
+document.getElementById("cancelArmorBtn").addEventListener("click", function() {
+  document.getElementById("buyArmorPop").style.display = "none";
+});
+
+document
+  .getElementById("cancelSettingsBtn")
+  .addEventListener("click", function() {
+    document.getElementById("settingsPop").style.display = "none";
+  });
+
+document.getElementById("closeInventory").addEventListener("click", function() {
+  document.getElementById("myInventoryPop").style.display = "none";
+});

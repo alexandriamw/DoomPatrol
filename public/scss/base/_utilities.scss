@@ -1,0 +1,18 @@
+.frame {
+    height: 80vh;      /* Equals maximum image height */
+    white-space: nowrap;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.dadImg {
+    vertical-align: middle;
+    max-height: 80vh;
+    max-width: 70%;
+}
