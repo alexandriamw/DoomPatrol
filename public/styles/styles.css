@@ -33,13 +33,8 @@ body {
 #buyArmorPop,
 #settingsPop,
 #myInventoryPop,
-#battlePage,
-#intro {
+#battlePage {
   display: none;
-}
-
-#accountPage {
-  display: block;
 }
 
 #inputBoxes {
@@ -48,6 +43,13 @@ body {
   text-align: right;
 }
 
+#lUNameFail {
+  display: none;
+}
+
+#lPswFail {
+  display: none;
+}
 #cUNameFail {
   display: none;
 }

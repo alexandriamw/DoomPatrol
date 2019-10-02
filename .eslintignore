@@ -4,4 +4,4 @@ node_modules
 *.json
 **/*.css
 **/*.scss
- master
+README.md
