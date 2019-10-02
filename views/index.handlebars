@@ -59,7 +59,7 @@
 </div>
 
 <div id="createCharacter">
-  <form action="">
+  <form id="createCharacterForm" action="">
     <h2>Choose your Dad</h2>
     <div class="createCharGrid">
       <div class="one">
@@ -94,6 +94,8 @@
 <div id="accountPage">
   <h1>My Account</h1>
   <div id="coinDisplay">
+    <!-- this is where the coin amount can be dynamically updated from the database -->
+    <span>250</span>
     <img id="coinImg" src="/images/coin.png" alt="coin">
   </div>
 
@@ -124,17 +126,47 @@
   </div>
 
   <div id="settingsPop">
-    <h5 class="topline">Change my Username</h5>
-    <input type="text" placeholder="Enter new Username" name="uname" id="newuname">
-    <h5>Change my Password</h5>
-    <input type="password" placeholder="Enter new Password" name="psw" id="newpsw"><br><br>
-    <button id="confirmChangeBtn" type="button">Confirm Changes</button>
-    <button id="cancelSettingsBtn" type="button">Cancel</button>
+    <form id="settingsForm">
+      <h5 class="topline">Change my Username</h5>
+      <input type="text" placeholder="Enter new Username" name="uname" id="newuname">
+      <h5>Change my Password</h5>
+      <input type="password" placeholder="Enter new Password" name="psw" id="newpsw"><br><br>
+      <button id="confirmChangeBtn" type="submit">Confirm Changes</button>
+      <button id="cancelSettingsBtn" type="button">Cancel</button>
+    </form>
   </div>
 
   <button id="battleButton" type="button">Battle!</button>
 </div>
 
+<div id="battlePage">
+  <header id="mainHeader">
+   <nav>
+     <h2>Battle!</h2>
+   </nav>
+  </header>
+
+  <div class="container">
+    <div class="col-md-12 mt-5">
+      <div class="col-md-2 asset bg bg-light float-left frame border border-right-primary pt-5">
+        <div class="col-md-12 items"><img src="../images/Gopher Jersey.png" class="img-thumbnail"></div>
+      </div>
+      <div class="col-md-5 player-1 bg bg-light float-left frame"><span class="helper"></span><img
+          src="../images/BeerDad.png" class="dadImg"></div>
+      <div class="col-md-5 player-2 bg bg-light float-left frame"><span class="helper"></span><img
+          src="../images/BeerDad2.png" class="dadImg"></div>
+    </div>
+
+    <div class="col-md-12">
+      <div class="text-center">
+        <button id="attackButton" type="button">Attack</button>
+        <button id="defendButton" type="button">Defend</button>
+        <button id="magicButton" type="button">Magic</button>
+      </div>
+    </div>
+  </div>
+
+</div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
