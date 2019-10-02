@@ -37,6 +37,7 @@ document
     })
       .then(function(response) {
         // return that data to the front end
+        console.log(response);
         return response.json();
       })
       .then(function(data) {
@@ -44,9 +45,11 @@ document
         console.log(data);
         if (data.accountName === loginUName) {
           // If the user input matches the db, then check to see if the passwords are the same
+          console.log("\n\n WHAT IS GONG ON HERE\n\n");
           checkPassword(data);
         } else if (data === null) {
           //otherwise display these styles back on after 1.5 seconds
+          console.log("\n\n WHAT IS GOING ON IN THIS ELSE IF STATEMENT\n\n");
           setTimeout(function() {
             document.getElementById("loginFormPage").style.display = "block";
             document.getElementById("buffering").style.display = "none";
@@ -55,6 +58,10 @@ document
             document.getElementById("lPswFail").style.display = "none";
           }, 1500);
         } else {
+          console.log(
+            "\n\n WHAT IS GOING ON IN THIS ELSE PORTION OF THE STATEMENT\n\n"
+          );
+
           setTimeout(function() {
             document.getElementById("loginFormPage").style.display = "block";
             document.getElementById("buffering").style.display = "none";

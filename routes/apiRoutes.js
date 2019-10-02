@@ -75,10 +75,12 @@ module.exports = function(app) {
   });
 
   //getting information for one user using req.params.accountName
-  app.get("/api/users/accountName/:accountName", function(req, res) {
-    db.Users.findOne({ where: { accountName: req.params.accountName } }).then(
+  app.get("/api/users/accountName/:loginName", function(req, res) {
+    console.log(req.path);
+    console.log(req.params.loginName);
+    db.Users.findOne({ where: { accountName: req.params.loginName } }).then(
       function(dbUserInfo) {
-        res.json(dbUserInfo);
+        // res.json(dbUserInfo);
         console.log(
           `\n\ninfo about duplicate usrnames${dbUserInfo}: routes/apiRoutes.js`
         );
