@@ -37,6 +37,13 @@ body {
   display: none;
 }
 
+#lUNameFail {
+  display: none;
+}
+
+#lPswFail {
+  display: none;
+}
 #cUNameFail {
   display: none;
 }

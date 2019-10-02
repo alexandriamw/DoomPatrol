@@ -94,16 +94,41 @@ module.exports = function(app) {
     });
   });
 
-  // //getting information for one user using req.body.accountName
-  // app.get("/api/users/find", function (req, res) {
-  //   db.users
-  //     .findOne({ where: { id: req.body.accountName } })
-  //     .then(function (dbUserInfo) {
-  //       res.json(dbUserInfo);
-  //       console.log(`\n\ninfo about duplicate usrnames${res.json(dbUserInfo)}: routes/apiRoutes.js`)
-  //     });
-  // });
+  //getting information for one user using req.params.accountName
+  app.get("/api/users/checkpw/:loginName/:loginPw", function(req, res) {
+    console.log("\n\n WE GOT HERE YAYAYAYAYAYA\n\n");
 
+    db.Users.findOne({ where: { accountName: req.params.loginName } }).then(
+      function(dbUserInfo) {
+        // res.json(dbUserInfo);
+        console.log(dbUserInfo.hashedPW);
+        console.log(`\n\nBEFORE THE TINGS POPS OFF:                 ${hash}`);
+
+        // this compares the passwords
+        bcrypt.compare(req.params.loginPw, dbUserInfo.hashedPW, function(
+          err,
+          hash
+        ) {
+          // Store hash in your password DB.
+          console.log(
+            "\n\n\nLet see if this console.log even comes through\n\n"
+          );
+          console.log(hash + "\n\n");
+          // then send that value here to get it back to being synchronous
+          valueOfHash(hash);
+          // createFunc(hash);
+        });
+
+        function valueOfHash(hash) {
+          console.log(
+            `\n\nPLEASE LET THIS THING WORK:                 ${hash}`
+          );
+          // then send it back to the front end
+          res.json(hash);
+        }
+      }
+    );
+  });
   //-----------------------------------------------Equipment Section-----------------------------------
 
   //------Helmet Section --------//
