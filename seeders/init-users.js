@@ -8,6 +8,7 @@ module.exports = {
         {
           accountName: "JohnsAccount",
           hashedPW: null,
+          email: "some@email.com",
           wins: 100,
           loses: 2,
           weaponID: null,
@@ -21,6 +22,7 @@ module.exports = {
         {
           accountName: "Another Account",
           hashedPW: null,
+          email: "some@email.com",
           wins: 30,
           loses: 70,
           weaponID: null,
@@ -34,6 +36,7 @@ module.exports = {
         {
           accountName: "Account Three",
           hashedPW: null,
+          email: "some@email.com",
           wins: 1,
           loses: 3000,
           weaponID: null,

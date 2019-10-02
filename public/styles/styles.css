@@ -28,12 +28,33 @@ body {
 #createAcctFormPage,
 #buffering,
 #createCharacter,
-#battle,
 #accountPage,
 #buyWeaponPop,
 #buyArmorPop,
 #settingsPop,
-#myInventoryPop {
+#myInventoryPop,
+#battlePage {
+  display: none;
+}
+
+#inputBoxes {
+  position: relative;
+  right: 40%;
+  text-align: right;
+}
+
+#lUNameFail {
+  display: none;
+}
+
+#lPswFail {
+  display: none;
+}
+#cUNameFail {
+  display: none;
+}
+
+#cEmailFail {
   display: none;
 }
 
@@ -60,6 +81,7 @@ h1 {
 #signUpButton,
 #cancelButton,
 #cancelBattleButton,
+#cancelBattleBtn,
 #cancelLogButton,
 #createCharBtn,
 #cancelCreateButton,
@@ -68,7 +90,10 @@ h1 {
 #cancelArmorBtn,
 #confirmChangeBtn,
 #cancelSettingsBtn,
-#closeInventory {
+#closeInventory,
+#attackButton,
+#defendButton,
+#magicButton {
   font-family: "Do Hyeon", sans-serif;
   font-size: 16px;
   background-color: #80afaa;
@@ -80,7 +105,9 @@ h1 {
   cursor: pointer;
   margin-bottom: 20px;
 }
-
+#createCharBtn {
+  margin-top: 20px;
+}
 #loginButton:hover,
 #createButton:hover,
 #loginFormButton:hover,
@@ -127,6 +154,7 @@ button:active {
 
 #psw,
 #uname,
+#olduname,
 #signup_uname,
 #signup_psw,
 #email,
@@ -148,6 +176,10 @@ button:active {
   margin-bottom: 10px;
 }
 
+#createAcctForm {
+  text-align: center;
+}
+
 #bufferingIcon {
   margin-bottom: 50px;
   padding: 20px;
@@ -157,11 +189,16 @@ button:active {
 .two,
 .three {
   border-radius: 8px;
-  margin: 50px;
   background-color: #5f6f8c;
 }
 
+.one {
+  height: 300px;
+}
+
 h2 {
+  margin-top: 20px;
+  color: antiquewhite;
   text-align: center;
 }
 
@@ -171,28 +208,37 @@ p {
 
 .weaponImg {
   width: 200px;
-  float: right;
+  height: 200px;
   margin-right: 50px;
 }
 
 .dadImg {
-  float: left;
   margin-left: 40px;
+  width: 200px;
+  height: 200px;
 }
-
+.dadImg2 {
+  width: 200px;
+  height: 200px;
+}
 .armorImg {
   width: 200px;
+  height: 200px;
 }
 
 .dadinput {
   margin-top: 30px;
 }
 
-#coinImg {
-  width: 100px;
+#coinDisplay {
   position: absolute;
   right: 50px;
   top: 100px;
+  color: antiquewhite;
+}
+
+#coinImg {
+  width: 100px;
 }
 
 #mySidenav a:hover {
@@ -243,7 +289,7 @@ p {
 }
 
 #settings {
-  top: 260px;
+  top: 120px;
   background-color: #80afaa;
   border: none;
   box-shadow: 2px 2px #437066;
@@ -275,7 +321,7 @@ p {
   position: absolute;
   left: 100px;
   width: 450px;
-  height: 320px;
+  height: 420px;
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
@@ -307,48 +353,50 @@ footer {
   display: block;
 }
 
-
 #mainHeader {
-  position: fixed;
   top: 0;
   z-index: 99;
   width: 100%;
   margin: 0 0 30px;
   overflow: auto;
-  color: #ffffff;
-  background: #fff; }
+  background-color: #333c4c;
+  color: antiquewhite;
+  padding-bottom: 20px;
+}
 
-nav {
+#healthPoints {
+  float: left;
+  margin-left: 30px;
+}
+#healthPoints2 {
   float: right;
-  margin-top: 10px;
-  height: 40px; }
-
-nav a {
-  display: inline-block;
-  margin-left: 15px;
   margin-right: 30px;
-  line-height: 18px;
-  color: #999;
-  text-decoration: none; }
-
-nav a:first-child {
-  border-left: 0 none; }
-
-  .frame {
-    height: 80vh;      /* Equals maximum image height */
-    white-space: nowrap;
-    text-align: center;
-    margin: 1em 0;
+}
+#currentArmor {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  width: 100px;
 }
 
-.helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
+#currentWeapon {
+  position: absolute;
+  top: 400px;
+  left: 100px;
+  width: 100px;
 }
 
-.dadImg {
-    vertical-align: middle;
-    max-height: 80vh;
-    max-width: 70%;
+@media only screen and (max-width: 780px) {
+  .weaponImg {
+    width: 200px;
+    height: 200px;
+  }
+  .armorImg {
+    width: 200px;
+    height: 200px;
+  }
+  .dadImg {
+    width: 200px;
+    height: 200px;
+  }
 }
