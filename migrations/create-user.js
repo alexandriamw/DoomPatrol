@@ -17,6 +17,12 @@ module.exports = {
       wins: {
         type: Sequelize.INTEGER
       },
+      level: {
+        type: Sequelize.INTEGER
+      },
+      hp: {
+        type: Sequelize.INTEGER
+      },
       loses: {
         type: Sequelize.INTEGER
       },
