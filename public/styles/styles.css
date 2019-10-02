@@ -364,16 +364,19 @@ footer {
 }
 
 @media only screen and (max-width: 780px) {
-  .weaponImg {
-    width: 200px;
+  .one {
     height: 200px;
+  }
+  .weaponImg {
+    width: 100px;
+    height: 100px;
   }
   .armorImg {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
   .dadImg {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
 }
