@@ -89,6 +89,15 @@ document
       });
   });
 
+document
+  .getElementById("createCharacterForm")
+  .addEventListener("submit", function(event) {
+    event.preventDefault();
+    if (event.target.dad.value === "coolDad") {
+      //not sure how this should be set up
+    }
+  });
+
 document.getElementById("cancelButton").addEventListener("click", function() {
   document.getElementById("createAcctFormPage").style.display = "none";
   document.getElementById("intro").style.display = "block";
