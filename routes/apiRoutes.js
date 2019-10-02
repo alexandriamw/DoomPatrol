@@ -62,14 +62,35 @@ module.exports = function(app) {
       });
   });
 
-  //getting information for one user
-  app.get("/api/users/:accountName", function(req, res) {
-    db.users
-      .findOne({ where: { id: req.params.accountName } })
-      .then(function(dbUserInfo) {
+  //getting information for one user using req.params.accountName
+  app.get("/api/users/accountName/:accountName", function(req, res) {
+    db.Users.findOne({ where: { accountName: req.params.accountName } }).then(
+      function(dbUserInfo) {
         res.json(dbUserInfo);
-      });
+        // console.log(`\n\ninfo about duplicate usrnames${res.json(dbUserInfo)}: routes/apiRoutes.js`)
+      }
+    );
   });
+
+  //getting information for one user using req.params.accountName
+  app.get("/api/users/email/:email", function(req, res) {
+    db.Users.findOne({ where: { email: req.params.email } }).then(function(
+      dbUserInfo
+    ) {
+      res.json(dbUserInfo);
+      // console.log(`\n\ninfo about duplicate usrnames${res.json(dbUserInfo)}: routes/apiRoutes.js`)
+    });
+  });
+
+  // //getting information for one user using req.body.accountName
+  // app.get("/api/users/find", function (req, res) {
+  //   db.users
+  //     .findOne({ where: { id: req.body.accountName } })
+  //     .then(function (dbUserInfo) {
+  //       res.json(dbUserInfo);
+  //       console.log(`\n\ninfo about duplicate usrnames${res.json(dbUserInfo)}: routes/apiRoutes.js`)
+  //     });
+  // });
 
   //-----------------------------------------------Equipment Section-----------------------------------
 
@@ -172,7 +193,8 @@ module.exports = function(app) {
       console.log(`\n\nSOme HASHING ${hash}\n\n`);
       db.Users.create({
         accountName: req.body.accountName,
-        hashedPW: hash
+        hashedPW: hash,
+        email: req.body.email
         // wins: req.body.wins,
         // loses: req.body.loses,
         // weaponID: req.body.weaponID,
