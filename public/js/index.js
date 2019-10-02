@@ -43,11 +43,7 @@ document
       .then(function(data) {
         // Then with that data, we want to check to see if the username within out DB is the same as the user's input
         console.log(data);
-        if (data.accountName === loginUName) {
-          // If the user input matches the db, then check to see if the passwords are the same
-          console.log("\n\n WHAT IS GONG ON HERE\n\n");
-          checkPassword(data);
-        } else if (data === null) {
+        if (data === null) {
           //otherwise display these styles back on after 1.5 seconds
           console.log("\n\n WHAT IS GOING ON IN THIS ELSE IF STATEMENT\n\n");
           setTimeout(function() {
@@ -58,17 +54,9 @@ document
             document.getElementById("lPswFail").style.display = "none";
           }, 1500);
         } else {
-          console.log(
-            "\n\n WHAT IS GOING ON IN THIS ELSE PORTION OF THE STATEMENT\n\n"
-          );
-
-          setTimeout(function() {
-            document.getElementById("loginFormPage").style.display = "block";
-            document.getElementById("buffering").style.display = "none";
-            // this one lets user know that the username is wrong
-            document.getElementById("lUNameFail").style.display = "block";
-            document.getElementById("lPswFail").style.display = "none";
-          }, 1500);
+          // If the user input matches the db, then check to see if the passwords are the same
+          console.log("\n\n WHAT IS GONG ON HERE\n\n");
+          checkPassword(data);
         }
       });
 
@@ -96,6 +84,7 @@ document
             setTimeout(function() {
               document.getElementById("loginFormPage").style.display = "block";
               document.getElementById("buffering").style.display = "none";
+              document.getElementById("lUNameFail").style.display = "none";
               document.getElementById("lPswFail").style.display = "block";
             }, 1500);
           }
