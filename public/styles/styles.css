@@ -60,6 +60,7 @@ h1 {
 #signUpButton,
 #cancelButton,
 #cancelBattleButton,
+#cancelBattleBtn,
 #cancelLogButton,
 #createCharBtn,
 #cancelCreateButton,
@@ -154,6 +155,10 @@ button:active {
   margin-bottom: 10px;
 }
 
+#createAcctForm {
+  text-align: center;
+}
+
 #bufferingIcon {
   margin-bottom: 50px;
   padding: 20px;
@@ -182,7 +187,6 @@ p {
 
 .weaponImg {
   width: 200px;
-  float: right;
   height: 200px;
   margin-right: 50px;
 }
