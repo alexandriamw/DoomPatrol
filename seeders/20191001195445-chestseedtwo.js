@@ -110,7 +110,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          Name: "Tank Top",
+          Name: "Red shirt",
           Melee: 2,
           defence: 5,
           magic: 1,

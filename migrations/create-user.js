@@ -20,6 +20,10 @@ module.exports = {
       loses: {
         type: Sequelize.INTEGER
       },
+      email:{
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       weaponID: {
         type: Sequelize.INTEGER
       },
