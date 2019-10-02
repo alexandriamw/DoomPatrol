@@ -43,6 +43,48 @@ document
     });
   });
 
+// Input validation for creation input value
+document.addEventListener("keyup", function(event) {
+  console.log(document.getElementById("signup_uname").value);
+  console.log("Somehting is happening");
+
+  // array to hold the values we want to check so code isn't so wet
+  let inputArr =
+    // login credentials
+    [
+      document.getElementById("uname").value,
+      document.getElementById("psw").value,
+      // create ACC credentials
+      document.getElementById("signup_uname").value,
+      document.getElementById("signup_psw").value
+    ];
+
+  console.log("\n\n", inputArr);
+
+  // let createUNStr = document.getElementById("signup_uname").value;
+
+  // let frontSlashChecker = userNameStr.includes("/");
+  // let questionMarkChecker = userNameStr.includes("?");
+  // let lessThanChecker = userNameStr.includes("<");
+  // let greaterThanChecker = userNameStr.includes(">");
+  // let leftParanthesesChceker = userNameStr.includes("(");
+  // let rightParantheseChecker = userNameStr.includes(")");
+  // let percentageChecker = userNameStr.includes("%");
+  // let asterickChecker = userNameStr.includes("*");
+  // let colonChecker = userNameStr.includes(":");
+  // let semicolonChecker = userNameStr.includes(";");
+  // let stringChecker = userNameStr.includes("'");
+  // let leftCurlyBracketsChecker = userNameStr.includes("{");
+  // let rightCurlyBracketsChecker = userNameStr.includes("}");
+  // let commaChecker = userNameStr.includes(",");
+
+  function myFunction() {
+    var str = "Hello world, welcome to the universe.";
+    var n = str.includes("world");
+    document.getElementById("demo").innerHTML = n;
+  }
+});
+
 //create account for new users, form data is saved
 document
   .getElementById("createAcctForm")
