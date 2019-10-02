@@ -43,6 +43,13 @@ body {
   text-align: right;
 }
 
+#lUNameFail {
+  display: none;
+}
+
+#lPswFail {
+  display: none;
+}
 #cUNameFail {
   display: none;
 }
