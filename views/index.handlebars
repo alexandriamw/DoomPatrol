@@ -141,29 +141,24 @@
 
 <div id="battlePage">
   <header id="mainHeader">
-   <nav>
-     <h2>Battle!</h2>
-   </nav>
+    <h2>Battle!</h2>
+    <h3 id="healthPoints">Health Points: </h3>
   </header>
 
-  <div class="container">
-    <div class="col-md-12 mt-5">
-      <div class="col-md-2 asset bg bg-light float-left frame border border-right-primary pt-5">
-        <div class="col-md-12 items"><img src="../images/Gopher Jersey.png" class="img-thumbnail"></div>
-      </div>
-      <div class="col-md-5 player-1 bg bg-light float-left frame"><span class="helper"></span><img
-          src="../images/BeerDad.png" class="dadImg"></div>
-      <div class="col-md-5 player-2 bg bg-light float-left frame"><span class="helper"></span><img
-          src="../images/BeerDad2.png" class="dadImg"></div>
-    </div>
+<div>
+  <img id="currentArmor" class="armorImg" src="/images/Gopher Jersey.png" alt="user's current armor">
+</div>
 
-    <div class="col-md-12">
-      <div class="text-center">
-        <button id="attackButton" type="button">Attack</button>
-        <button id="defendButton" type="button">Defend</button>
-        <button id="magicButton" type="button">Magic</button>
-      </div>
-    </div>
+<div>
+  <img id="currentWeapon" class="weaponImg" src="/images/football.png" alt="user's current weapon">
+</div>
+
+
+
+  <div id="battleButtons">
+    <button id="attackButton" type="button">Attack</button>
+    <button id="defendButton" type="button">Defend</button>
+    <button id="magicButton" type="button">Magic</button>
   </div>
 
 </div>
