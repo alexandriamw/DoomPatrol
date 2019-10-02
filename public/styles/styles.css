@@ -51,6 +51,10 @@ body {
   display: none;
 }
 
+.failText {
+  text-align: right;
+}
+
 h1 {
   padding: 80px 0 0;
   color: antiquewhite;
@@ -288,26 +292,6 @@ p {
   box-shadow: 2px 2px #437066;
   cursor: pointer;
   font-family: "Do Hyeon", sans-serif;
-}
-
-#buyWeaponPop {
-  position: absolute;
-  left: 100px;
-  width: 450px;
-  height: 250px;
-  background-color: #333c4c;
-  border-radius: 6px;
-  color: antiquewhite;
-}
-
-#buyArmorPop {
-  position: absolute;
-  left: 100px;
-  width: 450px;
-  height: 250px;
-  background-color: #333c4c;
-  border-radius: 6px;
-  color: antiquewhite;
 }
 
 #settingsPop {
