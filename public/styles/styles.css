@@ -3,7 +3,8 @@
 }
 
 body {
-  font-family: "Kanit", sans-serif;
+  font-family: "Do Hyeon", sans-serif;
+  letter-spacing: 0.5px;
   background-color: #48556b;
   font-size: 20px;
   text-align: center;
@@ -27,12 +28,18 @@ body {
 #createAcctFormPage,
 #buffering,
 #createCharacter,
-#battle {
+#accountPage,
+#buyWeaponPop,
+#buyArmorPop,
+#settingsPop,
+#myInventoryPop,
+#battlePage {
   display: none;
 }
 
 h1 {
   padding: 80px 0 0;
+  color: antiquewhite;
 }
 
 #intro,
@@ -55,8 +62,18 @@ h1 {
 #cancelBattleButton,
 #cancelLogButton,
 #createCharBtn,
-#cancelCreateButton {
+#cancelCreateButton,
+#battleButton,
+#cancelWeaponBtn,
+#cancelArmorBtn,
+#confirmChangeBtn,
+#cancelSettingsBtn,
+#closeInventory,
+#attackButton,
+#defendButton,
+#magicButton {
   font-family: "Do Hyeon", sans-serif;
+  font-size: 16px;
   background-color: #80afaa;
   box-shadow: 2px 2px #437066;
   border-radius: 4px;
@@ -114,7 +131,10 @@ button:active {
 #psw,
 #uname,
 #signup_uname,
-#signup_psw {
+#signup_psw,
+#email,
+#newuname,
+#newpsw {
   font-family: "Do Hyeon", sans-serif;
   border-radius: 4px;
   padding: 10px 16px;
@@ -145,6 +165,8 @@ button:active {
 }
 
 h2 {
+  margin-top: 20px;
+  color: antiquewhite;
   text-align: center;
 }
 
@@ -169,4 +191,162 @@ p {
 
 .dadinput {
   margin-top: 30px;
+}
+
+#coinDisplay {
+  position: absolute;
+  right: 50px;
+  top: 100px;
+  color: antiquewhite;
+}
+
+#coinImg {
+  width: 100px;
+}
+
+#mySidenav a:hover {
+  left: 0;
+}
+
+#mySidenav,
+#inventory,
+#buyWeapons,
+#buyArmor,
+#settings {
+  position: absolute;
+  left: 10px;
+  transition: 0.3s;
+  padding: 20px;
+  width: 200px;
+  text-decoration: none;
+  font-size: 20px;
+  color: antiquewhite;
+  border-radius: 5px;
+}
+
+#inventory {
+  top: 20px;
+  background-color: #80afaa;
+  border: none;
+  box-shadow: 2px 2px #437066;
+  cursor: pointer;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+#buyWeapons {
+  top: 100px;
+  background-color: #80afaa;
+  border: none;
+  box-shadow: 2px 2px #437066;
+  cursor: pointer;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+#buyArmor {
+  top: 180px;
+  background-color: #80afaa;
+  border: none;
+  box-shadow: 2px 2px #437066;
+  cursor: pointer;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+#settings {
+  top: 260px;
+  background-color: #80afaa;
+  border: none;
+  box-shadow: 2px 2px #437066;
+  cursor: pointer;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+#buyWeaponPop {
+  position: absolute;
+  left: 100px;
+  width: 450px;
+  height: 250px;
+  background-color: #333c4c;
+  border-radius: 6px;
+  color: antiquewhite;
+}
+
+#buyArmorPop {
+  position: absolute;
+  left: 100px;
+  width: 450px;
+  height: 250px;
+  background-color: #333c4c;
+  border-radius: 6px;
+  color: antiquewhite;
+}
+
+#settingsPop {
+  position: absolute;
+  left: 100px;
+  width: 450px;
+  height: 320px;
+  background-color: #333c4c;
+  border-radius: 6px;
+  color: antiquewhite;
+}
+
+#myInventoryPop {
+  position: absolute;
+  left: 100px;
+  width: 500px;
+  height: 320px;
+  background-color: #333c4c;
+  border-radius: 6px;
+  color: antiquewhite;
+}
+
+.topline {
+  margin-top: 20px;
+}
+
+#battleButton {
+  position: absolute;
+  right: 50px;
+  top: 500px;
+}
+
+header,
+nav,
+footer {
+  display: block;
+}
+
+#mainHeader {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  margin: 0 0 30px;
+  overflow: auto;
+  background-color: #333c4c;
+  padding-bottom: 20px;
+}
+
+nav {
+  margin-top: 10px;
+  height: 30px;
+}
+
+.frame {
+  height: 80vh; /* Equals maximum image height */
+  white-space: nowrap;
+  text-align: center;
+  margin: 1em 0;
+}
+
+.helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.dadImg {
+  vertical-align: middle;
+  max-height: 80vh;
+  max-width: 70%;
 }

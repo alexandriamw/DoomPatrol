@@ -4,50 +4,48 @@ let bcrypttest = require("../controllers/bcryptTest");
 let Sequelize = require("sequelize");
 let battlesys = require("../controllers/templates");
 
-module.exports = function (app) {
-
+module.exports = function(app) {
   //--------------------Battle Section-------------//
-  app.get("/api/random",function(req,res) {
-    db.users.findAll({
-      order: [
-        Sequelize.litteral('RAND')
-      ]
-    }).then(function(user2) {
-      res.json(user2);
-    })
+  app.get("/api/random", function(req, res) {
+    db.users
+      .findAll({
+        order: [Sequelize.litteral("RAND")]
+      })
+      .then(function(user2) {
+        res.json(user2);
+      });
   });
 
-  app.get("/api/battleConstruct", function(req,res){
-    res(battlesys(req.body.user1, req.body.user2))
-  })
+  app.get("/api/battleConstruct", function(req, res) {
+    res(battlesys(req.body.user1, req.body.user2));
+  });
 
+  // bcrypting things
+  // ================================================================================================================
+  // ================================================================================================================
+  const bcrypt = require("bcryptjs");
+  const saltRounds = 10;
+  // get myPlaintextPassword from user
+  const myPlaintextPassword = "s0//P4$$w0rD";
+  const someOtherPlaintextPassword = "not_bacon";
 
-// bcrypting things
-// ================================================================================================================
-// ================================================================================================================
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
-// get myPlaintextPassword from user
-const myPlaintextPassword = "s0//P4$$w0rD";
-const someOtherPlaintextPassword = "not_bacon";
+  bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+    // Store hash in your password DB.
+  });
 
-bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
-  // Store hash in your password DB.
-});
+  //Place holder for gettin hash
+  let hash = "Test";
+  // Load hash from your password DB.
+  bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
+    // res == true
+  });
 
-//Place holder for gettin hash
-let hash = "Test";
-// Load hash from your password DB.
-bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
-  // res == true
-});
+  bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
+    // res == false
+  });
 
-bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
-  // res == false
-});
-
-// ================================================================================================================
-// ================================================================================================================
+  // ================================================================================================================
+  // ================================================================================================================
 
   // Get/ Read Functions
   // =================================================
@@ -63,12 +61,12 @@ bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
 
   //------------------------------------User Section ------------------------------------------
   //for testing password
-  app.get("/api/password/:id/:hashedPW", function (req, res) {
+  app.get("/api/password/:id/:hashedPW", function(req, res) {
     db.users
       .findOne({
         where: { id: req.params.id }
       })
-      .then(function (dbUserInfo) {
+      .then(function(dbUserInfo) {
         if (
           dbUserInfo === undefined ||
           dbUserInfo.name === undefined ||
@@ -82,10 +80,10 @@ bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
   });
 
   //getting information for one user
-  app.get("/api/users/:accountName", function (req, res) {
+  app.get("/api/users/:accountName", function(req, res) {
     db.users
       .findOne({ where: { id: req.params.accountName } })
-      .then(function (dbUserInfo) {
+      .then(function(dbUserInfo) {
         res.json(dbUserInfo);
       });
   });
@@ -95,17 +93,17 @@ bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
   //------Helmet Section --------//
 
   //getting the entire table of helmets
-  app.get("/api/helmet", function (req, res) {
-    db.helmetTable.findAll({}).then(function (dbEquipment) {
+  app.get("/api/helmet", function(req, res) {
+    db.helmetTable.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
 
   //Api for finding one type of helmet
-  app.get("/api/helmet/:id", function (req, res) {
+  app.get("/api/helmet/:id", function(req, res) {
     db.helmetTable
       .findOne({ where: { id: req.params.id } })
-      .then(function (dbItem) {
+      .then(function(dbItem) {
         res.json(dbItem);
       });
   });
@@ -113,25 +111,25 @@ bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
   //------Chest Area---//
 
   //For entire table of chests
-  app.get("/api/chests", function (req, res) {
-    db.chestTable.findAll({}).then(function (dbEquipment) {
+  app.get("/api/chests", function(req, res) {
+    db.chestTable.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
 
   //For finding one type of Chest
-  app.get("/api/chests/:id", function (req, res) {
+  app.get("/api/chests/:id", function(req, res) {
     db.chestTable
       .findOne({ where: { id: req.params.id } })
-      .then(function (dbItem) {
+      .then(function(dbItem) {
         res.json(dbItem);
       });
   });
   //-------Glove Section----//
 
   //For entire table of gloves
-  app.get("/api/gloves", function (req, res) {
-    db.chestTable.findAll({}).then(function (dbEquipment) {
+  app.get("/api/gloves", function(req, res) {
+    db.chestTable.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
@@ -145,8 +143,8 @@ bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
   });
 
   //----------------------Weapon Section--------------------------//
-  app.get("/api/weapons", function (req, res) {
-    db.weaponsTable.findAll({}).then(function (dbEquipment) {
+  app.get("/api/weapons", function(req, res) {
+    db.weaponsTable.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
@@ -160,8 +158,8 @@ bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
   });
 
   //--------------------------Boot Section------------------------//
-  app.get("/api/boots", function (req, res) {
-    db.bootsTable.findAll({}).then(function (dbEquipment) {
+  app.get("/api/boots", function(req, res) {
+    db.bootsTable.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
@@ -211,9 +209,9 @@ bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
     }
   });
 
-  app.get("/api/passwordcreation", function (req, res) {
+  app.get("/api/passwordcreation", function(req, res) {
     //let hashedpw = bcrypthash(req.body.body);
   });
 };
 
-  //-----------------------------------Deletion Section --------------------------------------------
+//-----------------------------------Deletion Section --------------------------------------------
