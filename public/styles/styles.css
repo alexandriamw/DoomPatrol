@@ -28,12 +28,12 @@ body {
 #createAcctFormPage,
 #buffering,
 #createCharacter,
-#battlePage,
 #accountPage,
 #buyWeaponPop,
 #buyArmorPop,
 #settingsPop,
-#myInventoryPop {
+#myInventoryPop,
+#battlePage {
   display: none;
 }
 
@@ -68,7 +68,10 @@ h1 {
 #cancelArmorBtn,
 #confirmChangeBtn,
 #cancelSettingsBtn,
-#closeInventory {
+#closeInventory,
+#attackButton,
+#defendButton,
+#magicButton {
   font-family: "Do Hyeon", sans-serif;
   font-size: 16px;
   background-color: #80afaa;
@@ -163,6 +166,8 @@ button:active {
 
 h2 {
   margin-top: 20px;
+  color: antiquewhite;
+  text-align: center;
 }
 
 p {
@@ -311,7 +316,6 @@ footer {
   display: block;
 }
 
-
 #mainHeader {
   position: fixed;
   top: 0;
@@ -319,40 +323,30 @@ footer {
   width: 100%;
   margin: 0 0 30px;
   overflow: auto;
-  color: #ffffff;
-  background: #fff; }
+  background-color: #333c4c;
+  padding-bottom: 20px;
+}
 
 nav {
-  float: right;
   margin-top: 10px;
-  height: 40px; }
+  height: 30px;
+}
 
-nav a {
-  display: inline-block;
-  margin-left: 15px;
-  margin-right: 30px;
-  line-height: 18px;
-  color: #999;
-  text-decoration: none; }
-
-nav a:first-child {
-  border-left: 0 none; }
-
-  .frame {
-    height: 80vh;      /* Equals maximum image height */
-    white-space: nowrap;
-    text-align: center;
-    margin: 1em 0;
+.frame {
+  height: 80vh; /* Equals maximum image height */
+  white-space: nowrap;
+  text-align: center;
+  margin: 1em 0;
 }
 
 .helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
 }
 
 .dadImg {
-    vertical-align: middle;
-    max-height: 80vh;
-    max-width: 70%;
+  vertical-align: middle;
+  max-height: 80vh;
+  max-width: 70%;
 }
