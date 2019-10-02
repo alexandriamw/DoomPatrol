@@ -45,8 +45,7 @@ document
 
 // Input validation for creation input value
 document.addEventListener("keyup", function(event) {
-  console.log(document.getElementById("signup_uname").value);
-  console.log("Somehting is happening");
+  // console.log("Somehting is happening: public/index.js");
 
   // array to hold the values we want to check so code isn't so wet
   let inputArr =
@@ -56,34 +55,76 @@ document.addEventListener("keyup", function(event) {
       document.getElementById("psw").value,
       // create ACC credentials
       document.getElementById("signup_uname").value,
-      document.getElementById("signup_psw").value
+      document.getElementById("signup_psw").value,
+      document.getElementById("email").value
     ];
 
-  console.log("\n\n", inputArr);
-
-  // let createUNStr = document.getElementById("signup_uname").value;
-
-  // let frontSlashChecker = userNameStr.includes("/");
-  // let questionMarkChecker = userNameStr.includes("?");
-  // let lessThanChecker = userNameStr.includes("<");
-  // let greaterThanChecker = userNameStr.includes(">");
-  // let leftParanthesesChceker = userNameStr.includes("(");
-  // let rightParantheseChecker = userNameStr.includes(")");
-  // let percentageChecker = userNameStr.includes("%");
-  // let asterickChecker = userNameStr.includes("*");
-  // let colonChecker = userNameStr.includes(":");
-  // let semicolonChecker = userNameStr.includes(";");
-  // let stringChecker = userNameStr.includes("'");
-  // let leftCurlyBracketsChecker = userNameStr.includes("{");
-  // let rightCurlyBracketsChecker = userNameStr.includes("}");
-  // let commaChecker = userNameStr.includes(",");
-
-  function myFunction() {
-    var str = "Hello world, welcome to the universe.";
-    var n = str.includes("world");
-    document.getElementById("demo").innerHTML = n;
+  for (let i = 0; i < inputArr.length; i++) {
+    if (
+      inputArr[i].includes("/") ||
+      inputArr[i].includes("/") ||
+      inputArr[i].includes("<") ||
+      inputArr[i].includes(">") ||
+      inputArr[i].includes("(") ||
+      inputArr[i].includes(")") ||
+      inputArr[i].includes("%") ||
+      inputArr[i].includes("*") ||
+      inputArr[i].includes(":") ||
+      inputArr[i].includes(";") ||
+      inputArr[i].includes("'") ||
+      inputArr[i].includes("{") ||
+      inputArr[i].includes("}") ||
+      inputArr[i].includes(",") ||
+      inputArr[i].includes('"') ||
+      inputArr[i].includes("[") ||
+      inputArr[i].includes("]")
+    ) {
+      console.log("\nyou can't do this and it works: public/index.js\n");
+      // return here so we can stop the loop function so that the buttons dont reactivate when there are no values in other places
+      return disable();
+    } else if (
+      !inputArr[i].includes("/") ||
+      !inputArr[i].includes("/") ||
+      !inputArr[i].includes("<") ||
+      !inputArr[i].includes(">") ||
+      !inputArr[i].includes("(") ||
+      !inputArr[i].includes(")") ||
+      !inputArr[i].includes("%") ||
+      !inputArr[i].includes("*") ||
+      !inputArr[i].includes(":") ||
+      !inputArr[i].includes(";") ||
+      !inputArr[i].includes("'") ||
+      !inputArr[i].includes("{") ||
+      !inputArr[i].includes("}") ||
+      !inputArr[i].includes(",") ||
+      !inputArr[i].includes('"') ||
+      !inputArr[i].includes("[") ||
+      !inputArr[i].includes("]")
+    ) {
+      enable();
+    }
   }
+
+  console.log("\n\n", inputArr);
 });
+
+// function to disable buttons when user uses code syntax
+function disable() {
+  document.getElementById("loginFormButton").disabled = true;
+  console.log(
+    "\nYUP YUP YUP YUP got the Login button disabled: public/index.js\n"
+  );
+  document.getElementById("signUpButton").disabled = true;
+}
+
+// function to enable buttons when user  code syntax
+function enable() {
+  document.getElementById("loginFormButton").disabled = false;
+  console.log(
+    "\nGO GO GO GO got the Login button enabled again: public/index.js\n"
+  );
+  document.getElementById("signUpButton").disabled = false;
+}
 
 //create account for new users, form data is saved
 document
@@ -93,16 +134,13 @@ document
     document.getElementById("createAcctFormPage").style.display = "none";
     document.getElementById("buffering").style.display = "block";
 
-    // const formData = {
-    //   uName: event.target.uname.value,
-    //   psw: event.target.psw.value
-    // };
-
-    // This is a variable that is used as the req.params.(whatever) for the backend
+    // This is a variable that is used as the req.body for BE
     let uName = document.getElementById("signup_uname").value;
     let unhashedPW = document.getElementById("signup_psw").value;
-    console.log(uName + "\n\n\n");
-    console.log(unhashedPW + "\n\n\n");
+    // console.log(uName + ": public/index.js\n\n\n");
+    // console.log(unhashedPW + ": public/index.js\n\n\n");
+
+    ValidateEmail();
 
     //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
     fetch("/api/register", {
@@ -114,16 +152,36 @@ document
       headers: {
         "Content-Type": "application/json"
       }
-    }).then(function(response) {
-      response.json().then(function(data) {
+    })
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
         setTimeout(function() {
+          console.log(
+            "\n\nThis is the end of the function of the button: public/index.js" +
+              data
+          );
+
+          //to-do: change screen upon signup
           document.getElementById("buffering").style.display = "none";
           document.getElementById("createCharacter").style.display = "block";
         }, 3000);
-        //to-do: change screen upon signup
       });
-    });
   });
+
+// Validating emails
+function ValidateEmail() {
+  if (
+    /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+      document.getElementById("email").value
+    )
+  ) {
+    return true;
+  }
+  alert("You have entered an invalid email address!");
+  return false;
+}
 
 document.getElementById("cancelButton").addEventListener("click", function() {
   document.getElementById("createAcctFormPage").style.display = "none";
@@ -150,3 +208,39 @@ document
     document.getElementById("createCharacter").style.display = "none";
     document.getElementById("intro").style.display = "block";
   });
+
+document.getElementById("buyWeapons").addEventListener("click", function() {
+  document.getElementById("buyWeaponPop").style.display = "block";
+});
+
+document.getElementById("buyArmor").addEventListener("click", function() {
+  document.getElementById("buyArmorPop").style.display = "block";
+});
+
+document.getElementById("settings").addEventListener("click", function() {
+  document.getElementById("settingsPop").style.display = "block";
+});
+
+document.getElementById("inventory").addEventListener("click", function() {
+  document.getElementById("myInventoryPop").style.display = "block";
+});
+
+document
+  .getElementById("cancelWeaponBtn")
+  .addEventListener("click", function() {
+    document.getElementById("buyWeaponPop").style.display = "none";
+  });
+
+document.getElementById("cancelArmorBtn").addEventListener("click", function() {
+  document.getElementById("buyArmorPop").style.display = "none";
+});
+
+document
+  .getElementById("cancelSettingsBtn")
+  .addEventListener("click", function() {
+    document.getElementById("settingsPop").style.display = "none";
+  });
+
+document.getElementById("closeInventory").addEventListener("click", function() {
+  document.getElementById("myInventoryPop").style.display = "none";
+});

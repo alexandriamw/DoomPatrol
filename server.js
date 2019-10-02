@@ -2,11 +2,12 @@ require("dotenv").config();
 let express = require("express");
 let exphbs = require("express-handlebars");
 let db = require("./models");
-var sassMiddleware = require("node-sass-middleware");
-var path = require("path");
 
-var app = express();
-var PORT = process.env.PORT || 3000;
+let sassMiddleware = require("node-sass-middleware");
+let path = require("path");
+
+let app = express();
+let PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
