@@ -143,24 +143,25 @@
   <header id="mainHeader">
     <h2>Battle!</h2>
     <h3 id="healthPoints">Health Points: </h3>
+    <h3 id="healthPoints2">Health Points: </h3>
   </header>
-
-<div>
-  <img id="currentArmor" class="armorImg" src="/images/Gopher Jersey.png" alt="user's current armor">
-</div>
-
-<div>
-  <img id="currentWeapon" class="weaponImg" src="/images/football.png" alt="user's current weapon">
-</div>
-
-
-
-  <div id="battleButtons">
-    <button id="attackButton" type="button">Attack</button>
-    <button id="defendButton" type="button">Defend</button>
-    <button id="magicButton" type="button">Magic</button>
+  <div class="container mt-5" style="position: relative">
+    <div class="col-md-5 player-1 float-left frame"><span class="helper"><img
+        src="../images/BeerDad.png" class="dadImg2"></span></div>
+    <div class="col-md-5 player-2 float-right frame"><span class="helper"><img
+        src="../images/BeerDad2.png" class="dadImg2"></span></div>
   </div>
 
+  <div class="col-md-12" id="battleButtons">
+  </div>
+  <div class="text-center">
+    <button aria-pressed="true" id="attackButton" type="button">Attack</button>
+    <button aria-pressed="true" id="defendButton" type="button">Defend</button>
+    <button aria-pressed="true" id="magicButton" type="button">Magic</button>
+  </div>
+  <button id="cancelBattleButton" type="button">Account</button>
+</div>
+</div>
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -83,7 +83,9 @@ h1 {
   cursor: pointer;
   margin-bottom: 20px;
 }
-
+#createCharBtn {
+  margin-top: 20px;
+}
 #loginButton:hover,
 #createButton:hover,
 #loginFormButton:hover,
@@ -160,7 +162,6 @@ button:active {
 .two,
 .three {
   border-radius: 8px;
-  margin: 50px;
   background-color: #5f6f8c;
 }
 
@@ -181,17 +182,22 @@ p {
 .weaponImg {
   width: 200px;
   float: right;
+  height: 200px;
   margin-right: 50px;
 }
 
 .dadImg {
-  float: left;
   margin-left: 40px;
   width: 200px;
+  height: 200px;
 }
-
+.dadImg2 {
+  width: 200px;
+  height: 200px;
+}
 .armorImg {
   width: 200px;
+  height: 200px;
 }
 
 .dadinput {
@@ -322,7 +328,6 @@ footer {
 }
 
 #mainHeader {
-  position: fixed;
   top: 0;
   z-index: 99;
   width: 100%;
@@ -337,7 +342,10 @@ footer {
   float: left;
   margin-left: 30px;
 }
-
+#healthPoints2 {
+  float: right;
+  margin-right: 30px;
+}
 #currentArmor {
   position: absolute;
   top: 200px;
@@ -350,4 +358,19 @@ footer {
   top: 400px;
   left: 100px;
   width: 100px;
+}
+
+@media only screen and (max-width: 780px) {
+  .weaponImg {
+    width: 200px;
+    height: 200px;
+  }
+  .armorImg {
+    width: 200px;
+    height: 200px;
+  }
+  .dadImg {
+    width: 200px;
+    height: 200px;
+  }
 }
