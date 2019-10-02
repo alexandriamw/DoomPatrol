@@ -33,8 +33,13 @@ body {
 #buyArmorPop,
 #settingsPop,
 #myInventoryPop,
-#battlePage {
+#battlePage,
+#intro {
   display: none;
+}
+
+#accountPage {
+  display: block;
 }
 
 #inputBoxes {
@@ -298,7 +303,7 @@ p {
   position: absolute;
   left: 100px;
   width: 450px;
-  height: 420px;
+  height: 480px;
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
