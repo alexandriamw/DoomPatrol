@@ -1,41 +1,32 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("Users", {
+    return queryInterface.createTable("InventoryTables", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      accountName: {
+      itemname: {
         type: Sequelize.STRING
       },
-      hashedPW: {
+      ItemID: {
+        type: Sequelize.INTEGER
+      },
+      ItemSlot: {
         type: Sequelize.STRING
       },
-      email: {
-        type: Sequelize.STRING
-      },
-      wins: {
+      Melee: {
         type: Sequelize.INTEGER
       },
-      loses: {
+      Defence: {
         type: Sequelize.INTEGER
       },
-      weaponID: {
+      Magic: {
         type: Sequelize.INTEGER
       },
-      headID: {
-        type: Sequelize.INTEGER
-      },
-      chestID: {
-        type: Sequelize.INTEGER
-      },
-      pantsID: {
-        type: Sequelize.INTEGER
-      },
-      feetID: {
+      ownerID: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -49,6 +40,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Users");
+    return queryInterface.dropTable("InventoryTables");
   }
 };
