@@ -300,3 +300,55 @@ p {
   right: 50px;
   top: 500px;
 }
+
+header,
+nav,
+footer {
+  display: block;
+}
+
+
+#mainHeader {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  margin: 0 0 30px;
+  overflow: auto;
+  color: #ffffff;
+  background: #fff; }
+
+nav {
+  float: right;
+  margin-top: 10px;
+  height: 40px; }
+
+nav a {
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 30px;
+  line-height: 18px;
+  color: #999;
+  text-decoration: none; }
+
+nav a:first-child {
+  border-left: 0 none; }
+
+  .frame {
+    height: 80vh;      /* Equals maximum image height */
+    white-space: nowrap;
+    text-align: center;
+    margin: 1em 0;
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.dadImg {
+    vertical-align: middle;
+    max-height: 80vh;
+    max-width: 70%;
+}
