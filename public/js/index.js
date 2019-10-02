@@ -132,6 +132,7 @@ document.getElementById("buyArmor").addEventListener("click", function() {
   document.getElementById("buyArmorPop").style.display = "block";
 });
 
+//add inventory here ----------
 document.getElementById("settings").addEventListener("click", function() {
   document.getElementById("settingsPop").style.display = "block";
 });
