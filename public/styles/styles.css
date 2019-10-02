@@ -164,6 +164,10 @@ button:active {
   background-color: #5f6f8c;
 }
 
+.one {
+  height: 300px;
+}
+
 h2 {
   margin-top: 20px;
   color: antiquewhite;
@@ -183,6 +187,7 @@ p {
 .dadImg {
   float: left;
   margin-left: 40px;
+  width: 200px;
 }
 
 .armorImg {
@@ -324,29 +329,25 @@ footer {
   margin: 0 0 30px;
   overflow: auto;
   background-color: #333c4c;
+  color: antiquewhite;
   padding-bottom: 20px;
 }
 
-nav {
-  margin-top: 10px;
-  height: 30px;
+#healthPoints {
+  float: left;
+  margin-left: 30px;
 }
 
-.frame {
-  height: 80vh; /* Equals maximum image height */
-  white-space: nowrap;
-  text-align: center;
-  margin: 1em 0;
+#currentArmor {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  width: 100px;
 }
 
-.helper {
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-}
-
-.dadImg {
-  vertical-align: middle;
-  max-height: 80vh;
-  max-width: 70%;
+#currentWeapon {
+  position: absolute;
+  top: 400px;
+  left: 100px;
+  width: 100px;
 }
