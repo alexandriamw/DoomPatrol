@@ -62,14 +62,25 @@ module.exports = function(app) {
       });
   });
 
-  //getting information for one user
+  //getting information for one user using req.params.accountName
   app.get("/api/users/:accountName", function(req, res) {
-    db.users
-      .findOne({ where: { id: req.params.accountName } })
-      .then(function(dbUserInfo) {
+    db.Users.findOne({ where: { accountName: req.params.accountName } }).then(
+      function(dbUserInfo) {
         res.json(dbUserInfo);
-      });
+        // console.log(`\n\ninfo about duplicate usrnames${res.json(dbUserInfo)}: routes/apiRoutes.js`)
+      }
+    );
   });
+
+  // //getting information for one user using req.body.accountName
+  // app.get("/api/users/find", function (req, res) {
+  //   db.users
+  //     .findOne({ where: { id: req.body.accountName } })
+  //     .then(function (dbUserInfo) {
+  //       res.json(dbUserInfo);
+  //       console.log(`\n\ninfo about duplicate usrnames${res.json(dbUserInfo)}: routes/apiRoutes.js`)
+  //     });
+  // });
 
   //-----------------------------------------------Equipment Section-----------------------------------
 

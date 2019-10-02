@@ -129,7 +129,7 @@ function enable() {
 //create account for new users, form data is saved
 document
   .getElementById("createAcctForm")
-  .addEventListener("submit", function(event) {
+  .addEventListener("submit", function(event, cb) {
     event.preventDefault();
     document.getElementById("createAcctFormPage").style.display = "none";
     document.getElementById("buffering").style.display = "block";
@@ -142,32 +142,60 @@ document
 
     ValidateEmail();
 
-    //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
-    fetch("/api/register", {
-      method: "POST",
-      body: JSON.stringify({
-        accountName: uName,
-        hashedPW: unhashedPW
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
+    console.log(
+      "\n\nNEED TO KNOW THAT THIS IS WORKING:               index.js\n"
+    );
+    console.log(`\n\n/api/users/${uName}:               index.js\n`);
+
+    fetch(`/api/users/${uName}`, {
+      method: "GET"
     })
       .then(function(response) {
+        console.log(
+          response,
+          "something happened and now trying to FIGURE IT OUT"
+        );
         return response.json();
       })
       .then(function(data) {
-        setTimeout(function() {
-          console.log(
-            "\n\nThis is the end of the function of the button: public/index.js" +
-              data
-          );
+        console.log(data, "DID SOMETHING ACTUALLY HAPPEN?");
+        if (data === null) {
+          newAccount();
+        }
 
-          //to-do: change screen upon signup
-          document.getElementById("buffering").style.display = "none";
-          document.getElementById("createCharacter").style.display = "block";
-        }, 3000);
+        // else {
+        //   return cb("something here");
+        // }
       });
+
+    function newAccount() {
+      //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
+      fetch("/api/register", {
+        method: "POST",
+        body: JSON.stringify({
+          accountName: uName,
+          hashedPW: unhashedPW
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          setTimeout(function() {
+            console.log(
+              "\n\nThis is the end of the function of the button: public/index.js" +
+                data
+            );
+
+            //to-do: change screen upon signup
+            document.getElementById("buffering").style.display = "none";
+            document.getElementById("createCharacter").style.display = "block";
+          }, 3000);
+        });
+    }
   });
 
 // Validating emails
