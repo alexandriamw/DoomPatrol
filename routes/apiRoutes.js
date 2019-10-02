@@ -1,35 +1,52 @@
 var db = require("../models");
 var bcrypthash = require("../controllers/bcrypthash");
 let bcrypttest = require("../controllers/bcryptTest");
-
-// bcrypting things
-// ================================================================================================================
-// ================================================================================================================
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
-// get myPlaintextPassword from user
-const myPlaintextPassword = "s0//P4$$w0rD";
-const someOtherPlaintextPassword = "not_bacon";
-
-bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
-  // Store hash in your password DB.
-});
-
-//Place holder for gettin hash
-let hash = "Test";
-// Load hash from your password DB.
-bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
-  // res == true
-});
-
-bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
-  // res == false
-});
-
-// ================================================================================================================
-// ================================================================================================================
+let Sequelize = require("sequelize");
+let battlesys = require("../controllers/templates");
 
 module.exports = function(app) {
+  //--------------------Battle Section-------------//
+  app.get("/api/random", function(req, res) {
+    db.users
+      .findAll({
+        order: [Sequelize.litteral("RAND")]
+      })
+      .then(function(user2) {
+        res.json(user2);
+      });
+  });
+
+  app.get("/api/battleConstruct", function(req, res) {
+    res(battlesys(req.body.user1, req.body.user2));
+  });
+
+  // bcrypting things
+  // ================================================================================================================
+  // ================================================================================================================
+  const bcrypt = require("bcryptjs");
+  const saltRounds = 10;
+  // get myPlaintextPassword from user
+  const myPlaintextPassword = "s0//P4$$w0rD";
+  const someOtherPlaintextPassword = "not_bacon";
+
+  bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+    // Store hash in your password DB.
+  });
+
+  //Place holder for gettin hash
+  let hash = "Test";
+  // Load hash from your password DB.
+  bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
+    // res == true
+  });
+
+  bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
+    // res == false
+  });
+
+  // ================================================================================================================
+  // ================================================================================================================
+
   // Get/ Read Functions
   // =================================================
   // =================================================
@@ -195,14 +212,6 @@ module.exports = function(app) {
   app.get("/api/passwordcreation", function(req, res) {
     //let hashedpw = bcrypthash(req.body.body);
   });
-
-  //-----------------------------------Deletion Section ---------------------------------------------
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
-  });
 };
+
+//-----------------------------------Deletion Section --------------------------------------------
