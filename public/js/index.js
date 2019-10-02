@@ -137,36 +137,64 @@ document
     // This is a variable that is used as the req.body for BE
     let uName = document.getElementById("signup_uname").value;
     let unhashedPW = document.getElementById("signup_psw").value;
+    let emailInput = document.getElementById("email").value;
+
     // console.log(uName + ": public/index.js\n\n\n");
     // console.log(unhashedPW + ": public/index.js\n\n\n");
+    console.log(emailInput + ":            public/index.js\n\n\n");
 
     ValidateEmail();
 
-    console.log(
-      "\n\nNEED TO KNOW THAT THIS IS WORKING:               index.js\n"
-    );
     console.log(`\n\n/api/users/${uName}:               index.js\n`);
 
-    fetch(`/api/users/${uName}`, {
+    fetch(`/api/users/accountName/${uName}`, {
       method: "GET"
     })
       .then(function(response) {
-        console.log(
-          response,
-          "something happened and now trying to FIGURE IT OUT"
-        );
         return response.json();
       })
       .then(function(data) {
         console.log(data, "DID SOMETHING ACTUALLY HAPPEN?");
         if (data === null) {
-          newAccount();
+          checkEmail();
+        } else {
+          setTimeout(function() {
+            //to-do: when sign up fails
+            document.getElementById("buffering").style.display = "none";
+            document.getElementById("createAcctFormPage").style.display =
+              "block";
+            document.getElementById("cUNameFail").style.display = "block";
+          }, 1500);
         }
-
-        // else {
-        //   return cb("something here");
-        // }
       });
+
+    function checkEmail() {
+      fetch(`/api/users/email/${emailInput}`, {
+        method: "GET"
+      })
+        .then(function(response) {
+          console.log(
+            response,
+            "something happened and now trying to FIGURE IT OUT"
+          );
+          return response.json();
+        })
+        .then(function(data) {
+          console.log(data, "DID SOMETHING ACTUALLY HAPPEN?");
+          if (data === null) {
+            newAccount();
+          } else {
+            setTimeout(function() {
+              //to-do: when sign up fails
+              document.getElementById("buffering").style.display = "none";
+              document.getElementById("createAcctFormPage").style.display =
+                "block";
+              document.getElementById("cUNameFail").style.display = "none";
+              document.getElementById("cEmailFail").style.display = "block";
+            }, 1500);
+          }
+        });
+    }
 
     function newAccount() {
       //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
@@ -174,7 +202,8 @@ document
         method: "POST",
         body: JSON.stringify({
           accountName: uName,
-          hashedPW: unhashedPW
+          hashedPW: unhashedPW,
+          email: emailInput
         }),
         headers: {
           "Content-Type": "application/json"

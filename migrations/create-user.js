@@ -14,6 +14,9 @@ module.exports = {
       hashedPW: {
         type: Sequelize.STRING
       },
+      email: {
+        type: Sequelize.STRING
+      },
       wins: {
         type: Sequelize.INTEGER
       },
