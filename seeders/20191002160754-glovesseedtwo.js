@@ -68,7 +68,7 @@ module.exports = {
           magic: 0,
           createdAt: new Date(),
           updatedAt: new Date()
-        },
+        }
       ],
       {}
     );

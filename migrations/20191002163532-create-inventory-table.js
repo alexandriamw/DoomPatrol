@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('InventoryTables', {
+    return queryInterface.createTable("InventoryTables", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -20,14 +20,14 @@ module.exports = {
       Melee: {
         type: Sequelize.INTEGER
       },
-      Defence:{
+      Defence: {
         type: Sequelize.INTEGER
       },
-      Magic:{
+      Magic: {
         type: Sequelize.INTEGER
       },
-      ownerID:{
-        type:Sequelize.INTEGER
+      ownerID: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +40,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('InventoryTables');
+    return queryInterface.dropTable("InventoryTables");
   }
 };

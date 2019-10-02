@@ -175,15 +175,25 @@ document.getElementById("battleButton").addEventListener("click", function() {
 // -----------------------------------------------------------------------------------------------//
 // -----------------------------------------------------------------------------------------------//
 
-function user(name, level, hp, weapon, head, chest, boots, gloves) {
-  this.name = name;
-  this.level = level;
-  this.hp = hp;
-  this.weapon = weapon;
-  this.head = head;
-  this.chest = chest;
-  this.boots = boots;
-  this.gloves = gloves;
+function user(userinfo) {
+  this.name = userinfo.name;
+  this.level = userinfo.level;
+  this.hp = userinfo.hp;
+  this.weapon = fetch(`/api/helmet/${userinfo.weaponID}`)
+  .then(function(response) { response.json()});
+
+  this.head = fetch(`/api/head/${userinfo.headID}`)
+  .then(function(response) { response.json()});
+
+  this.chest = fetch(`/api/chest/${userinfo.chestID}`)
+  .then(function(response) { response.json()});
+
+  this.boots = fetch(`/api/boots/${userinfo.bootsID}`)
+  .then(function(response) { response.json()});
+
+  this.gloves = fetch(`/api/gloves/${userinfo.glovesID}`)
+  .then(function(response) { response.json() });
+
   this.totals = () => {
     let melee =
       this.weapon.attack +

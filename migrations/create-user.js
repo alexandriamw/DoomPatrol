@@ -14,15 +14,14 @@ module.exports = {
       hashedPW: {
         type: Sequelize.STRING
       },
+      email: {
+        type: Sequelize.STRING
+      },
       wins: {
         type: Sequelize.INTEGER
       },
       loses: {
         type: Sequelize.INTEGER
-      },
-      email:{
-        type: Sequelize.STRING,
-        allowNull: false
       },
       weaponID: {
         type: Sequelize.INTEGER
