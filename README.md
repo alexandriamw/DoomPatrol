@@ -1,7 +1,7 @@
 # DoomPatrol #
 Project 2: *Dad Souls*
 
-![Dad Souls](/public/assets/images/game_Screen.png)
+![Dad Souls](/public/images/game_Screen.png)
 
 Dad Souls is a battle game where a user creates a profile to fight other profiles. 
 
