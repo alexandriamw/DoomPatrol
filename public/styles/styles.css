@@ -58,6 +58,10 @@ body {
   display: none;
 }
 
+.failText {
+  text-align: right;
+}
+
 h1 {
   padding: 80px 0 0;
   color: antiquewhite;
@@ -297,26 +301,6 @@ p {
   font-family: "Do Hyeon", sans-serif;
 }
 
-#buyWeaponPop {
-  position: absolute;
-  left: 100px;
-  width: 450px;
-  height: 250px;
-  background-color: #333c4c;
-  border-radius: 6px;
-  color: antiquewhite;
-}
-
-#buyArmorPop {
-  position: absolute;
-  left: 100px;
-  width: 450px;
-  height: 250px;
-  background-color: #333c4c;
-  border-radius: 6px;
-  color: antiquewhite;
-}
-
 #settingsPop {
   position: absolute;
   left: 100px;
@@ -387,16 +371,19 @@ footer {
 }
 
 @media only screen and (max-width: 780px) {
-  .weaponImg {
-    width: 200px;
+  .one {
     height: 200px;
+  }
+  .weaponImg {
+    width: 100px;
+    height: 100px;
   }
   .armorImg {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
   .dadImg {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
 }
