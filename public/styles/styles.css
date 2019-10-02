@@ -37,6 +37,12 @@ body {
   display: none;
 }
 
+#inputBoxes {
+  position: relative;
+  right: 40%;
+  text-align: right;
+}
+
 #cUNameFail {
   display: none;
 }
