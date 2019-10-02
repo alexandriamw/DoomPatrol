@@ -60,6 +60,7 @@ h1 {
 #signUpButton,
 #cancelButton,
 #cancelBattleButton,
+#cancelBattleBtn,
 #cancelLogButton,
 #createCharBtn,
 #cancelCreateButton,
@@ -152,6 +153,10 @@ button:active {
 #createAcctFormPage,
 #buffering {
   margin-bottom: 10px;
+}
+
+#createAcctForm {
+  text-align: center;
 }
 
 #bufferingIcon {

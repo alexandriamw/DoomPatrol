@@ -151,3 +151,10 @@ document.getElementById("battleButton").addEventListener("click", function() {
   document.getElementById("accountPage").style.display = "none";
   document.getElementById("battlePage").style.display = "block";
 });
+
+document
+  .getElementById("cancelBattleBtn")
+  .addEventListener("click", function() {
+    document.getElementById("battlePage").style.display = "none";
+    document.getElementById("accountPage").style.display = "block";
+  });
