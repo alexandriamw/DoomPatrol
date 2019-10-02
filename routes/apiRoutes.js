@@ -79,7 +79,9 @@ module.exports = function(app) {
     db.Users.findOne({ where: { accountName: req.params.accountName } }).then(
       function(dbUserInfo) {
         res.json(dbUserInfo);
-        // console.log(`\n\ninfo about duplicate usrnames${res.json(dbUserInfo)}: routes/apiRoutes.js`)
+        console.log(
+          `\n\ninfo about duplicate usrnames${dbUserInfo}: routes/apiRoutes.js`
+        );
       }
     );
   });
