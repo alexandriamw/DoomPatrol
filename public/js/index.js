@@ -159,3 +159,13 @@ document
 document.getElementById("closeInventory").addEventListener("click", function() {
   document.getElementById("myInventoryPop").style.display = "none";
 });
+
+document.getElementById("createCharBtn").addEventListener("click", function() {
+  document.getElementById("createCharacter").style.display = "none";
+  document.getElementById("accountPage").style.display = "block";
+});
+
+document.getElementById("battleButton").addEventListener("click", function() {
+  document.getElementById("accountPage").style.display = "none";
+  document.getElementById("battlePage").style.display = "block";
+});
