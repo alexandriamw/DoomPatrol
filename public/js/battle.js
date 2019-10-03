@@ -170,11 +170,13 @@ function Battle(fighter1, fighter2) {
 
     // Create a limit to how many *rounds* goes by before its a mandatory stop
     let counter = 0;
+
     // Then trigger this main loop function
+    // added a set timeout to stop it from going rampant
     function mainLoopRestraint() {
       setTimeout(() => {
         mainLoop();
-      }, 4000);
+      }, 1500);
     }
 
     function mainLoop() {
@@ -373,11 +375,25 @@ function Battle(fighter1, fighter2) {
 // ------------------------------------------------------------------------------------
 // But when we click the button
 document.getElementById("startBattle").addEventListener("click", event => {
-  // we prevent the button default
+  // we prevent the button default,
   event.preventDefault();
 
+  if (document.getElementById("uname") !== "") {
+    usingLogin();
+  }
+  if (document.getElementById("signup_uname").value !== "") {
+    usingCALogin();
+  }
+});
+
+function usingLogin() {
+  let battleLogin = document.getElementById("uname").value;
+  let battleCALogin = document.getElementById("signup_uname").value;
+
+  console.log(`\n\n\n${battleLogin}`);
+  console.log(`\n\n\n${battleCALogin}`);
   // We then go to fetch the table where the logged in user is at
-  fetch(`/api/users/battle/daniel`)
+  fetch(`/api/users/battle/${battleLogin}`)
     .then(function(response) {
       return response.json();
     })
@@ -414,18 +430,75 @@ document.getElementById("startBattle").addEventListener("click", event => {
         // console.log(theUser.weapon, ":           this is a test to see what comes out factor");
         let testBattle = new Battle(theUser, theComp);
         wait(testBattle);
-      }, 2500);
+      }, 1000);
     }
 
     // Then start that battle I think
     function wait(testBattle) {
       setTimeout(() => {
         testBattle.loopedBattle();
-      }, 2500);
+      }, 1000);
     }
     waitABit();
   }
-});
+}
+
+function usingCALogin() {
+  let battleLogin = document.getElementById("uname").value;
+  let battleCALogin = document.getElementById("signup_uname").value;
+
+  console.log(`\n\n\n${battleLogin}`);
+  console.log(`\n\n\n${battleCALogin}`);
+  // We then go to fetch the table where the logged in user is at
+  fetch(`/api/users/battle/${battleCALogin}`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(responsejson) {
+      console.log(
+        "IF YOU SEE THIS, THEN That means that the USER fetch request for the player worked"
+      );
+      console.log(responsejson);
+      let theUser = new User(responsejson);
+      getOtherPlayer(theUser);
+    });
+
+  function getOtherPlayer(theUser) {
+    // We then go fetch a random comp to fight
+    fetch(`/api/random`)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(responsejson) {
+        console.log(
+          "\n\n\n\nIF YOU SEE THIS, THEN That means that the COMP fetch request for the player worked"
+        );
+        console.log(responsejson);
+        // Then we create new constructors for them
+        let theComp = new User(responsejson);
+
+        generateInstance(theUser, theComp);
+      });
+  }
+
+  function generateInstance(theUser, theComp) {
+    function waitABit() {
+      setTimeout(() => {
+        // console.log(theUser.weapon, ":           this is a test to see what comes out factor");
+        let testBattle = new Battle(theUser, theComp);
+        wait(testBattle);
+      }, 1000);
+    }
+
+    // Then start that battle I think
+    function wait(testBattle) {
+      setTimeout(() => {
+        testBattle.loopedBattle();
+      }, 1000);
+    }
+    waitABit();
+  }
+}
 
 document
   .getElementById("cancelBattleBtn")

@@ -1,7 +1,4 @@
 var db = require("../models");
-var bcrypthash = require("../controllers/bcrypthash");
-let bcrypttest = require("../controllers/bcryptTest");
-let Sequelize = require("sequelize");
 // let battlesys = require("../controllers/templates");
 
 module.exports = function(app) {
@@ -11,10 +8,6 @@ module.exports = function(app) {
       res.json(user2[Math.floor(Math.random() * user2.length)]);
     });
   });
-
-  // app.get("/api/battleConstruct", function(req, res) {
-  //   res(battlesys(req.body.user1, req.body.user2));
-  // });
 
   // bcrypting things
   // ================================================================================================================
