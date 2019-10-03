@@ -124,13 +124,13 @@ document
     document.getElementById("intro").style.display = "block";
   });
 
-document.getElementById("buyWeapons").addEventListener("click", function() {
-  document.getElementById("buyWeaponPop").style.display = "block";
-});
+// document.getElementById("buyWeapons").addEventListener("click", function() {
+//   document.getElementById("buyWeaponPop").style.display = "block";
+// });
 
-document.getElementById("buyArmor").addEventListener("click", function() {
-  document.getElementById("buyArmorPop").style.display = "block";
-});
+// document.getElementById("buyArmor").addEventListener("click", function() {
+//   document.getElementById("buyArmorPop").style.display = "block";
+// });
 
 //add inventory here ----------
 document.getElementById("settings").addEventListener("click", function() {
@@ -141,15 +141,15 @@ document.getElementById("inventory").addEventListener("click", function() {
   document.getElementById("myInventoryPop").style.display = "block";
 });
 
-document
-  .getElementById("cancelWeaponBtn")
-  .addEventListener("click", function() {
-    document.getElementById("buyWeaponPop").style.display = "none";
-  });
+// document
+//   .getElementById("cancelWeaponBtn")
+//   .addEventListener("click", function() {
+//     document.getElementById("buyWeaponPop").style.display = "none";
+//   });
 
-document.getElementById("cancelArmorBtn").addEventListener("click", function() {
-  document.getElementById("buyArmorPop").style.display = "none";
-});
+// document.getElementById("cancelArmorBtn").addEventListener("click", function() {
+//   document.getElementById("buyArmorPop").style.display = "none";
+// });
 
 document
   .getElementById("cancelSettingsBtn")
@@ -179,20 +179,29 @@ function user(userinfo) {
   this.name = userinfo.name;
   this.level = userinfo.level;
   this.hp = userinfo.hp;
-  this.weapon = fetch(`/api/helmet/${userinfo.weaponID}`)
-  .then(function(response) { response.json()});
+  this.weapon = fetch(`/api/helmet/${userinfo.weaponID}`).then(function(
+    response
+  ) {
+    response.json();
+  });
 
-  this.head = fetch(`/api/head/${userinfo.headID}`)
-  .then(function(response) { response.json()});
+  this.head = fetch(`/api/head/${userinfo.headID}`).then(function(response) {
+    response.json();
+  });
 
-  this.chest = fetch(`/api/chest/${userinfo.chestID}`)
-  .then(function(response) { response.json()});
+  this.chest = fetch(`/api/chest/${userinfo.chestID}`).then(function(response) {
+    response.json();
+  });
 
-  this.boots = fetch(`/api/boots/${userinfo.bootsID}`)
-  .then(function(response) { response.json()});
+  this.boots = fetch(`/api/boots/${userinfo.bootsID}`).then(function(response) {
+    response.json();
+  });
 
-  this.gloves = fetch(`/api/gloves/${userinfo.glovesID}`)
-  .then(function(response) { response.json() });
+  this.gloves = fetch(`/api/gloves/${userinfo.glovesID}`).then(function(
+    response
+  ) {
+    response.json();
+  });
 
   this.totals = () => {
     let melee =
@@ -221,22 +230,18 @@ function user(userinfo) {
   };
 }
 
-
-
 function battle(fighter1, fighter2, userAction) {
-
   async function f() {
+    let promise = new Promise((resolve, reject) => {
+      document.querySelectorAll(".actionButtons").forEach(el => {
+        resolve(el.value);
+      });
+    });
 
-  let promise = new Promise((resolve, reject) => {
-    document.querySelectorAll(".actionButtons").forEach(el => {
-      resolve(el.value);
-    })
-  });
+    let result = await promise; // wait till the promise resolves (*)
 
-  let result = await promise; // wait till the promise resolves (*)
-
-  return result;
-}
+    return result;
+  }
   this.fighter1 = fighter1;
   this.fighter2 = fighter2;
 
@@ -466,30 +471,30 @@ let doomBoots = {
   magic: 5
 };
 
-document.getElementById("startBattle").addEventListener("click", event => {
-  event.preventDefault();
+// document.getElementById("startBattle").addEventListener("click", event => {
+//   event.preventDefault();
 
-  let testUser1 = new user(
-    "Cletus",
-    1,
-    100,
-    doomWeapon,
-    doomHelm,
-    doomChest,
-    doomBoots,
-    doomGloves
-  );
-  let testUser2 = new user(
-    "JimBob",
-    1,
-    100,
-    doomWeapon,
-    doomHelm,
-    doomChest,
-    doomBoots,
-    doomGloves
-  );
-  let testBattle = new battle(testUser1, testUser2, event);
+//   let testUser1 = new user(
+//     "Cletus",
+//     1,
+//     100,
+//     doomWeapon,
+//     doomHelm,
+//     doomChest,
+//     doomBoots,
+//     doomGloves
+//   );
+//   let testUser2 = new user(
+//     "JimBob",
+//     1,
+//     100,
+//     doomWeapon,
+//     doomHelm,
+//     doomChest,
+//     doomBoots,
+//     doomGloves
+//   );
+//   let testBattle = new battle(testUser1, testUser2, event);
 
-  testBattle();
-});
+//   testBattle();
+// });
