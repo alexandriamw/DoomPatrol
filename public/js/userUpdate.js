@@ -10,6 +10,7 @@ document
 
     if (
       oldUName !== "" &&
+      oldUName === document.getElementById("uname").value &&
       newUName !== "" &&
       newPsw === "" &&
       currentUName === ""
@@ -43,13 +44,78 @@ document
           }
         });
     } else if (
+      oldUName !== "" &&
+      oldUName === document.getElementById("signup_uname").value &&
+      newUName !== "" &&
+      newPsw === "" &&
+      currentUName === ""
+    ) {
+      // This checks to see if we have the username in our database
+      fetch(`/api/users/accountName/${oldUName}`, {
+        method: "GET"
+        // go to this api route and get all the information that this route will give us : FOUND at apiRoutes.js
+      })
+        .then(function(response) {
+          // return that data to the front end
+          console.log(response);
+          return response.json();
+        })
+        .then(function(data) {
+          // Then with that data, we want to check to see if the username within out DB is the same as the user's input
+          console.log(data);
+          if (data === null) {
+            //otherwise display these styles back on after 1.5 seconds
+            console.log(
+              "\n\n If you get this one, then it means that the old username here is wrong\n\n"
+            );
+            document.getElementById("wrongOldUName").style.display = "block";
+            document.getElementById("takenNewUName").style.display = "none";
+            document.getElementById("wrongCurrentUName").style.display = "none";
+            document.getElementById("changeOnlyOne").style.display = "none";
+          } else {
+            checkNewUserName();
+          }
+        });
+    } else if (
       newPsw !== "" &&
-      currentUName !== "" &&
+      currentUName === document.getElementById("uname").value &&
       oldUName === "" &&
       newUName === ""
     ) {
       console.log("--------------------- BREAK -----------------------");
       console.log("USERNAME INPUT FIELD SHOULD BE EMPTY");
+      fetch(`/api/users/accountName/${currentUName}`, {
+        method: "GET"
+        // go to this api route and get all the information that this route will give us : FOUND at apiRoutes.js
+      })
+        .then(function(response) {
+          // return that data to the front end
+          console.log(response);
+          return response.json();
+        })
+        .then(function(data) {
+          // Then with that data, we want to check to see if the username within out DB is the same as the user's input
+          console.log(data);
+          if (data === null) {
+            //otherwise display these styles back on after 1.5 seconds
+            document.getElementById("wrongOldUName").style.display = "none";
+            document.getElementById("takenNewUName").style.display = "none";
+            document.getElementById("wrongCurrentUName").style.display =
+              "block";
+            document.getElementById("changeOnlyOne").style.display = "none";
+            console.log(
+              "\n\n If you get this one, then it means that the current username here is wrong\n\n"
+            );
+          } else {
+            updatePassword();
+          }
+        });
+    } else if (
+      newPsw !== "" &&
+      currentUName === document.getElementById("signup_uname").value &&
+      oldUName === "" &&
+      newUName === ""
+    ) {
       fetch(`/api/users/accountName/${currentUName}`, {
         method: "GET"
         // go to this api route and get all the information that this route will give us : FOUND at apiRoutes.js
