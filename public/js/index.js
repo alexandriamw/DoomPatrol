@@ -226,9 +226,10 @@ function battle(fighter1, fighter2) {
 
   let actions = ["melee", "defend", "magic"];
 
-  document.addEventListener("click", event => {
-    event.preventDefault();
-
+  document.querySelectorAll(".actions").forEach(el => {
+    el.addEventListener("click", event => {
+      event.preventDefault();
+    });
     while (eitherDead === false) {
       // userAction = fn();
       console.log(
@@ -391,7 +392,7 @@ function battle(fighter1, fighter2) {
           checkHp(fighter1Hp, fighter2Hp);
         }
       }
-      mainLoop();
+      // mainLoop();
       function checkHp(value1, value2) {
         this.value1 = value1;
         this.value2 = value2;
@@ -402,6 +403,7 @@ function battle(fighter1, fighter2) {
       }
     }
   });
+
   function endLoop(fighter1Hp, fighter2Hp) {
     console.log("GAME OVER");
     if (fighter1Hp > fighter2Hp) {
@@ -419,17 +421,17 @@ function battle(fighter1, fighter2) {
 document.getElementById("startBattle").addEventListener("click", event => {
   event.preventDefault();
 
-  let accountInfo = fetch(`./api/users/`).then(response => {
+  let accountInfo = fetch(`./api/users/1`).then(response => {
     return response.json;
   });
   let random = fetch(`./api/random`).then(response => {
     return response.json;
   });
 
-  let testUser1 = new user(accountInfo);
-  let testUser2 = new user(random);
+  let theUser = new user(accountInfo);
+  let theComp = new user(random);
 
-  let testBattle = new battle(testUser1, testUser2);
+  let testBattle = new battle(theUser, theComp);
 
   testBattle();
 });
