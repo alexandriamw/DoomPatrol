@@ -129,18 +129,6 @@ module.exports = function(app) {
     );
   });
 
-  app.get("/api/whosloggedon", function(req, res) {
-    console.log(req.body);
-    res.json(req.body.accountName);
-  });
-
-  app.post("/api/whosloggedon", function(req, res) {
-    console.log(req.body);
-    let value = { user: req.body.user };
-    res.render("whosLoggedOn", value);
-    // res.json(req.body.accountName);
-  });
-
   // app.update("/api/")
 
   //-----------------------------------------------Equipment Section-----------------------------------

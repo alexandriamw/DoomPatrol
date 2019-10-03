@@ -269,41 +269,12 @@ document
         .then(function(data) {
           setTimeout(function() {
             // AFTER creating a new character, the set these styling
-            whosOn(data.accountName);
             document.getElementById("buffering").style.display = "none";
             document.getElementById("createCharacter").style.display = "block";
           }, 3000);
         });
     }
   });
-
-// TRACKING WHOS CURRENTLY LOGGED ON
-// ----------------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------
-window.addEventListener("load", function(event) {
-  fetch("/api/whosloggedon", {
-    method: "POST",
-    body: JSON.stringify({
-      user: "fakeUser"
-    }),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  });
-});
-
-function whosOn(data) {
-  fetch("/api/whosloggedon", {
-    method: "PUT",
-    body: JSON.stringify({
-      user: data.accountName
-    }),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  });
-  console.log(data);
-}
 
 document
   .getElementById("createCharacterForm")
