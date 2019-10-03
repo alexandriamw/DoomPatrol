@@ -2,7 +2,7 @@
 
 Project 2: _Dad Souls_
 
-![Dad Souls](/public/assets/images/game_Screen.png)
+![Dad Souls](/public/images/game_Screen.png)
 
 Dad Souls is a battle game where a user creates a profile to fight other profiles.
 
