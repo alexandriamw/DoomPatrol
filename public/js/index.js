@@ -337,11 +337,17 @@ document
 
     let oldUName = document.getElementById("olduname").value;
     let newUName = document.getElementById("newuname").value;
+    let currentUName = document.getElementById("currentuname").value;
     let newPsw = document.getElementById("newpsw").value;
 
-    if (oldUName !== "" && newUName !== "" && newPsw === "") {
+    if (
+      oldUName !== "" &&
+      newUName !== "" &&
+      newPsw === "" &&
+      currentUName === ""
+    ) {
       console.log("--------------------- BREAK -----------------------");
-      console.log("PASSWORD INPUT FIELD SHOULD BE EMPTY");
+      console.log("PASSWORD and CURRENT INPUT FIELD SHOULD BE EMPTY");
       // This checks to see if we have the username in our database
       fetch(`/api/users/accountName/${oldUName}`, {
         method: "GET"
@@ -357,22 +363,92 @@ document
           console.log(data);
           if (data === null) {
             //otherwise display these styles back on after 1.5 seconds
-            console.log("\n\n WHAT IS GOING ON IN THIS ELSE IF STATEMENT\n\n");
-            newUserName();
+            console.log(
+              "\n\n If you get this one, then it means that the old username here is wrong\n\n"
+            );
+            document.getElementById("wrongOldUName").style.display = "block";
           } else {
-            document.getElementById("changeOnlyOne").style.display = "block";
+            checkNewUserName();
           }
         });
-    } else if (newPsw !== "" && oldUName === "" && newUName === "") {
+    } else if (
+      newPsw !== "" &&
+      currentUName !== "" &&
+      oldUName === "" &&
+      newUName === ""
+    ) {
       console.log("--------------------- BREAK -----------------------");
       console.log("USERNAME INPUT FIELD SHOULD BE EMPTY");
-    } else if (newPsw !== "" && oldUName !== "" && newUName !== "") {
+    } else if (
+      newPsw !== "" &&
+      oldUName !== "" &&
+      newUName !== "" &&
+      currentUName !== ""
+    ) {
       console.log("--------------------- BREAK -----------------------");
       console.log("DONT ALLOW IT TO GO THROUGH");
     }
 
-    function newUserName() {
-      fetch(`/api/users/`);
+    function checkNewUserName() {
+      fetch(`/api/users/accountName/${newUName}`, {
+        method: "GET"
+        // go to this api route and get all the information that this route will give us : FOUND at apiRoutes.js
+      })
+        .then(function(response) {
+          // return that data to the front end
+          console.log(response);
+          return response.json();
+        })
+        .then(function(data) {
+          // Then with that data, we want to check to see if the username within out DB is the same as the user's input
+          console.log(data);
+          if (data === null) {
+            //otherwise display these styles back on after 1.5 seconds
+            console.log(
+              "\n\n THIS MEANS USER'S CHOSEN NEW NAME IS NOT PICKED YET\n\n"
+            );
+            updateUserName();
+          } else {
+            console.log(
+              "IF YOU ARE HERE then it means that that username is already taken"
+            );
+            document.getElementById("wrongOldUName").style.display = "none";
+            document.getElementById("takenNewUName").style.display = "block";
+          }
+        });
+    }
+
+    function updateUserName() {
+      fetch(`/api/users/updateUName`, {
+        method: "PUT",
+        body: {
+          oldUserName: oldUName,
+          newUserName: newUName
+        },
+        headers: {
+          "Content-Type": "application/json"
+        }
+        // go to this api route and get all the information that this route will give us : FOUND at apiRoutes.js
+      })
+        .then(function(response) {
+          // return that data to the front end
+          console.log(response);
+          return response.json();
+        })
+        .then(function(data) {
+          // Then with that data, we want to check to see if the username within out DB is the same as the user's input
+          console.log(data);
+          if (data === null) {
+            //otherwise display these styles back on after 1.5 seconds
+            console.log(
+              "\n\n this MUST MEAN that the username has changed, but still need to check it out\n\n"
+            );
+          } else {
+            console.log(
+              "If you are HERE then you have reached teh updateUSERNAME function"
+            );
+          }
+        });
     }
 
     console.log("--------------------- BREAK -----------------------");

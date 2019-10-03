@@ -129,7 +129,24 @@ module.exports = function(app) {
     );
   });
 
-  // app.update("/api/")
+  app.put("/api/users/updateUName", function(req, res) {
+    console.log(
+      "WHAT HAppened here part1???:               routes/apiRoutes.js"
+    );
+    db.Users.update(
+      { accountName: "daniel2" },
+      {
+        where: {
+          accountName: "daniel"
+        }
+      }
+    ).then(function(dbInfo) {
+      console.log(
+        "WHAT HAppened here PART2???:               routes/apiRoutes.js"
+      );
+      res.json(dbInfo);
+    });
+  });
 
   //-----------------------------------------------Equipment Section-----------------------------------
 
