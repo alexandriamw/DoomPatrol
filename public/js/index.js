@@ -245,12 +245,10 @@ function battle(fighter1, fighter2) {
 
   let actions = ["melee", "defend", "magic"];
 
-  document.querySelectorAll(".actions").forEach(el => {
-    el.addEventListener("click", event => {
-      event.preventDefault();
-    });
+  document.addEventListener("click", event => {
+    event.preventDefault();
+
     while (eitherDead === false) {
-      // userAction = fn();
       console.log(
         `${fighter1.name} LVL ${fighter1.level} VS. ${fighter2.name} LVL ${fighter2.level}`
       );
@@ -264,15 +262,11 @@ function battle(fighter1, fighter2) {
 
       function mainLoop() {
         counter++;
-        // let userAction = actions[Math.floor(Math.random() * actions.length)];
+        if (counter >= 30) {
+          return endLoop();
+        }
 
-        let userAction = document.querySelectorAll(".actions").forEach(el => {
-          el.addEventListener("click", event => {
-            event.preventDefault();
-
-            userAction = el.value;
-          });
-        });
+        let userAction = actions[Math.floor(Math.random() * actions.length)];
         let compAction = actions[Math.floor(Math.random() * actions.length)];
 
         console.log(`The User Did ${userAction}`);
@@ -281,9 +275,6 @@ function battle(fighter1, fighter2) {
         console.log(`${fighter2.name} Has ${fighter2Hp} Left`);
 
         console.log(counter);
-        console.log(
-          "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-        );
 
         if (userAction === "melee" && compAction === "melee") {
           let damage = Math.floor(Math.abs(userMelee - compMelee * 1.25));
@@ -411,18 +402,16 @@ function battle(fighter1, fighter2) {
           checkHp(fighter1Hp, fighter2Hp);
         }
       }
-      // mainLoop();
       function checkHp(value1, value2) {
         this.value1 = value1;
         this.value2 = value2;
         if (value1 <= 0 || value2 <= 0) {
           return endLoop(fighter1Hp, fighter2Hp);
         }
-        return mainLoop();
+        return;
       }
     }
   });
-
   function endLoop(fighter1Hp, fighter2Hp) {
     console.log("GAME OVER");
     if (fighter1Hp > fighter2Hp) {
@@ -435,7 +424,6 @@ function battle(fighter1, fighter2) {
     return (eitherDead = true);
   }
 }
-// make call herer
 
 document.getElementById("startBattle").addEventListener("click", event => {
   event.preventDefault();
