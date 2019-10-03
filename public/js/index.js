@@ -13,81 +13,19 @@ document.getElementById("createButton").addEventListener("click", function() {
 });
 
 //login form for existing users is clicked, form data saved
-document
-  .getElementById("loginForm")
-  .addEventListener("submit", function(event) {
-    event.preventDefault();
-    document.getElementById("loginFormPage").style.display = "none";
-    document.getElementById("buffering").style.display = "block";
+// ----------------------------------------------------------------------------------------------------------------
+// found in public/js/userLogin.js
+// ----------------------------------------------------------------------------------------------------------------
 
-    const formData = {
-      uname: event.target.uname.value,
-      psw: event.target.psw.value
-    };
-
-    //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
-    fetch("/api/BACKEND_END_POINT", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json; charset=utf-8"
-      }
-    }).then(function(response) {
-      response.json().then(function(data) {
-        setTimeout(function() {
-          document.getElementById("buffering").style.display = "none";
-          document.getElementById("createCharacter").style.display = "block";
-        }, 3000);
-        //to-do: change screen upon login
-      });
-    });
-  });
+// Input validation for creation input value
+// ----------------------------------------------------------------------------------------------------------------
+// found in public/js/userInputValidation.js
+// ----------------------------------------------------------------------------------------------------------------
 
 //create account for new users, form data is saved
-document
-  .getElementById("createAcctForm")
-  .addEventListener("submit", function(event) {
-    event.preventDefault();
-    document.getElementById("createAcctFormPage").style.display = "none";
-    document.getElementById("buffering").style.display = "block";
-
-    // const formData = {
-    //   uName: event.target.uname.value,
-    //   psw: event.target.psw.value
-    // };
-
-    // This is a variable that is used as the req.params.(whatever) for the backend
-    let uName = document.getElementById("signup_uname").value;
-    let unhashedPW = document.getElementById("signup_psw").value;
-    console.log(uName + "\n\n\n");
-    console.log(unhashedPW + "\n\n\n");
-
-    //BACKEND: you'll need to change BACKEND_END_POINT to whatever you name the API
-    fetch("/api/register", {
-      method: "POST",
-      body: JSON.stringify({
-        accountName: uName,
-        hashedPW: unhashedPW
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(data) {
-        setTimeout(function() {
-          console.log(
-            "\n\nThis is the end of the function of the button" + data
-          );
-
-          //to-do: change screen upon signup
-          document.getElementById("buffering").style.display = "none";
-          document.getElementById("createCharacter").style.display = "block";
-        }, 3000);
-      });
-  });
+// ----------------------------------------------------------------------------------------------------------------
+// found in public/js/userCreate.js
+// ----------------------------------------------------------------------------------------------------------------
 
 document
   .getElementById("createCharacterForm")
@@ -136,6 +74,11 @@ document
 document.getElementById("settings").addEventListener("click", function() {
   document.getElementById("settingsPop").style.display = "block";
 });
+
+// this is where we are updating passwords and usernames
+// ----------------------------------------------------------------------------------------------------------------
+// found in public/js/userUpdate.js
+// ----------------------------------------------------------------------------------------------------------------
 
 document.getElementById("inventory").addEventListener("click", function() {
   document.getElementById("myInventoryPop").style.display = "block";

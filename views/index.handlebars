@@ -3,7 +3,7 @@
 
   <div id="introContainer">
     <img class="introDadOne" src="/images/CoolDad.png" alt="image of a cool dad">
-    
+
     <div class="introMiddle">
       <div id="login">
         <h3>Welcome back</h3>
@@ -116,10 +116,16 @@
 <div id="accountPage">
   <h1>My Account</h1>
   <div id="coinDisplay">
-    <!-- this is where the coin amount can be dynamically updated from the database -->
     <span>250</span>
     <img id="coinImg" src="/images/coin.png" alt="coin">
   </div>
+
+  <div id="diamondDisplay">
+    <span>0</span>
+    <img id="diamondImg" src="/images/diamond.png" alt="diamond">
+  </div>
+
+  <img id="flag" src="/images/flag.png" alt="flag">
 
   <div id="mySidenav">
     <button id="inventory" type="button">My Inventory</button>
@@ -135,10 +141,28 @@
     <form id="settingsForm">
       <h5 class="topline">Old Username</h5>
       <input type="text" placeholder="Enter old Username" name="uname" id="olduname">
+      <div id="wrongOldUName">
+        <p>Wrong old username</p>
+      </div>
       <h5>Change my Username</h5>
-      <input type="text" placeholder="Enter new Username" name="uname" id="newuname"><br><br><br>
+      <input type="text" placeholder="Enter new Username" name="uname" id="newuname">
+      <div id="takenNewUName">
+        <p>This username is already taken</p>
+      </div>
+      <br>
+      <br>
+      <br>
+      <h5>Current Username</h5>
+      <input type="text" placeholder="Enter current Username" name="uname" id="currentuname">
+      <div id="wrongCurrentUName">
+        <p>Wrong username</p>
+      </div>
       <h5>Change my Password</h5>
-      <input type="password" placeholder="Enter new Password" name="psw" id="newpsw"><br><br>
+      <input type="password" placeholder="Enter new Password" name="psw" id="newpsw">
+      <br><br>
+      <div id="changeOnlyOne">
+        <p>You can only choose to change either username or password, not both at the same time</p>
+      </div>
       <button id="confirmChangeBtn" type="submit">Confirm Changes</button>
       <button id="cancelSettingsBtn" type="button">Cancel</button>
     </form>
@@ -149,15 +173,15 @@
 
 <div id="battlePage">
   <header id="mainHeader">
-    <h2>Battle!</h2>
+    <h2 id="battleText">Battle!</h2>
     <h3 id="healthPoints">Health Points: </h3>
     <h3 id="healthPoints2">Health Points: </h3>
   </header>
   <div class="container mt-5" style="position: relative">
     <div class="col-md-5 player-1 float-left frame"><span class="helper"><img src="../images/BeerDad.png"
-          class="dadImg2"></span></div>
+          class="battledadImg2"></span></div>
     <div class="col-md-5 player-2 float-right frame"><span class="helper"><img src="../images/BeerDad2.png"
-          class="dadImg2"></span></div>
+          class="battledadImg2"></span></div>
   </div>
 
   <div class="col-md-12" id="battleButtons">
@@ -172,5 +196,9 @@
 </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/userLogin.js"></script>
+  <script src="/js/userInputValidate.js"></script>
+  <script src="/js/userCreate.js"></script>
+  <script src="/js/userUpdate.js"></script>
