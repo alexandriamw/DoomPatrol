@@ -19,14 +19,14 @@
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
     <div id="lUNameFail">
-        <p>username is incorrect</p>
-      </div>
+      <p>username is incorrect</p>
+    </div>
     <br><br>
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
     <div id="lPswFail">
-        <p>password is incorrect</p>
-      </div>
+      <p>password is incorrect</p>
+    </div>
     <br><br>
     <button id="loginFormButton" type="submit"><span>Login</span></button>
     <br>
@@ -131,6 +131,9 @@
       <input type="text" placeholder="Enter new Username" name="uname" id="newuname">
       <h5>Change my Password</h5>
       <input type="password" placeholder="Enter new Password" name="psw" id="newpsw"><br><br>
+      <div id="changeOnlyOne">
+        <p>You can only choose to change either username or password, not both at the same time</p>
+      </div>
       <button id="confirmChangeBtn" type="submit">Confirm Changes</button>
       <button id="cancelSettingsBtn" type="button">Cancel</button>
     </form>

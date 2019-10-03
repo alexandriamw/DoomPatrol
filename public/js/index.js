@@ -107,7 +107,10 @@ document.addEventListener("keyup", function(event) {
       // create ACC credentials
       document.getElementById("signup_uname").value,
       document.getElementById("signup_psw").value,
-      document.getElementById("email").value
+      document.getElementById("email").value,
+      document.getElementById("olduname").value,
+      document.getElementById("newuname").value,
+      document.getElementById("newpsw").value
     ];
 
   for (let i = 0; i < inputArr.length; i++) {
@@ -165,12 +168,14 @@ function disable() {
   // .disabled method allows the submit button to not go through if it returns true
   document.getElementById("loginFormButton").disabled = true;
   document.getElementById("signUpButton").disabled = true;
+  document.getElementById("confirmChangeBtn").disabled = true;
 }
 
 // function to enable buttons when user  code syntax
 function enable() {
   document.getElementById("loginFormButton").disabled = false;
   document.getElementById("signUpButton").disabled = false;
+  document.getElementById("confirmChangeBtn").disabled = false;
 }
 
 //create account for new users, form data is saved
@@ -264,12 +269,41 @@ document
         .then(function(data) {
           setTimeout(function() {
             // AFTER creating a new character, the set these styling
+            whosOn(data.accountName);
             document.getElementById("buffering").style.display = "none";
             document.getElementById("createCharacter").style.display = "block";
           }, 3000);
         });
     }
   });
+
+// TRACKING WHOS CURRENTLY LOGGED ON
+// ----------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------
+window.addEventListener("load", function(event) {
+  fetch("/api/whosloggedon", {
+    method: "POST",
+    body: JSON.stringify({
+      user: "fakeUser"
+    }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+});
+
+function whosOn(data) {
+  fetch("/api/whosloggedon", {
+    method: "PUT",
+    body: JSON.stringify({
+      user: data.accountName
+    }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+  console.log(data);
+}
 
 document
   .getElementById("createCharacterForm")
@@ -323,7 +357,58 @@ document.getElementById("settings").addEventListener("click", function() {
   document.getElementById("settingsPop").style.display = "block";
 });
 // this is where we are updating passwords and usernames
-// document.getElementById("confirmChangeBtn").addEventListener("submit")
+// ----------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------
+document
+  .getElementById("confirmChangeBtn")
+  .addEventListener("click", function(event) {
+    event.preventDefault();
+
+    let oldUName = document.getElementById("olduname").value;
+    let newUName = document.getElementById("newuname").value;
+    let newPsw = document.getElementById("newpsw").value;
+
+    if (oldUName !== "" && newUName !== "" && newPsw === "") {
+      console.log("--------------------- BREAK -----------------------");
+      console.log("PASSWORD INPUT FIELD SHOULD BE EMPTY");
+      // This checks to see if we have the username in our database
+      fetch(`/api/users/accountName/${oldUName}`, {
+        method: "GET"
+        // go to this api route and get all the information that this route will give us : FOUND at apiRoutes.js
+      })
+        .then(function(response) {
+          // return that data to the front end
+          console.log(response);
+          return response.json();
+        })
+        .then(function(data) {
+          // Then with that data, we want to check to see if the username within out DB is the same as the user's input
+          console.log(data);
+          if (data === null) {
+            //otherwise display these styles back on after 1.5 seconds
+            console.log("\n\n WHAT IS GOING ON IN THIS ELSE IF STATEMENT\n\n");
+            newUserName();
+          } else {
+            document.getElementById("changeOnlyOne").style.display = "block";
+          }
+        });
+    } else if (newPsw !== "" && oldUName === "" && newUName === "") {
+      console.log("--------------------- BREAK -----------------------");
+      console.log("USERNAME INPUT FIELD SHOULD BE EMPTY");
+    } else if (newPsw !== "" && oldUName !== "" && newUName !== "") {
+      console.log("--------------------- BREAK -----------------------");
+      console.log("DONT ALLOW IT TO GO THROUGH");
+    }
+
+    function newUserName() {
+      fetch(`/api/users/`);
+    }
+
+    console.log("--------------------- BREAK -----------------------");
+    console.log(oldUName, "\n\n");
+    console.log(newUName, "\n");
+    console.log(newPsw, "\n");
+  });
 
 document.getElementById("inventory").addEventListener("click", function() {
   document.getElementById("myInventoryPop").style.display = "block";
