@@ -343,7 +343,7 @@ p {
 #settingsPop {
   position: absolute;
   left: 100px;
-  top: 150px;
+  top: 40px;
   width: 450px;
   height: fit-content;
   /* height: 480px; */
@@ -357,7 +357,7 @@ p {
   left: 100px;
   top: 150px;
   width: 500px;
-  height: 420px;
+  height: fit-content;
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
