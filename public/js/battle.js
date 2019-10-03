@@ -168,6 +168,14 @@ function Battle(fighter1, fighter2) {
     let fighter1Hp = fighter1.hp;
     let fighter2Hp = fighter2.hp;
 
+    setInterval(() => {
+      document.getElementById("u1hp").innerHTML = fighter1Hp;
+    }, 300);
+
+    setInterval(() => {
+      document.getElementById("u2hp").innerHTML = fighter2Hp;
+    }, 300);
+
     // Create a limit to how many *rounds* goes by before its a mandatory stop
     let counter = 0;
 
