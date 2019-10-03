@@ -37,6 +37,47 @@ body {
   display: none;
 }
 
+#inputBoxes {
+  position: relative;
+  right: 40%;
+  text-align: right;
+}
+
+#lUNameFail {
+  display: none;
+}
+
+#lPswFail {
+  display: none;
+}
+#cUNameFail {
+  display: none;
+}
+
+#cEmailFail {
+  display: none;
+}
+
+#changeOnlyOne {
+  display: none;
+}
+
+#wrongOldUName {
+  display: none;
+}
+
+#takenNewUName {
+  display: none;
+}
+
+#wrongCurrentUName {
+  display: none;
+}
+
+.failText {
+  text-align: right;
+}
+
 h1 {
   padding: 80px 0 0;
   color: antiquewhite;
@@ -60,6 +101,7 @@ h1 {
 #signUpButton,
 #cancelButton,
 #cancelBattleButton,
+#cancelBattleBtn,
 #cancelLogButton,
 #createCharBtn,
 #cancelCreateButton,
@@ -132,10 +174,12 @@ button:active {
 
 #psw,
 #uname,
+#olduname,
 #signup_uname,
 #signup_psw,
 #email,
 #newuname,
+#currentuname,
 #newpsw {
   font-family: "Do Hyeon", sans-serif;
   border-radius: 4px;
@@ -151,6 +195,10 @@ button:active {
 #createAcctFormPage,
 #buffering {
   margin-bottom: 10px;
+}
+
+#createAcctForm {
+  text-align: center;
 }
 
 #bufferingIcon {
@@ -181,7 +229,6 @@ p {
 
 .weaponImg {
   width: 200px;
-  float: right;
   height: 200px;
   margin-right: 50px;
 }
@@ -215,10 +262,26 @@ p {
   width: 100px;
 }
 
-#mySidenav a:hover {
-  left: 0;
+#diamondDisplay {
+  position: absolute;
+  right: 50px;
+  top: 200px;
+  color: antiquewhite;
 }
 
+#diamondImg {
+  width: 100px;
+}
+
+#flag {
+  width: 400px;
+}
+
+#mySidenav {
+  position: absolute;
+  left: 10px;
+  top: 150px;
+}
 #mySidenav,
 #inventory,
 #buyWeapons,
@@ -226,13 +289,19 @@ p {
 #settings {
   position: absolute;
   left: 10px;
-  transition: 0.3s;
   padding: 20px;
   width: 200px;
-  text-decoration: none;
   font-size: 20px;
   color: antiquewhite;
   border-radius: 5px;
+}
+
+#battleText {
+  font-size: 50px;
+}
+
+.battledadImg2 {
+  height: 300px;
 }
 
 #inventory {
@@ -263,7 +332,7 @@ p {
 }
 
 #settings {
-  top: 260px;
+  top: 120px;
   background-color: #80afaa;
   border: none;
   box-shadow: 2px 2px #437066;
@@ -271,31 +340,13 @@ p {
   font-family: "Do Hyeon", sans-serif;
 }
 
-#buyWeaponPop {
-  position: absolute;
-  left: 100px;
-  width: 450px;
-  height: 250px;
-  background-color: #333c4c;
-  border-radius: 6px;
-  color: antiquewhite;
-}
-
-#buyArmorPop {
-  position: absolute;
-  left: 100px;
-  width: 450px;
-  height: 250px;
-  background-color: #333c4c;
-  border-radius: 6px;
-  color: antiquewhite;
-}
-
 #settingsPop {
   position: absolute;
   left: 100px;
+  top: 150px;
   width: 450px;
-  height: 320px;
+  height: fit-content;
+  /* height: 480px; */
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
@@ -304,8 +355,9 @@ p {
 #myInventoryPop {
   position: absolute;
   left: 100px;
+  top: 150px;
   width: 500px;
-  height: 320px;
+  height: 420px;
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
@@ -360,17 +412,38 @@ footer {
   width: 100px;
 }
 
+.introDadOne,
+.introDadTwo {
+  width: 400px;
+}
+
+.introDadOne {
+  margin-left: 40px;
+}
+
+.introDadTwo {
+  margin-right: 40px;
+}
+
+#introContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media only screen and (max-width: 780px) {
-  .weaponImg {
-    width: 200px;
+  .one {
     height: 200px;
+  }
+  .weaponImg {
+    width: 100px;
+    height: 100px;
   }
   .armorImg {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
   .dadImg {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
 }

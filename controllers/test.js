@@ -21,27 +21,27 @@ function user(
   this.gold = gold;
   this.emeralds = emeralds;
   this.totals = () => {
-    let melee =
-      this.weapon.attack +
-      this.head.attack +
-      this.chest.attack +
-      this.boots.attack +
-      this.gloves.attack +
-      this.level;
-    let defence =
-      this.weapon.defence +
-      this.head.defence +
-      this.chest.defence +
-      this.boots.defence +
-      this.gloves.defence +
-      this.level;
-    let magic =
-      this.weapon.magic +
-      this.head.magic +
-      this.chest.magic +
-      this.boots.magic +
-      this.gloves.magic +
-      this.level;
+    let melee = 1 + 1 + 1 + 1 + 1 + 1;
+    // this.weapon.attack +
+    // this.head.attack +
+    // this.chest.attack +
+    // this.boots.attack +
+    // this.gloves.attack +
+    // this.level;
+    let defence = 1 + 1 + 1 + 1 + 1 + 1;
+    // this.weapon.defence +
+    // this.head.defence +
+    // this.chest.defence +
+    // this.boots.defence +
+    // this.gloves.defence +
+    // this.level;
+    let magic = 1 + 1 + 1 + 1 + 1 + 1;
+    // this.weapon.magic +
+    // this.head.magic +
+    // this.chest.magic +
+    // this.boots.magic +
+    // this.gloves.magic +
+    // this.level;
 
     return [melee, defence, magic];
   };

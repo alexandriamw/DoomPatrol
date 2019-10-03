@@ -1,46 +1,58 @@
 var db = require("../models");
 var bcrypthash = require("../controllers/bcrypthash");
 let bcrypttest = require("../controllers/bcryptTest");
-
-// bcrypting things
-// ================================================================================================================
-// ================================================================================================================
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
-// get myPlaintextPassword from user
-const myPlaintextPassword = "s0//P4$$w0rD";
-const someOtherPlaintextPassword = "not_bacon";
-
-bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
-  // Store hash in your password DB.
-});
-
-//Place holder for gettin hash
-let hash = "Test";
-// Load hash from your password DB.
-bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
-  // res == true
-});
-
-bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
-  // res == false
-});
-
-// ================================================================================================================
-// ================================================================================================================
+// let Sequelize = require("sequelize");
+// let battlesys = require("../controllers/templates");
 
 module.exports = function(app) {
-  // Get/ Read Functions
-  // =================================================
-  // =================================================
+  //--------------------Battle Section-------------//
+  // app.get("/api/random", function(req, res) {
+  //   db.users
+  //     .findAll({
+  //       order: [Sequelize.litteral("RAND")]
+  //     })
+  //     .then(function(user2) {
+  //       res.json(user2);
+  //     });
+  // });
+
+  // app.get("/api/battleConstruct", function(req, res) {
+  //   res(battlesys(req.body.user1, req.body.user2));
+  // });
+
+  // bcrypting things
+  // ================================================================================================================
+  // ================================================================================================================
+  const bcrypt = require("bcryptjs");
+  const saltRounds = 10;
+  // get myPlaintextPassword from user
+  const myPlaintextPassword = "s0//P4$$w0rD";
+  const someOtherPlaintextPassword = "not_bacon";
+
+  bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+    // Store hash in your password DB.
+  });
+
+  //Place holder for gettin hash
+  let hash = "Test";
+  // Load hash from your password DB.
+  bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
+    // res == true
+  });
+
+  bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
+    // res == false
+  });
+
+  // ================================================================================================================
+  // ================================================================================================================
+
   // Get all User Information
   app.get("/api/users", function(req, res) {
     db.Users.findAll({}).then(function(dbUsers) {
       res.json(dbUsers);
     });
   });
-
-  //-----------------------------------Battle System -----------------------------------------
 
   //------------------------------------User Section ------------------------------------------
   //for testing password
@@ -62,13 +74,96 @@ module.exports = function(app) {
       });
   });
 
-  //getting information for one user
-  app.get("/api/users/:accountName", function(req, res) {
-    db.users
-      .findOne({ where: { id: req.params.accountName } })
-      .then(function(dbUserInfo) {
+  //getting information for one user using req.params.accountName
+  app.get("/api/users/accountName/:loginName", function(req, res) {
+    db.Users.findOne({ where: { accountName: req.params.loginName } }).then(
+      function(dbUserInfo) {
         res.json(dbUserInfo);
+      }
+    );
+  });
+
+  //getting information for one user using req.params.accountName
+  app.get("/api/users/email/:email", function(req, res) {
+    db.Users.findOne({ where: { email: req.params.email } }).then(function(
+      dbUserInfo
+    ) {
+      res.json(dbUserInfo);
+      // console.log(`\n\ninfo about duplicate usrnames${res.json(dbUserInfo)}: routes/apiRoutes.js`)
+    });
+  });
+
+  //getting information for one user using req.params.accountName
+  app.get("/api/users/checkpw/:loginName/:loginPw", function(req, res) {
+    console.log("\n\n WE GOT HERE YAYAYAYAYAYA\n\n");
+
+    db.Users.findOne({ where: { accountName: req.params.loginName } }).then(
+      function(dbUserInfo) {
+        // res.json(dbUserInfo);
+        console.log(dbUserInfo.hashedPW);
+        console.log(`\n\nBEFORE THE TINGS POPS OFF:                 ${hash}`);
+
+        // this compares the passwords
+        bcrypt.compare(req.params.loginPw, dbUserInfo.hashedPW, function(
+          err,
+          hash
+        ) {
+          // Store hash in your password DB.
+          console.log(
+            "\n\n\nLet see if this console.log even comes through\n\n"
+          );
+          console.log(hash + "\n\n");
+          // then send that value here to get it back to being synchronous
+          valueOfHash(hash);
+          // createFunc(hash);
+        });
+
+        function valueOfHash(hash) {
+          console.log(
+            `\n\nPLEASE LET THIS THING WORK:                 ${hash}`
+          );
+          // then send it back to the front end
+          res.json(hash);
+        }
+      }
+    );
+  });
+
+  app.put("/api/users/updateuname/:updatename", function(req, res) {
+    console.log(
+      "WHAT HAppened here part1???:               routes/apiRoutes.js"
+    );
+    db.Users.update(
+      { accountName: req.body.newUserName },
+      { where: { accountName: req.body.oldUserName } }
+    ).then(function(dbPost) {
+      res.json(dbPost);
+      console.log(
+        "WHAT HAppened here Part2???:               routes/apiRoutes.js"
+      );
+    });
+  });
+
+  app.put("/api/users/updatepass/", function(req, res) {
+    bcrypt.hash(req.body.hashedPW, saltRounds, function(err, hash) {
+      // Store hash in your password DB.
+      console.log("\n\n\nLet see if this console.log even comes through\n\n");
+      console.log(hash + "\n\n");
+      updatePassword(hash);
+    });
+
+    function updatePassword(hash) {
+      console.log(hash);
+      db.Users.update(
+        { hashedPW: hash },
+        { where: { accountName: req.body.accountName } }
+      ).then(function(dbPost) {
+        res.json(dbPost);
+        console.log(
+          "WHAT HAppened here Part2???:               routes/apiRoutes.js"
+        );
       });
+    }
   });
 
   //-----------------------------------------------Equipment Section-----------------------------------
@@ -172,7 +267,8 @@ module.exports = function(app) {
       console.log(`\n\nSOme HASHING ${hash}\n\n`);
       db.Users.create({
         accountName: req.body.accountName,
-        hashedPW: hash
+        hashedPW: hash,
+        email: req.body.email
         // wins: req.body.wins,
         // loses: req.body.loses,
         // weaponID: req.body.weaponID,
@@ -195,14 +291,6 @@ module.exports = function(app) {
   app.get("/api/passwordcreation", function(req, res) {
     //let hashedpw = bcrypthash(req.body.body);
   });
-
-  //-----------------------------------Deletion Section ---------------------------------------------
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
-    });
-  });
 };
+
+//-----------------------------------Deletion Section --------------------------------------------
