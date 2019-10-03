@@ -163,6 +163,7 @@ button:active {
 #signup_psw,
 #email,
 #newuname,
+#currentuname,
 #newpsw {
   font-family: "Do Hyeon", sans-serif;
   border-radius: 4px;
@@ -323,9 +324,10 @@ p {
 
 #settingsPop {
   position: absolute;
+  top: 3em;
   left: 100px;
   width: 450px;
-  height: 420px;
+  height: fit-content;
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
