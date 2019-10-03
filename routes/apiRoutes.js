@@ -251,6 +251,20 @@ module.exports = function(app) {
     }
   });
 
+  app.post("/api/inventory", function(req, res) {
+    db.InventoryTables.create({
+      itemname: req.body.itemname,
+      itemid: req.body.itemID,
+      itemslot: req.body.itemslot,
+      melee: req.body.melee,
+      Defence: req.body.defence,
+      magic: req.body.magic,
+      ownerID: req.body.ownerID
+    }).then(function(dbExample) {
+      res.json(dbExample);
+      console.log("Added to Inventory");
+    });
+  });
   app.get("/api/passwordcreation", function(req, res) {
     //let hashedpw = bcrypthash(req.body.body);
   });
