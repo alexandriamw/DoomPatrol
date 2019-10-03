@@ -95,41 +95,22 @@ document.getElementById("battleButton").addEventListener("click", function() {
   document.getElementById("battlePage").style.display = "block";
 });
 
-function user(userinfo) {
-  this.name = userinfo.name;
-  this.level = userinfo.level;
-  this.hp = userinfo.hp;
-  this.weapon = fetch(`/api/helmet/${userinfo.weaponID}`).then(function(
-    response
-  ) {
-    response.json();
-  });
-
-  this.head = fetch(`/api/head/${userinfo.headID}`).then(function(response) {
-    response.json();
-  });
-
-  this.chest = fetch(`/api/chest/${userinfo.chestID}`).then(function(response) {
-    response.json();
-  });
-
-  this.boots = fetch(`/api/boots/${userinfo.bootsID}`).then(function(response) {
-    response.json();
-  });
-
-  this.gloves = fetch(`/api/gloves/${userinfo.glovesID}`).then(function(
-    response
-  ) {
-    response.json();
-  });
-
+function user(name, level, hp, weapon, head, chest, boots, gloves) {
+  this.name = name;
+  this.level = level;
+  this.hp = hp;
+  this.weapon = weapon;
+  this.head = head;
+  this.chest = chest;
+  this.boots = boots;
+  this.gloves = gloves;
   this.totals = () => {
     let melee =
-      this.weapon.attack +
-      this.head.attack +
-      this.chest.attack +
-      this.boots.attack +
-      this.gloves.attack +
+      this.weapon.melee +
+      this.head.melee +
+      this.chest.melee +
+      this.boots.melee +
+      this.gloves.melee +
       this.level;
     let defence =
       this.weapon.defence +
@@ -346,27 +327,888 @@ function battle(fighter1, fighter2) {
   }
 }
 
+// document
+//   .getElementById("cancelBattleBtn")
+//   .addEventListener("click", function() {
+//     document.getElementById("battlePage").style.display = "none";
+//     document.getElementById("accountPage").style.display = "block";
+//   });
+
+let Users = [
+  {
+    accountName: "JohnsAccount",
+    hashedPW: null,
+    loses: 2,
+    weaponID: 1,
+    headID: 1,
+    chestID: 1,
+    pantsID: 1,
+    feetID: 1,
+    email: "wwwwwwww@yahooo.com",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    accountName: "Another Account",
+    hashedPW: null,
+    loses: 70,
+    weaponID: 1,
+    headID: 1,
+    chestID: 1,
+    pantsID: 1,
+    feetID: 1,
+    email: "wwwwwwww@yahooo.com",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    accountName: "Account Three",
+    hashedPW: null,
+    wins: 1,
+    loses: 3000,
+    headID: 1,
+    chestID: 1,
+    pantsID: 1,
+    feetID: 1,
+    email: "wwwwwwww@yahooo.com",
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+];
+
+let headTables = [
+  {
+    name: "Beer Hat",
+    melee: 0,
+    defence: 2,
+    magic: 4,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Baseball Hat",
+    melee: 6,
+    defence: 1,
+    magic: 6,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Visor",
+    melee: 10,
+    defence: 1,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Man Bun",
+    melee: 0,
+    defence: 1,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Fedora",
+    melee: -9,
+    defence: 10,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Viking Helm",
+    melee: 7,
+    defence: 7,
+    magic: 7,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Bald",
+    melee: 10,
+    defence: 10,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Chef Hat",
+    melee: 2,
+    defence: 9,
+    magic: 8,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Helm Of Doom",
+    melee: 10,
+    defence: 10,
+    magic: 10,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Bear Skin Hat",
+    melee: 4,
+    defence: 6,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Straw Hat",
+    melee: 2,
+    defence: 2,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Doofus Hat",
+    melee: 0,
+    defence: 0,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Party Hat",
+    melee: 0,
+    defence: 2,
+    magic: 10,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Hard Hat",
+    melee: 0,
+    defence: 10,
+    magic: 7,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Ski Mask",
+    melee: 10,
+    defence: 10,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Wizard Hat",
+    melee: 7,
+    defence: 0,
+    magic: 10,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Shoe",
+    melee: 5,
+    defence: 5,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "ZipLock Bag",
+    melee: 0,
+    defence: 10,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Male Pattern Baldness",
+    melee: 10,
+    defence: -3,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Hoodie",
+    melee: 6,
+    defence: 7,
+    magic: 8,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Cowboy Hat",
+    melee: 3,
+    defence: 6,
+    magic: 8,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Welding Mask",
+    melee: -2,
+    defence: 10,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Beer Goggles",
+    melee: 2,
+    defence: 2,
+    magic: 1,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Black Hat",
+    melee: 6,
+    defence: 7,
+    magic: 8,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Blue Hat",
+    melee: 0,
+    defence: 2,
+    magic: 1,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Green Hat",
+    melee: 0,
+    defence: 2,
+    magic: 10,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Red Hat",
+    melee: 15,
+    defence: 4,
+    magic: 3,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Oil Stained Hat",
+    melee: 7,
+    defence: 7,
+    magic: 7,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Worlds Best Dad Hat",
+    melee: 5,
+    defence: 8,
+    magic: 11,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "I Love NY",
+    melee: 0,
+    defence: 0,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "MAGA Hat",
+    melee: 5,
+    defence: 5,
+    magic: 5,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Sweat Band",
+    melee: 8,
+    defence: 8,
+    magic: 8,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+];
+
+let gloveTables = [
+  {
+    name: "Beer Bottle",
+    melee: 1,
+    defence: 4,
+    magic: 4,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Motorcycle Gloves",
+    melee: 3,
+    defence: 2,
+    magic: 1,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Plastic Gloves",
+    melee: 0,
+    defence: 5,
+    magic: 6,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Work Leather Gloves",
+    melee: 3,
+    defence: 8,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Cooking Gloves",
+    melee: 10,
+    defence: 0,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Red Gloves",
+    melee: 1,
+    defence: 4,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Blue Gloves",
+    melee: 0,
+    defence: 1,
+    magic: 4,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Green Gloves",
+    melee: 4,
+    defence: 1,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+];
+
+let weaponTables = [
+  {
+    Name: "Spatula",
+    melee: 5,
+    defence: 2,
+    magic: 1,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Tongs",
+    melee: 2,
+    defence: 8,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Beer Can",
+    melee: 8,
+    defence: 8,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Lawn Mower",
+    melee: 5,
+    defence: 4,
+    magic: 11,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Not Mad, Just Disappointed",
+    melee: 10,
+    defence: 10,
+    magic: 10,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Dad Humor",
+    melee: -2,
+    defence: 0,
+    magic: 15,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "The Thermostat",
+    melee: 9,
+    defence: 2,
+    magic: 4,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Braided Belt",
+    melee: 9,
+    defence: 2,
+    magic: 7,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Clip On Phone",
+    melee: 2,
+    defence: 11,
+    magic: 5,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Car He Loves More Than You",
+    melee: 10,
+    defence: 9,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Pool Cue",
+    melee: 7,
+    defence: 7,
+    magic: 7,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Favorite Mug",
+    melee: 9,
+    defence: 2,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "The Worst Gatorade Flavor",
+    melee: 8,
+    defence: 4,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Fishing Pole",
+    melee: 2,
+    defence: 8,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Webber Grill",
+    melee: 6,
+    defence: 10,
+    magic: 10,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Cast Iron",
+    melee: 10,
+    defence: 1,
+    magic: 1,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "FootBall",
+    melee: 4,
+    defence: 4,
+    magic: 4,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Baseball",
+    melee: 6,
+    defence: 6,
+    magic: 6,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Hockey Stick",
+    melee: 8,
+    defence: 8,
+    magic: 8,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Monkey Wrench",
+    melee: 10,
+    defence: 0,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Crow Bar",
+    melee: 5,
+    defence: 3,
+    magic: 8,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Fiscal Conservatism",
+    melee: 4,
+    defence: 10,
+    magic: 15,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Old Man Watch",
+    melee: 3,
+    defence: 3,
+    magic: 3,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "SI From 2004",
+    melee: 11,
+    defence: 2,
+    magic: 6,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Cribbage Board",
+    melee: 5,
+    defence: 7,
+    magic: 1,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "The Remote",
+    melee: 5,
+    defence: 2,
+    magic: 11,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Too Many Keys",
+    melee: 3,
+    defence: 8,
+    magic: 8,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Recliner",
+    melee: 0,
+    defence: 6,
+    magic: 10,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Antiquated Advice",
+    melee: 3,
+    defence: 4,
+    magic: 10,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Oil Change Punch Card",
+    melee: 6,
+    defence: 7,
+    magic: 6,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "BlockBuster Card",
+    melee: 2,
+    defence: 1,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Busch Latte",
+    melee: 12,
+    defence: 12,
+    magic: 12,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Golden Retriever",
+    melee: 5,
+    defence: 2,
+    magic: 20,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Oversized Text",
+    melee: 2,
+    defence: 7,
+    magic: 3,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Fishing Lure",
+    melee: 8,
+    defence: 9,
+    magic: 9,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+];
+
+let chestsTables = [
+  {
+    Name: "Too Small T-Shirt",
+    melee: 7,
+    defence: -2,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Sweater",
+    melee: 1,
+    defence: 6,
+    magic: 3,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Beer Gut",
+    melee: -2,
+    defence: 9,
+    magic: 4,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "I'm With Stupid Shirt",
+    melee: 5,
+    defence: 5,
+    magic: 0,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Golf Shirt",
+    melee: 2,
+    defence: 4,
+    magic: 7,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Grill Apron",
+    melee: 1,
+    defence: 10,
+    magic: 7,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Hoodie",
+    melee: 4,
+    defence: 8,
+    magic: -2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Grill Plate Armor",
+    melee: 7,
+    defence: 12,
+    magic: -4,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Polo",
+    melee: 5,
+    defence: 2,
+    magic: 4,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Tuexdeo",
+    melee: 0,
+    defence: 2,
+    magic: 12,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Mustard Stained Shirt",
+    melee: 4,
+    defence: 2,
+    magic: 6,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Coffee Stained Shirt",
+    melee: 7,
+    defence: 4,
+    magic: -2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Borat Bikini",
+    melee: 10,
+    defence: -7,
+    magic: 10,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "Red shirt",
+    melee: 2,
+    defence: 5,
+    magic: 1,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    Name: "FootBall Jersey",
+    melee: 6,
+    defence: 1,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+];
+
+let bootTables = [
+  {
+    name: "Socks and Sandals",
+    melee: 2,
+    defence: 2,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Crocks",
+    melee: 2,
+    defence: 2,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "New Balance",
+    melee: 2,
+    defence: 2,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Slippers",
+    melee: 2,
+    defence: 2,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Bare",
+    melee: 2,
+    defence: 2,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  },
+  {
+    name: "Steel Toe",
+    melee: 2,
+    defence: 2,
+    magic: 2,
+    createdAt: new Date(),
+    updatedAt: new Date()
+  }
+];
+
 document.getElementById("startBattle").addEventListener("click", event => {
   event.preventDefault();
 
-  let accountInfo = fetch(`./api/users/1`).then(response => {
-    return response.json;
-  });
-  let random = fetch(`./api/random`).then(response => {
-    return response.json;
-  });
+  console.log("clicked!");
 
-  let theUser = new user(accountInfo);
-  let theComp = new user(random);
+  // let accountInfo = fetch(`./api/users/1`).then(response => {
+  //   return response.json;
+  // });
+  // let random = fetch(`./api/random`).then(response => {
+  //   return response.json;
+  // });
 
-  let testBattle = new battle(theUser, theComp);
+  let userInfo = Users[Math.floor(Math.random() * Users.length)];
+  let weapon = weaponTables[Math.floor(Math.random() * weaponTables.length)];
+  let head = headTables[Math.floor(Math.random() * headTables.length)];
+  let chest = chestsTables[Math.floor(Math.random() * chestsTables.length)];
+  let boots = bootTables[Math.floor(Math.random() * bootTables.length)];
+  let gloves = gloveTables[Math.floor(Math.random() * gloveTables.length)];
 
-  testBattle();
+  let randomName = Users[Math.floor(Math.random() * Users.length)];
+  let randomW = weaponTables[Math.floor(Math.random() * weaponTables.length)];
+  let randomH = headTables[Math.floor(Math.random() * headTables.length)];
+  let randomC = chestsTables[Math.floor(Math.random() * chestsTables.length)];
+  let randomB = bootTables[Math.floor(Math.random() * bootTables.length)];
+  let randomG = gloveTables[Math.floor(Math.random() * gloveTables.length)];
+
+  let theUser = new user(
+    userInfo.name,
+    userInfo.level,
+    userInfo.hp,
+    weapon,
+    head,
+    chest,
+    boots,
+    gloves
+  );
+  let theComp = new user(
+    randomName.name,
+    randomName.level,
+    randomName.hp,
+    randomW,
+    randomH,
+    randomC,
+    randomB,
+    randomG
+  );
+
+  console.log(theUser);
+  console.log(theComp);
+  // let testBattle = new battle(theUser, theComp);
+
+  // testBattle();
 });
-
-document
-  .getElementById("cancelBattleBtn")
-  .addEventListener("click", function() {
-    document.getElementById("battlePage").style.display = "none";
-    document.getElementById("accountPage").style.display = "block";
-  });
