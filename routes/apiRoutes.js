@@ -15,23 +15,23 @@ module.exports = function(app) {
   const bcrypt = require("bcryptjs");
   const saltRounds = 10;
   // get myPlaintextPassword from user
-  const myPlaintextPassword = "s0//P4$$w0rD";
-  const someOtherPlaintextPassword = "not_bacon";
+  // const myPlaintextPassword = "s0//P4$$w0rD";
+  // const someOtherPlaintextPassword = "not_bacon";
 
-  bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
-    // Store hash in your password DB.
-  });
+  // bcrypt.hash(myPlaintextPassword, saltRounds, function(err, hash) {
+  //   // Store hash in your password DB.
+  // });
 
-  //Place holder for gettin hash
-  let hash = "Test";
-  // Load hash from your password DB.
-  bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
-    // res == true
-  });
+  // //Place holder for gettin hash
+  // let hash = "Test";
+  // // Load hash from your password DB.
+  // bcrypt.compare(myPlaintextPassword, hash, function(err, res) {
+  //   // res == true
+  // });
 
-  bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
-    // res == false
-  });
+  // bcrypt.compare(someOtherPlaintextPassword, hash, function(err, res) {
+  //   // res == false
+  // });
 
   // ================================================================================================================
   // ================================================================================================================
@@ -90,7 +90,7 @@ module.exports = function(app) {
       function(dbUserInfo) {
         // res.json(dbUserInfo);
         console.log(dbUserInfo.hashedPW);
-        console.log(`\n\nBEFORE THE TINGS POPS OFF:                 ${hash}`);
+        // console.log(`\n\nBEFORE THE TINGS POPS OFF:                 ${hash}`);
 
         // this compares the passwords
         bcrypt.compare(req.params.loginPw, dbUserInfo.hashedPW, function(
@@ -176,14 +176,14 @@ module.exports = function(app) {
     });
   });
 
-  //Api for finding one type of helmet
-  app.get("/api/helmet/:id", function(req, res) {
-    db.helmetTable
-      .findOne({ where: { id: req.params.id } })
-      .then(function(dbItem) {
-        res.json(dbItem);
-      });
-  });
+  // //Api for finding one type of helmet
+  // app.get("/api/helmet/:id", function(req, res) {
+  //   db.helmetTable
+  //     .findOne({ where: { id: req.params.id } })
+  //     .then(function(dbItem) {
+  //       res.json(dbItem);
+  //     });
+  // });
 
   //------Chest Area---//
 
@@ -194,14 +194,14 @@ module.exports = function(app) {
     });
   });
 
-  //For finding one type of Chest
-  app.get("/api/chests/:id", function(req, res) {
-    db.chestsTable
-      .findOne({ where: { id: req.params.id } })
-      .then(function(dbItem) {
-        res.json(dbItem);
-      });
-  });
+  // //For finding one type of Chest
+  // app.get("/api/chests/:id", function(req, res) {
+  //   db.chestsTable
+  //     .findOne({ where: { id: req.params.id } })
+  //     .then(function(dbItem) {
+  //       res.json(dbItem);
+  //     });
+  // });
   //-------Glove Section----//
 
   //For entire table of gloves
@@ -211,13 +211,13 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/gloves/:id", function(req, res) {
-    db.gloveTable
-      .findOne({ where: { id: req.params.id } })
-      .then(function(dbItem) {
-        res.json(dbItem);
-      });
-  });
+  // app.get("/api/gloves/:id", function(req, res) {
+  //   db.gloveTable
+  //     .findOne({ where: { id: req.params.id } })
+  //     .then(function(dbItem) {
+  //       res.json(dbItem);
+  //     });
+  // });
 
   //----------------------Weapon Section--------------------------//
   // fixed it, the variable here relating to the table was written wrong
@@ -233,13 +233,13 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/weapons/:id", function(req, res) {
-    db.weaponTable
-      .findOne({ where: { id: req.params.id } })
-      .then(function(dbItem) {
-        res.json(dbItem);
-      });
-  });
+  // app.get("/api/weapons/:id", function(req, res) {
+  //   db.weaponTable
+  //     .findOne({ where: { id: req.params.id } })
+  //     .then(function(dbItem) {
+  //       res.json(dbItem);
+  //     });
+  // });
 
   //--------------------------Boot Section------------------------//
   app.get("/api/boots", function(req, res) {
@@ -248,13 +248,13 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/weapons/:id", function(req, res) {
-    db.bootTable
-      .findOne({ where: { id: req.params.id } })
-      .then(function(dbItem) {
-        res.json(dbItem);
-      });
-  });
+  // app.get("/api/weapons/:id", function(req, res) {
+  //   db.bootTable
+  //     .findOne({ where: { id: req.params.id } })
+  //     .then(function(dbItem) {
+  //       res.json(dbItem);
+  //     });
+  // });
 
   //---------------------------------Creation Section (In Progress)---------------------------------------------
   // Create a new user
@@ -267,10 +267,10 @@ module.exports = function(app) {
       console.log(hash + "\n\n");
       createFunc(hash);
     });
-    console.log(`\n\nHash outside of the bcrypt function${hash}\n\n`);
+    // console.log(`\n\nHash outside of the bcrypt function${hash}\n\n`);
 
     function createFunc(hash) {
-      console.log(`\n\nSOme HASHING ${hash}\n\n`);
+      // console.log(`\n\nSOme HASHING ${hash}\n\n`);
       db.Users.create({
         accountName: req.body.accountName,
         hashedPW: hash,
@@ -288,9 +288,10 @@ module.exports = function(app) {
         // updatedAt: new Date()
       }).then(function(dbExample) {
         res.json(dbExample);
-        console.log(
-          `\nI need to know then this string of actions end ${dbExample}\n\n`
-        );
+        console
+          .log
+          // `\nI need to know then this string of actions end ${dbExample}\n\n`
+          ();
         // console.log(`\n${jsoned}\n`);
       });
     }
