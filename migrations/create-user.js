@@ -17,13 +17,13 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      wins: {
-        type: Sequelize.INTEGER
-      },
       level: {
         type: Sequelize.INTEGER
       },
       hp: {
+        type: Sequelize.INTEGER
+      },
+      wins: {
         type: Sequelize.INTEGER
       },
       loses: {

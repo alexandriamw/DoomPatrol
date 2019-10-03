@@ -3,25 +3,109 @@ function User(userinfo) {
   this.name = userinfo.accountName;
   this.level = userinfo.level;
   this.hp = userinfo.hp;
+
+  let meleeArrVar = [];
+  let defenceArrVar = [];
+  let magicArrVar = [];
+
   // We want to get values from these tables, so we got to make sure that these tables exist and then fix the requests
-  this.weapon = fetch(`/api/weapon/`)
+  this.weapon = fetch(`/api/weapon`)
     .then(function(response) {
       return response.json();
     })
     .then(function(responsejson) {
       console.log("TESTING OUT THE WEAPON ID");
       console.log(responsejson);
-      // console.log(responsejson.Melee, ":           this is the melee factor");
-      return responsejson;
+      console.log(responsejson.Melee, ":           this is the melee factor");
+      meleeArrVar.push(responsejson.Melee);
+      defenceArrVar.push(responsejson.defence);
+      magicArrVar.push(responsejson.magic);
+
+      return responsejson.Melee;
     });
 
-  this.totals = () => {
-    let melee = this.weapon.Melee;
-    // console.log(this.weapon.Melee, ":       HOPEFULLY THIS THING WORKS");
+  this.head = fetch(`/api/helmet`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(responsejson) {
+      console.log("TESTING OUT THE Head ID");
+      console.log(responsejson);
+      console.log(responsejson.Melee, ":           this is the Melee factor");
+      meleeArrVar.push(responsejson.Melee);
+      defenceArrVar.push(responsejson.defence);
+      magicArrVar.push(responsejson.magic);
+    });
 
-    // whenever the totals function is called from a new User, it will always give an array
-    return [melee];
-  };
+  this.chest = fetch(`/api/chests`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(responsejson) {
+      console.log("TESTING OUT THE Chest ID");
+      console.log(responsejson);
+      console.log(responsejson.Melee, ":           this is the Melee factor");
+      meleeArrVar.push(responsejson.Melee);
+      defenceArrVar.push(responsejson.defence);
+      magicArrVar.push(responsejson.magic);
+    });
+
+  this.boots = fetch(`/api/boots`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(responsejson) {
+      console.log("TESTING OUT THE Boots ID");
+      console.log(responsejson);
+      console.log(responsejson.Melee, ":           this is the Melee factor");
+      meleeArrVar.push(responsejson.Melee);
+      defenceArrVar.push(responsejson.defence);
+      magicArrVar.push(responsejson.magic);
+    });
+
+  this.gloves = fetch(`/api/gloves`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(responsejson) {
+      console.log("TESTING OUT THE gloves ID");
+      console.log(responsejson);
+      console.log(responsejson.melee, ":           this is the Melee factor");
+      meleeArrVar.push(responsejson.melee);
+      defenceArrVar.push(responsejson.defence);
+      magicArrVar.push(responsejson.magic);
+    });
+
+  this.meleeArr = meleeArrVar;
+  this.defenceArr = defenceArrVar;
+  this.magicArr = magicArrVar;
+
+  // this.totals = () => {
+  //   let melee =
+  //     this.weapon.Melee +
+  //     this.head.Melee +
+  //     this.chest.Melee +
+  //     this.boots.Melee +
+  //     this.gloves.melee +
+  //     this.level;
+  //   // console.log(this.weapon.Melee, ":       HOPEFULLY THIS THING WORKS");
+  //   let defence =
+  //     this.weapon.defence +
+  //     this.head.defence +
+  //     this.chest.defence +
+  //     this.boots.defence +
+  //     this.gloves.defence +
+  //     this.level;
+  //   let magic =
+  //     this.weapon.magic +
+  //     this.head.magic +
+  //     this.chest.magic +
+  //     this.boots.magic +
+  //     this.gloves.magic +
+  //     this.level;
+  // whenever the totals function is called from a new User, it will always give an array
+  // return [melee, defence, magic];
+  // };
 }
 
 // Then create a new contructor called battle that takes in two arguements that represents the fighters
@@ -29,18 +113,37 @@ function User(userinfo) {
 function Battle(fighter1, fighter2) {
   this.fighter1 = fighter1;
   this.fighter2 = fighter2;
-
   // This variable is the one that lets us know when someone dies, when it switches to true
   let eitherDead = false;
+  console.log(fighter1.weapon, "I hope that this is not 0 ZERO");
+  console.log(fighter2, "I hope that this is not 0 ZERO");
+  console.log(fighter1.meleeArr, fighter1.defenceArr, fighter1.magicArr);
+
+  // THIS FUNCTION is for the reduce method for arrays, without it, it breaks
+  function addValues(total, num) {
+    return total + num;
+  }
+
+  // This is how I handled Chris' this.total function since it always either came up as NaN or undefined
+  let userMelee = fighter1.meleeArr.reduce(addValues);
+  let userDefend = fighter1.defenceArr.reduce(addValues);
+  let userMagic = fighter1.magicArr.reduce(addValues);
+  console.log(userMelee, userDefend, userMagic);
+
+  let compMelee = fighter2.meleeArr.reduce(addValues);
+  let compDefend = fighter2.defenceArr.reduce(addValues);
+  let compMagic = fighter2.magicArr.reduce(addValues);
+
+  console.log(compMelee, compDefend, compMagic);
 
   // Again these array values pertain to the totals function from earlier [0] = melee [1] = defend [2] = magic
-  let userMelee = fighter1.totals()[0];
-  let userDefend = fighter1.totals()[1];
-  let userMagic = fighter1.totals()[2];
+  // let userMelee = fighter1.totals()[0];
+  // let userDefend = fighter1.totals()[1];
+  // let userMagic = fighter1.totals()[2];
 
-  let compMelee = fighter2.totals()[0];
-  let compDefend = fighter2.totals()[1];
-  let compMagic = fighter2.totals()[2];
+  // let compMelee = fighter2.totals()[0];
+  // let compDefend = fighter2.totals()[1];
+  // let compMagic = fighter2.totals()[2];
 
   // We then created a new array that are strings that correlate to the totals function array
   // notice how they are in the same index numbers as well so that we can reference them correctly
@@ -50,8 +153,11 @@ function Battle(fighter1, fighter2) {
   // We still have the buttons on the FE, so I'm not sure how we can change this yet
   this.loopedBattle = function() {
     // after the click, we are checking to see if our death variable is still false, and while it is, it's gonna do these things
+    // ------------------------------------------------------------------------------------------------------------------------------
     // while (eitherDead === false) {
+    // ------------------------------------------------------------------------------------------------------------------------------
     // console.logging for our own sakes to see what's going on
+    console.log(`\n\n\n ${userMelee}:   ${userDefend}:   ${userMagic}\n\n\n`);
     console.log(
       `${fighter1.name} LVL ${fighter1.level} VS. ${fighter2.name} LVL ${fighter2.level}`
     );
@@ -92,7 +198,6 @@ function Battle(fighter1, fighter2) {
       console.log(`${fighter2.name} Has ${fighter2Hp} Left`);
 
       console.log(counter);
-
       // THIS is where the math happens
       // if both the player and the comp get melee, then this happens
       if (userAction === "melee" && compAction === "melee") {
@@ -226,18 +331,22 @@ function Battle(fighter1, fighter2) {
       }
       // This bracket is the end of the main loop
     }
+    mainLoop();
 
     // This function checks the hp of both avatars
     function checkHp(value1, value2) {
       this.value1 = value1;
       this.value2 = value2;
+
       // if their hp is 0 or lower, then just go to the end loop
-      if (value1 <= 0 || value2 <= 0) {
+      if (value1 <= 0 || value2 <= 0 || isNaN(value1) || isNaN(value2)) {
         return endLoop(fighter1Hp, fighter2Hp);
       }
       return mainLoopRestraint();
     }
+    // ------------------------------------------------------------------------------------------------------------------------------
     // }
+    // ------------------------------------------------------------------------------------------------------------------------------
     // THIS IS THE END OF THE ONCLICK FUNCTION, a bit confusing if we are supposed to start based off of the startbattle button
     // onclick fucntion just a bit further below
   };
@@ -268,41 +377,54 @@ document.getElementById("startBattle").addEventListener("click", event => {
   event.preventDefault();
 
   // We then go to fetch the table where the logged in user is at
-  let accountInfo = fetch(`/api/users/battle/daniel`)
+  fetch(`/api/users/battle/daniel`)
     .then(function(response) {
       return response.json();
     })
     .then(function(responsejson) {
       console.log(
-        "IF YOU SEE THIS, THEN That means that the fetch request for the player worked"
+        "IF YOU SEE THIS, THEN That means that the USER fetch request for the player worked"
       );
       console.log(responsejson);
-      newUser(responsejson);
+      let theUser = new User(responsejson);
+      getOtherPlayer(theUser);
     });
-  // We then go fetch a random comp to fight
-  let random = fetch(`./api/random`).then(response => {
-    return response.json;
-  });
 
-  function newUser(accountInfo) {
-    let theUser = new User(accountInfo);
-    console.log("\n\n\n This is the new function I created for the promise");
-    console.log(theUser.weapon, "\n");
-    console.log(accountInfo);
+  function getOtherPlayer(theUser) {
+    // We then go fetch a random comp to fight
+    fetch(`/api/random`)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(responsejson) {
+        console.log(
+          "\n\n\n\nIF YOU SEE THIS, THEN That means that the COMP fetch request for the player worked"
+        );
+        console.log(responsejson);
+        // Then we create new constructors for them
+        let theComp = new User(responsejson);
+
+        generateInstance(theUser, theComp);
+      });
   }
-  // Then we create new constructors for them
-  let theUser = new User(accountInfo);
-  let theComp = new User(random);
 
-  // then another new contructor with their arguements
-  let testBattle = new Battle(theUser, theComp);
+  function generateInstance(theUser, theComp) {
+    function waitABit() {
+      setTimeout(() => {
+        // console.log(theUser.weapon, ":           this is a test to see what comes out factor");
+        let testBattle = new Battle(theUser, theComp);
+        wait(testBattle);
+      }, 2500);
+    }
 
-  console.log("\n YOu can find this at the bottom of the battle.js");
-  console.log(theUser.weapon, "\n");
-  console.log(accountInfo);
-
-  // Then start that battle I think
-  testBattle.loopedBattle();
+    // Then start that battle I think
+    function wait(testBattle) {
+      setTimeout(() => {
+        testBattle.loopedBattle();
+      }, 2500);
+    }
+    waitABit();
+  }
 });
 
 document

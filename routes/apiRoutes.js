@@ -1,20 +1,16 @@
 var db = require("../models");
 var bcrypthash = require("../controllers/bcrypthash");
 let bcrypttest = require("../controllers/bcryptTest");
-// let Sequelize = require("sequelize");
+let Sequelize = require("sequelize");
 // let battlesys = require("../controllers/templates");
 
 module.exports = function(app) {
   //--------------------Battle Section-------------//
-  // app.get("/api/random", function(req, res) {
-  //   db.users
-  //     .findAll({
-  //       order: [Sequelize.litteral("RAND")]
-  //     })
-  //     .then(function(user2) {
-  //       res.json(user2);
-  //     });
-  // });
+  app.get("/api/random", function(req, res) {
+    db.Users.findAll({}).then(function(user2) {
+      res.json(user2[Math.floor(Math.random() * user2.length)]);
+    });
+  });
 
   // app.get("/api/battleConstruct", function(req, res) {
   //   res(battlesys(req.body.user1, req.body.user2));
@@ -166,14 +162,24 @@ module.exports = function(app) {
     }
   });
 
+  // --------- User for battle system ----------
+  app.get("/api/users/battle/:name", function(req, res) {
+    db.Users.findOne({ where: { accountName: req.params.name } }).then(function(
+      dbUserInfo
+    ) {
+      res.json(dbUserInfo);
+      // console.log(`\n\ninfo about duplicate usrnames${res.json(dbUserInfo)}: routes/apiRoutes.js`)
+    });
+  });
+
   //-----------------------------------------------Equipment Section-----------------------------------
 
   //------Helmet Section --------//
 
   //getting the entire table of helmets
   app.get("/api/helmet", function(req, res) {
-    db.helmetTable.findAll({}).then(function(dbEquipment) {
-      res.json(dbEquipment);
+    db.headTable.findAll({}).then(function(dbEquipment) {
+      res.json(dbEquipment[Math.floor(Math.random() * dbEquipment.length)]);
     });
   });
 
@@ -190,14 +196,14 @@ module.exports = function(app) {
 
   //For entire table of chests
   app.get("/api/chests", function(req, res) {
-    db.chestTable.findAll({}).then(function(dbEquipment) {
-      res.json(dbEquipment);
+    db.chestsTable.findAll({}).then(function(dbEquipment) {
+      res.json(dbEquipment[Math.floor(Math.random() * dbEquipment.length)]);
     });
   });
 
   //For finding one type of Chest
   app.get("/api/chests/:id", function(req, res) {
-    db.chestTable
+    db.chestsTable
       .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
@@ -207,13 +213,13 @@ module.exports = function(app) {
 
   //For entire table of gloves
   app.get("/api/gloves", function(req, res) {
-    db.chestTable.findAll({}).then(function(dbEquipment) {
-      res.json(dbEquipment);
+    db.gloveTable.findAll({}).then(function(dbEquipment) {
+      res.json(dbEquipment[Math.floor(Math.random() * dbEquipment.length)]);
     });
   });
 
   app.get("/api/gloves/:id", function(req, res) {
-    db.glovesTable
+    db.gloveTable
       .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
@@ -221,14 +227,21 @@ module.exports = function(app) {
   });
 
   //----------------------Weapon Section--------------------------//
-  app.get("/api/weapons", function(req, res) {
-    db.weaponsTable.findAll({}).then(function(dbEquipment) {
-      res.json(dbEquipment);
+  // fixed it, the variable here relating to the table was written wrong
+  app.get("/api/weapon", function(req, res) {
+    db.weaponTable.findAll({}).then(function(dbEquipment) {
+      console.log(
+        "\n\n",
+        dbEquipment[Math.floor(Math.random() * dbEquipment.length)],
+        "\n\n"
+      );
+
+      res.json(dbEquipment[Math.floor(Math.random() * dbEquipment.length)]);
     });
   });
 
   app.get("/api/weapons/:id", function(req, res) {
-    db.weaponsTable
+    db.weaponTable
       .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
@@ -237,13 +250,13 @@ module.exports = function(app) {
 
   //--------------------------Boot Section------------------------//
   app.get("/api/boots", function(req, res) {
-    db.bootsTable.findAll({}).then(function(dbEquipment) {
-      res.json(dbEquipment);
+    db.bootTable.findAll({}).then(function(dbEquipment) {
+      res.json(dbEquipment[Math.floor(Math.random() * dbEquipment.length)]);
     });
   });
 
   app.get("/api/weapons/:id", function(req, res) {
-    db.bootsTable
+    db.bootTable
       .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
@@ -268,7 +281,9 @@ module.exports = function(app) {
       db.Users.create({
         accountName: req.body.accountName,
         hashedPW: hash,
-        email: req.body.email
+        email: req.body.email,
+        level: 1,
+        hp: 100
         // wins: req.body.wins,
         // loses: req.body.loses,
         // weaponID: req.body.weaponID,
