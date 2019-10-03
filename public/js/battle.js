@@ -168,6 +168,14 @@ function Battle(fighter1, fighter2) {
     let fighter1Hp = fighter1.hp;
     let fighter2Hp = fighter2.hp;
 
+    setInterval(() => {
+      document.getElementById("u1hp").innerHTML = fighter1Hp;
+    }, 300);
+
+    setInterval(() => {
+      document.getElementById("u2hp").innerHTML = fighter2Hp;
+    }, 300);
+
     // Create a limit to how many *rounds* goes by before its a mandatory stop
     let counter = 0;
 
@@ -359,9 +367,15 @@ function Battle(fighter1, fighter2) {
     if (fighter1Hp > fighter2Hp) {
       fighter1.level++;
       fighter1.hp = fighter1.hp * 1.05;
+      document.getElementById("battleText").style.display = "none";
+      document.getElementById("winning").style.display = "block";
+      document.getElementById("losing").style.display = "none";
     } else {
       fighter2.level++;
       fighter2.hp = fighter2.hp * 1.05;
+      document.getElementById("battleText").style.display = "none";
+      document.getElementById("winning").style.display = "none";
+      document.getElementById("losing").style.display = "block";
     }
     return (eitherDead = true);
   }

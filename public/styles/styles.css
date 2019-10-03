@@ -301,6 +301,14 @@ p {
 #battleText {
   font-size: 50px;
 }
+#winning {
+  font-size: 50px;
+  display: none;
+}
+#losing {
+  font-size: 50px;
+  display: none;
+}
 
 .battledadImg2 {
   height: 300px;
