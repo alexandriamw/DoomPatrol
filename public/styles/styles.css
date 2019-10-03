@@ -370,6 +370,24 @@ footer {
   width: 100px;
 }
 
+.introDadOne,
+.introDadTwo {
+  width: 400px;
+}
+
+.introDadOne {
+  margin-left: 40px;
+}
+
+.introDadTwo {
+  margin-right: 40px;
+}
+
+#introContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media only screen and (max-width: 780px) {
   .one {
     height: 200px;
