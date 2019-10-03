@@ -367,9 +367,15 @@ function Battle(fighter1, fighter2) {
     if (fighter1Hp > fighter2Hp) {
       fighter1.level++;
       fighter1.hp = fighter1.hp * 1.05;
+      document.getElementById("battleText").style.display = "none";
+      document.getElementById("winning").style.display = "block";
+      document.getElementById("losing").style.display = "none";
     } else {
       fighter2.level++;
       fighter2.hp = fighter2.hp * 1.05;
+      document.getElementById("battleText").style.display = "none";
+      document.getElementById("winning").style.display = "none";
+      document.getElementById("losing").style.display = "block";
     }
     return (eitherDead = true);
   }
