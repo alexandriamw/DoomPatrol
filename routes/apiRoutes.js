@@ -87,14 +87,14 @@ module.exports = function(app) {
 
   //getting the entire table of helmets
   app.get("/api/helmet", function(req, res) {
-    db.helmetTable.findAll({}).then(function(dbEquipment) {
+    db.helmetTables.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
 
   //Api for finding one type of helmet
   app.get("/api/helmet/:id", function(req, res) {
-    db.helmetTable
+    db.helmetTables
       .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
@@ -105,14 +105,14 @@ module.exports = function(app) {
 
   //For entire table of chests
   app.get("/api/chests", function(req, res) {
-    db.chestTable.findAll({}).then(function(dbEquipment) {
+    db.chestTables.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
 
   //For finding one type of Chest
   app.get("/api/chests/:id", function(req, res) {
-    db.chestTable
+    db.chestTables
       .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
@@ -122,13 +122,13 @@ module.exports = function(app) {
 
   //For entire table of gloves
   app.get("/api/gloves", function(req, res) {
-    db.chestTable.findAll({}).then(function(dbEquipment) {
+    db.gloveTables.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
 
   app.get("/api/gloves/:id", function(req, res) {
-    db.glovesTable
+    db.gloveTables
       .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
@@ -137,13 +137,13 @@ module.exports = function(app) {
 
   //----------------------Weapon Section--------------------------//
   app.get("/api/weapons", function(req, res) {
-    db.weaponsTable.findAll({}).then(function(dbEquipment) {
+    db.weaponsTables.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
 
   app.get("/api/weapons/:id", function(req, res) {
-    db.weaponsTable
+    db.weaponsTables
       .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
@@ -152,17 +152,66 @@ module.exports = function(app) {
 
   //--------------------------Boot Section------------------------//
   app.get("/api/boots", function(req, res) {
-    db.bootsTable.findAll({}).then(function(dbEquipment) {
+    db.bootsTables.findAll({}).then(function(dbEquipment) {
       res.json(dbEquipment);
     });
   });
 
   app.get("/api/weapons/:id", function(req, res) {
-    db.bootsTable
+    db.bootsTables
       .findOne({ where: { id: req.params.id } })
       .then(function(dbItem) {
         res.json(dbItem);
       });
+  });
+
+  app.get("/api/randomItem", function(req, res) {
+    let choices = Math.random() * 5 + 1;
+    if (choices === 1) {
+      db.headtables
+        .findAll({
+          order: [Sequelize.litteral("RAND")]
+        })
+        .then(function(user2) {
+          res.json(user2);
+        });
+    }
+    if (choices === 2) {
+      db.weapontables
+        .findAll({
+          order: [Sequelize.litteral("RAND")]
+        })
+        .then(function(user2) {
+          res.json(user2);
+        });
+    }
+    if (choices === 3) {
+      db.glovetables
+        .findAll({
+          order: [Sequelize.litteral("RAND")]
+        })
+        .then(function(user2) {
+          res.json(user2);
+        });
+    }
+    if (choices === 4) {
+      db.cheststables
+        .findAll({
+          order: [Sequelize.litteral("RAND")]
+        })
+        .then(function(user2) {
+          res.json(user2);
+        });
+    }
+    if (choices === 5) {
+      db.boottables
+        .findAll({
+          order: [Sequelize.litteral("RAND")]
+        })
+        .then(function(user2) {
+          res.json(user2);
+        });
+    }
   });
 
   //---------------------------------Creation Section (In Progress)---------------------------------------------
