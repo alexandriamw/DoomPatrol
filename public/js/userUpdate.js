@@ -35,6 +35,9 @@ document
               "\n\n If you get this one, then it means that the old username here is wrong\n\n"
             );
             document.getElementById("wrongOldUName").style.display = "block";
+            document.getElementById("takenNewUName").style.display = "none";
+            document.getElementById("wrongCurrentUName").style.display = "none";
+            document.getElementById("changeOnlyOne").style.display = "none";
           } else {
             checkNewUserName();
           }
@@ -61,8 +64,11 @@ document
           console.log(data);
           if (data === null) {
             //otherwise display these styles back on after 1.5 seconds
+            document.getElementById("wrongOldUName").style.display = "none";
+            document.getElementById("takenNewUName").style.display = "none";
             document.getElementById("wrongCurrentUName").style.display =
               "block";
+            document.getElementById("changeOnlyOne").style.display = "none";
             console.log(
               "\n\n If you get this one, then it means that the current username here is wrong\n\n"
             );
@@ -78,6 +84,10 @@ document
     ) {
       console.log("--------------------- BREAK -----------------------");
       console.log("DONT ALLOW IT TO GO THROUGH");
+      document.getElementById("wrongOldUName").style.display = "none";
+      document.getElementById("takenNewUName").style.display = "none";
+      document.getElementById("wrongCurrentUName").style.display = "none";
+      document.getElementById("changeOnlyOne").style.display = "block";
     }
 
     // This is code for updating the username
@@ -107,6 +117,8 @@ document
             );
             document.getElementById("wrongOldUName").style.display = "none";
             document.getElementById("takenNewUName").style.display = "block";
+            document.getElementById("wrongCurrentUName").style.display = "none";
+            document.getElementById("changeOnlyOne").style.display = "none";
           }
         });
     }
