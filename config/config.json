@@ -4,8 +4,9 @@
     "password": "root",
     "database": "master_db",
     "host": "localhost",
-    "port": "3306",
-    "dialect": "mysql"
+    "port": "8889",
+    "dialect": "mysql",
+    "seederStorage": "sequelize"
   },
   "test": {
     "username": "root",

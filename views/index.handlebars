@@ -1,16 +1,24 @@
 <div id="intro">
   <h1 class="title">Dad Souls</h1>
-  <div>
-    <div id="login">
-      <h3>Welcome back</h3>
-      <button id="loginButton"><span>Login</span></button>
+
+  <div id="introContainer">
+    <img class="introDadOne" src="/images/CoolDad.png" alt="image of a cool dad">
+
+    <div class="introMiddle">
+      <div id="login">
+        <h3>Welcome back</h3>
+        <button id="loginButton"><span>Login</span></button>
+      </div>
+
+      <div id="createAccount">
+        <h3>Don't have an account yet?</h3>
+        <button id="createButton">Create an account</button>
+      </div>
     </div>
 
-    <div id="createAccount">
-      <h3>Don't have an account yet?</h3>
-      <button id="createButton">Create an account</button>
-    </div>
+    <img class="introDadTwo" src="/images/SportsDad2.png" alt="image of a sports dad">
   </div>
+
 </div>
 
 <div id="loginFormPage">
@@ -18,9 +26,15 @@
     <h1 class="login">Login</h1>
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+    <div id="lUNameFail">
+      <p>username is incorrect</p>
+    </div>
     <br><br>
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <div id="lPswFail">
+      <p>password is incorrect</p>
+    </div>
     <br><br>
     <button id="loginFormButton" type="submit"><span>Login</span></button>
     <br>
@@ -32,14 +46,22 @@
   <form action="" id="createAcctForm">
     <div>
       <h1 class="signUp">Create an Account</h1>
-      <label for="signup_uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" id="signup_uname" required>
-      <br><br>
-      <label for="signup_psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" id="signup_psw" required>
-      <br><br>
-      <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter your email" name="emailaddress" id="email" required>
+      <div id="inputBoxes">
+        <label for="signup_uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id="signup_uname" required>
+        <div id="cUNameFail">
+          <p class="failText">username is already taken, please choose another one</p>
+        </div>
+        <br><br>
+        <label for="signup_psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="signup_psw" required>
+        <br><br>
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter your email" name="emailaddress" id="email" required>
+        <div id="cEmailFail">
+          <p class="failText">email is already taken, please choose another one</p>
+        </div>
+      </div>
       <div>
         <button id="signUpButton" type="submit">Sign Up</button>
         <br>
@@ -50,7 +72,7 @@
 </div>
 
 <div id="buffering">
-  <h1>Finding dad to battle...</h1>
+  <h1>Logging in...</h1>
   <div id="bufferingIcon">
     <img src="https://media.giphy.com/media/OPQj1Zb3PakSpRSrHH/source.gif" id="football" alt="Football" height="100"
       width="100">
@@ -94,15 +116,19 @@
 <div id="accountPage">
   <h1>My Account</h1>
   <div id="coinDisplay">
-    <!-- this is where the coin amount can be dynamically updated from the database -->
     <span>250</span>
     <img id="coinImg" src="/images/coin.png" alt="coin">
   </div>
 
+  <div id="diamondDisplay">
+    <span>0</span>
+    <img id="diamondImg" src="/images/diamond.png" alt="diamond">
+  </div>
+
+  <img id="flag" src="/images/flag.png" alt="flag">
+
   <div id="mySidenav">
     <button id="inventory" type="button">My Inventory</button>
-    <button id="buyWeapons" type="button">Buy Weapons</button>
-    <button id="buyArmor" type="button">Buy Armor</button>
     <button id="settings" type="button">Settings</button>
   </div>
 
@@ -111,24 +137,12 @@
     <button id="closeInventory" type="button">Close</button>
   </div>
 
-  <div id="buyWeaponPop">
-    <h5 class="topline">Buy a football for coins</h5>
-    <h5>Buy a beer can for coins</h5>
-    <h5>Buy a pack of Magic: The Gathering cards for coins</h5>
-    <button id="cancelWeaponBtn" type="button">Cancel</button>
-  </div>
-
-  <div id="buyArmorPop">
-    <h5 class="topline">Buy a Gopher Jersey for coins</h5>
-    <h5>Buy a tank top for coins</h5>
-    <h5>Buy a cool dad sweater for coins</h5>
-    <button id="cancelArmorBtn" type="button">Cancel</button>
-  </div>
-
   <div id="settingsPop">
     <form id="settingsForm">
-      <h5 class="topline">Change my Username</h5>
-      <input type="text" placeholder="Enter new Username" name="uname" id="newuname">
+      <h5 class="topline">Old Username</h5>
+      <input type="text" placeholder="Enter old Username" name="uname" id="olduname">
+      <h5>Change my Username</h5>
+      <input type="text" placeholder="Enter new Username" name="uname" id="newuname"><br><br><br>
       <h5>Change my Password</h5>
       <input type="password" placeholder="Enter new Password" name="psw" id="newpsw"><br><br>
       <button id="confirmChangeBtn" type="submit">Confirm Changes</button>
@@ -141,15 +155,20 @@
 
 <div id="battlePage">
   <header id="mainHeader">
+
     <h2>Battle!</h2>
     <h3 id="healthPoints">Health Points:  </h3>
+
+    <h2 id="battleText">Battle!</h2>
+    <h3 id="healthPoints">Health Points: </h3>
+
     <h3 id="healthPoints2">Health Points: </h3>
   </header>
   <div class="container mt-5" style="position: relative">
-    <div class="col-md-5 player-1 float-left frame"><span class="helper"><img
-        src="../images/BeerDad.png" class="dadImg2"></span></div>
-    <div class="col-md-5 player-2 float-right frame"><span class="helper"><img
-        src="../images/BeerDad2.png" class="dadImg2"></span></div>
+    <div class="col-md-5 player-1 float-left frame"><span class="helper"><img src="../images/BeerDad.png"
+          class="battledadImg2"></span></div>
+    <div class="col-md-5 player-2 float-right frame"><span class="helper"><img src="../images/BeerDad2.png"
+          class="battledadImg2"></span></div>
   </div>
 
   <div class="col-md-12" id="battleButtons">
@@ -159,8 +178,10 @@
     <button name="actionButtons" class="actions" aria-pressed="true" id="defendButton" value="defend" type="button">Defend</button>
     <button name="actionButtons" class="actions" aria-pressed="true" id="magicButton" value="magic" type="button">Magic</button>
   </div>
+
   <button id="cancelBattleButton" type="button">Account</button>
   <button id="startBattle" type="button">FIGHT!!!!!!!!!</button
+
 </div>
 </div>
 </div>
