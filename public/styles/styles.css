@@ -113,7 +113,9 @@ h1 {
 #closeInventory,
 #attackButton,
 #defendButton,
-#magicButton {
+#magicButton,
+#meleeButton,
+#startBattle {
   font-family: "Do Hyeon", sans-serif;
   font-size: 16px;
   background-color: #80afaa;
