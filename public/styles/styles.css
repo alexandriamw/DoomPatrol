@@ -58,6 +58,22 @@ body {
   display: none;
 }
 
+#changeOnlyOne {
+  display: none;
+}
+
+#wrongOldUName {
+  display: none;
+}
+
+#takenNewUName {
+  display: none;
+}
+
+#wrongCurrentUName {
+  display: none;
+}
+
 .failText {
   text-align: right;
 }
@@ -163,6 +179,7 @@ button:active {
 #signup_psw,
 #email,
 #newuname,
+#currentuname,
 #newpsw {
   font-family: "Do Hyeon", sans-serif;
   border-radius: 4px;
@@ -328,7 +345,8 @@ p {
   left: 100px;
   top: 150px;
   width: 450px;
-  height: 480px;
+  height: fit-content;
+  /* height: 480px; */
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;

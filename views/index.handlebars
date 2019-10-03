@@ -141,10 +141,28 @@
     <form id="settingsForm">
       <h5 class="topline">Old Username</h5>
       <input type="text" placeholder="Enter old Username" name="uname" id="olduname">
+      <div id="wrongOldUName">
+        <p>Wrong old username</p>
+      </div>
       <h5>Change my Username</h5>
-      <input type="text" placeholder="Enter new Username" name="uname" id="newuname"><br><br><br>
+      <input type="text" placeholder="Enter new Username" name="uname" id="newuname">
+      <div id="takenNewUName">
+        <p>This username is already taken</p>
+      </div>
+      <br>
+      <br>
+      <br>
+      <h5>Current Username</h5>
+      <input type="text" placeholder="Enter current Username" name="uname" id="currentuname">
+      <div id="wrongCurrentUName">
+        <p>Wrong username</p>
+      </div>
       <h5>Change my Password</h5>
-      <input type="password" placeholder="Enter new Password" name="psw" id="newpsw"><br><br>
+      <input type="password" placeholder="Enter new Password" name="psw" id="newpsw">
+      <br><br>
+      <div id="changeOnlyOne">
+        <p>You can only choose to change either username or password, not both at the same time</p>
+      </div>
       <button id="confirmChangeBtn" type="submit">Confirm Changes</button>
       <button id="cancelSettingsBtn" type="button">Cancel</button>
     </form>
@@ -178,5 +196,9 @@
 </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/js/index.js"></script>
+  <script src="/js/userLogin.js"></script>
+  <script src="/js/userInputValidate.js"></script>
+  <script src="/js/userCreate.js"></script>
+  <script src="/js/userUpdate.js"></script>

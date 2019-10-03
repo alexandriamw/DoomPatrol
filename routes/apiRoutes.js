@@ -128,6 +128,44 @@ module.exports = function(app) {
       }
     );
   });
+
+  app.put("/api/users/updateuname/:updatename", function(req, res) {
+    console.log(
+      "WHAT HAppened here part1???:               routes/apiRoutes.js"
+    );
+    db.Users.update(
+      { accountName: req.body.newUserName },
+      { where: { accountName: req.body.oldUserName } }
+    ).then(function(dbPost) {
+      res.json(dbPost);
+      console.log(
+        "WHAT HAppened here Part2???:               routes/apiRoutes.js"
+      );
+    });
+  });
+
+  app.put("/api/users/updatepass/", function(req, res) {
+    bcrypt.hash(req.body.hashedPW, saltRounds, function(err, hash) {
+      // Store hash in your password DB.
+      console.log("\n\n\nLet see if this console.log even comes through\n\n");
+      console.log(hash + "\n\n");
+      updatePassword(hash);
+    });
+
+    function updatePassword(hash) {
+      console.log(hash);
+      db.Users.update(
+        { hashedPW: hash },
+        { where: { accountName: req.body.accountName } }
+      ).then(function(dbPost) {
+        res.json(dbPost);
+        console.log(
+          "WHAT HAppened here Part2???:               routes/apiRoutes.js"
+        );
+      });
+    }
+  });
+
   //-----------------------------------------------Equipment Section-----------------------------------
 
   //------Helmet Section --------//
