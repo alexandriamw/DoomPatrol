@@ -95,7 +95,6 @@ document.getElementById("battleButton").addEventListener("click", function() {
   document.getElementById("battlePage").style.display = "block";
 });
 
-
 function user(userinfo) {
   this.name = userinfo.name;
   this.level = userinfo.level;
@@ -181,7 +180,7 @@ function battle(fighter1, fighter2) {
       let fighter2Hp = fighter2.hp;
 
       let counter = 0;
-
+      mainLoop();
       function mainLoop() {
         counter++;
         if (counter >= 30) {
