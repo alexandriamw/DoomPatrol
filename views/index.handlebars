@@ -1,16 +1,24 @@
 <div id="intro">
   <h1 class="title">Dad Souls</h1>
-  <div>
-    <div id="login">
-      <h3>Welcome back</h3>
-      <button id="loginButton"><span>Login</span></button>
+
+  <div id="introContainer">
+    <img class="introDadOne" src="/images/CoolDad.png" alt="image of a cool dad">
+
+    <div class="introMiddle">
+      <div id="login">
+        <h3>Welcome back</h3>
+        <button id="loginButton"><span>Login</span></button>
+      </div>
+
+      <div id="createAccount">
+        <h3>Don't have an account yet?</h3>
+        <button id="createButton">Create an account</button>
+      </div>
     </div>
 
-    <div id="createAccount">
-      <h3>Don't have an account yet?</h3>
-      <button id="createButton">Create an account</button>
-    </div>
+    <img class="introDadTwo" src="/images/SportsDad2.png" alt="image of a sports dad">
   </div>
+
 </div>
 
 <div id="loginFormPage">
@@ -108,10 +116,16 @@
 <div id="accountPage">
   <h1>My Account</h1>
   <div id="coinDisplay">
-    <!-- this is where the coin amount can be dynamically updated from the database -->
     <span>250</span>
     <img id="coinImg" src="/images/coin.png" alt="coin">
   </div>
+
+  <div id="diamondDisplay">
+    <span>0</span>
+    <img id="diamondImg" src="/images/diamond.png" alt="diamond">
+  </div>
+
+  <img id="flag" src="/images/flag.png" alt="flag">
 
   <div id="mySidenav">
     <button id="inventory" type="button">My Inventory</button>
@@ -159,15 +173,15 @@
 
 <div id="battlePage">
   <header id="mainHeader">
-    <h2>Battle!</h2>
+    <h2 id="battleText">Battle!</h2>
     <h3 id="healthPoints">Health Points: </h3>
     <h3 id="healthPoints2">Health Points: </h3>
   </header>
   <div class="container mt-5" style="position: relative">
     <div class="col-md-5 player-1 float-left frame"><span class="helper"><img src="../images/BeerDad.png"
-          class="dadImg2"></span></div>
+          class="battledadImg2"></span></div>
     <div class="col-md-5 player-2 float-right frame"><span class="helper"><img src="../images/BeerDad2.png"
-          class="dadImg2"></span></div>
+          class="battledadImg2"></span></div>
   </div>
 
   <div class="col-md-12" id="battleButtons">

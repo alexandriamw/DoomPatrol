@@ -262,10 +262,26 @@ p {
   width: 100px;
 }
 
-#mySidenav a:hover {
-  left: 0;
+#diamondDisplay {
+  position: absolute;
+  right: 50px;
+  top: 200px;
+  color: antiquewhite;
 }
 
+#diamondImg {
+  width: 100px;
+}
+
+#flag {
+  width: 400px;
+}
+
+#mySidenav {
+  position: absolute;
+  left: 10px;
+  top: 150px;
+}
 #mySidenav,
 #inventory,
 #buyWeapons,
@@ -273,13 +289,19 @@ p {
 #settings {
   position: absolute;
   left: 10px;
-  transition: 0.3s;
   padding: 20px;
   width: 200px;
-  text-decoration: none;
   font-size: 20px;
   color: antiquewhite;
   border-radius: 5px;
+}
+
+#battleText {
+  font-size: 50px;
+}
+
+.battledadImg2 {
+  height: 300px;
 }
 
 #inventory {
@@ -320,8 +342,8 @@ p {
 
 #settingsPop {
   position: absolute;
-  top: 3em;
   left: 100px;
+  top: 150px;
   width: 450px;
   height: fit-content;
   /* height: 480px; */
@@ -333,8 +355,9 @@ p {
 #myInventoryPop {
   position: absolute;
   left: 100px;
+  top: 150px;
   width: 500px;
-  height: 320px;
+  height: 420px;
   background-color: #333c4c;
   border-radius: 6px;
   color: antiquewhite;
@@ -387,6 +410,24 @@ footer {
   top: 400px;
   left: 100px;
   width: 100px;
+}
+
+.introDadOne,
+.introDadTwo {
+  width: 400px;
+}
+
+.introDadOne {
+  margin-left: 40px;
+}
+
+.introDadTwo {
+  margin-right: 40px;
+}
+
+#introContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 780px) {
