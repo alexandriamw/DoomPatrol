@@ -95,6 +95,13 @@ document.getElementById("battleButton").addEventListener("click", function() {
   document.getElementById("battlePage").style.display = "block";
 });
 
+document
+  .getElementById("cancelBattleButton")
+  .addEventListener("click", function() {
+    document.getElementById("battlePage").style.display = "none";
+    document.getElementById("accountPage").style.display = "block";
+  });
+
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------ Battle System ------------------------------------------------

@@ -513,10 +513,3 @@ function usingCALogin() {
     waitABit();
   }
 }
-
-document
-  .getElementById("cancelBattleBtn")
-  .addEventListener("click", function() {
-    document.getElementById("battlePage").style.display = "none";
-    document.getElementById("accountPage").style.display = "block";
-  });
